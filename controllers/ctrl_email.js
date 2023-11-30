@@ -1,30 +1,26 @@
-const db = require('../db/db')
-
 const nodemailer = require("nodemailer");
+const db = require('../db/db')
+const email_config = require('../config/credenciales').emailConfig
 
 module.exports = {
     rtEmail: async (req, res) => {
         try {
-            const transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 465,
-                secure: true,
-              auth: {
-                user: "a181648une@gmail.com",
-                pass: "ltxx yfgz eita xezz",
-              },
-            });
-            
-            const mailOptions = transporter.sendMail({
-              from: 'a181648une@gmail.com', // sender address
-              to: "a181648@une.edu.mx", // list of receivers
-              subject: "Hello ✔", // Subject line
-              text: 'Hello world?'
-              //html: "<b>Hello world?</b>", // html body
-            });
+          const correo = req.body.txtCorreo;
+          const transporter = nodemailer.createTransport(email_config);
+          
+          const mailOptions = transporter.sendMail({
+            from: 'a181648une@gmail.com', // sender address
+            cc: 'a181648une@gmail.com',
+            to: `${correo}`, // list of receivers
+            subject: "¡Registro exitoso! 👌🏻", // Subject line
+            text: `${req.body.txtNombre}, has sido registrado correctamente 🥳🥳.`
+            //html: "<b>Hello world?</b>", // html body
+          });
+          
+        res.render('landing/landing')
 
-            res.render('landing/landing')
-        
+
+
         } catch (error) {
             console.log(error)
         }
