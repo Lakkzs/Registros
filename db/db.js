@@ -38,7 +38,33 @@ const login = {
         }
     }
 }
+const codes = {
+    guardarCodigo: async (data, code) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('CORREO_REG', sql.VarChar, data.txtCorreo)
+            .input('CODIGO_CODES', sql.VarChar, code)
+            .query(`EXEC EVENTO_CODIGO @CORREO_REG, @CODIGO_CODES`)
+            return resultado
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+const verify = {
+    verificarCodigo: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('USUARIO_REG', sql.VarChar, data.txtUsuario)
+            .input('CONTRASENA_REG', sql.VarChar, data.txtContrasena)
+            .query(`EXEC EVENTO_LOGIN @USUARIO_REG, @CONTRASENA_REG`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 module.exports = {
-    registro, login
+    registro, login, codes, verify
 }

@@ -15,5 +15,15 @@ module.exports = {
             console.log(error)
             res.json({estatus: 'ERROR'})
         }
-    }
+    },
+    registerVerification: async (req, code, res) => {
+        try {
+            console.log(1, req)
+            console.log(2, code)
+            await db.codes.guardarCodigo(req, code)
+      } catch (error) {
+          console.log(error)
+          res.json({estatus: 'ERROR'})
+      }
+      }
 }

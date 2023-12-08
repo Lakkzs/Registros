@@ -11,7 +11,7 @@ router.post('/rt_registro', registro.rtRegistro)
 //router.post('/rt_login', login.rtLogin)
 router.post('/rt_login', login.rtLogin)
 
-router.post('/rt_landing', email.rtEmail)
+router.post('/rt_verification', email.rtEmail)
 
 module.exports = router
 
