@@ -41,7 +41,7 @@ module.exports = {
          Hola,${req.body.txtNombre} <br><br>
 
          Recibimos una solicitud para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
-          El código de verificación es:<br><br>
+         El código de verificación es:<br><br>
 
         
           <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
