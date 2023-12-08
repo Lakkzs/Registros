@@ -1,7 +1,6 @@
 
 function onRegistro(e){
-    e.preventDefault()
-
+    
     var formRegistro = new FormData(document.getElementById('formRegistro'))
     var jsonRegistro = {}
     var arrFaltantes = []
@@ -19,6 +18,7 @@ function onRegistro(e){
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
     }
     else{
+        e.preventDefault()
         fetch('/rt_registro', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
