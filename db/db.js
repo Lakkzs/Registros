@@ -52,19 +52,32 @@ const codes = {
     }
 }
 const verify = {
-    verificarCodigo: async (req, res) => {
+    verificarCodigo: async (data) => {
         try {
             let resultado = await sql_conn.request()
-            .input('USUARIO_REG', sql.VarChar, data.txtUsuario)
-            .input('CONTRASENA_REG', sql.VarChar, data.txtContrasena)
-            .query(`EXEC EVENTO_LOGIN @USUARIO_REG, @CONTRASENA_REG`)
+            .input('CORREO_REG', sql.VarChar, data.txtCorreo)
+            .input('CODIGO_CODES', sql.VarChar, data.txtVerificacion)
+            .query(`EXEC EVENTO_VERIFICAR_REGISTRO @CORREO_REG, @CODIGO_CODES`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
         }
     }
 }
+const changeStatusCode = {
+    changeStatus: async(data) => {
+    try{
+        let resultado = await sql_conn.request()
+        .input('CORREO_REG', sql.VarChar, data.txtCorreo)
+        .input('CODIGO_CODES', sql.VarChar, data.txtVerificacion)
+        .query(`EXEC EVENTO_CAMBIAR_VERIFICACION_ESTATUS @CORREO_REG, @CODIGO_CODES`)
+        return objeto_resultado(resultado)
+    } catch (error) {
+        console.log(error)
+    }
+    }
+}
 
 module.exports = {
-    registro, login, codes, verify
+    registro, login, codes, verify, changeStatusCode,
 }

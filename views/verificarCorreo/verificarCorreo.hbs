@@ -12,8 +12,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
     <br><br>
-    {{!-- method="get" action="/rt_login" --}}
-    <form class="mt-5" id="formLogin" >
+    {{!-- method="get" action="/login" --}}
+    <form class="mt-5" id="formVerify" method="post" action="/rt_login_view">
         <div class="titulo">
             <label class="tit"> Verificación de Cuenta </label><br>
         </div>
@@ -23,6 +23,7 @@
             </div>
             <div class="ins">
                 <input type="input" class="form-control"  placeholder="ABC123" name="txtVerificacion">
+                <input type="input" class="form-control" placeholder="ABC123" name="txtCorreo" value="{{txtCorreo}}" hidden>
             </div>
         </div><br>
         <div class="but">

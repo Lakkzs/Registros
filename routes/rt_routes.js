@@ -5,6 +5,8 @@ const db = require('../db/db')
 const registro = require('../controllers/ctrl_registro')
 const login = require('../controllers/ctrl_login')
 const email = require('../controllers/ctrl_email')
+const verificationEmail = require('../controllers/ctrl_codes')
+
 
 
 router.post('/rt_registro', registro.rtRegistro)
@@ -12,6 +14,10 @@ router.post('/rt_registro', registro.rtRegistro)
 router.post('/rt_login', login.rtLogin)
 
 router.post('/rt_verification', email.rtEmail)
+
+router.post('/rt_verify', verificationEmail.verify)
+router.post('/rt_login_view', verificationEmail.login)
+
 
 module.exports = router
 
