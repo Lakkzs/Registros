@@ -1,5 +1,5 @@
 const db = require('../db/db')
-const codes = require('../controllers/ctrl_codes.js')
+const emailSend = require('../controllers/ctrl_email.js')
 
 module.exports = {
     generateVerification: async (req, res) => {
@@ -22,12 +22,5 @@ module.exports = {
           console.log(error)
           res.json({estatus: 'ERROR'})
       }
-    },
-    login: async (req, res) => {
-        let body = req.body
-        let code = await codes.generateVerification()
-        await db.tempPass.InsertTemporalPass(body, code).datos
-        await db.changeStatusCode.changeStatus(body).datos
-        res.render('login/login')
     },
 }

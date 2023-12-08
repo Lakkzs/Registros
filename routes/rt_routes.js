@@ -16,7 +16,7 @@ router.post('/rt_login', login.rtLogin)
 router.post('/rt_verification', email.rtEmail)
 
 router.post('/rt_verify', verificationEmail.verify)
-router.post('/rt_login_view', verificationEmail.login)
+router.post('/rt_login_view', email.emailPass)
 
 
 module.exports = router
