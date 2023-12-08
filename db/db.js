@@ -66,18 +66,31 @@ const verify = {
 }
 const changeStatusCode = {
     changeStatus: async(data) => {
-    try{
-        let resultado = await sql_conn.request()
-        .input('CORREO_REG', sql.VarChar, data.txtCorreo)
-        .input('CODIGO_CODES', sql.VarChar, data.txtVerificacion)
-        .query(`EXEC EVENTO_CAMBIAR_VERIFICACION_ESTATUS @CORREO_REG, @CODIGO_CODES`)
-        return objeto_resultado(resultado)
-    } catch (error) {
-        console.log(error)
+        try{
+            let resultado = await sql_conn.request()
+            .input('CORREO_REG', sql.VarChar, data.txtCorreo)
+            .input('CODIGO_CODES', sql.VarChar, data.txtVerificacion)
+            .query(`EXEC EVENTO_CAMBIAR_VERIFICACION_ESTATUS @CORREO_REG, @CODIGO_CODES`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
     }
+}
+const tempPass = {
+    InsertTemporalPass: async(data, pass) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('CORREO_REG', sql.VarChar, data.txtCorreo)
+            .input('CONTRASENA', sql.VarChar, pass)
+            .query(`EXEC EVENTO_INSERTAR_CONTRA_TEMPORAL @CORREO_REG, @CONTRASENA`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode,
+    registro, login, codes, verify, changeStatusCode, tempPass, 
 }

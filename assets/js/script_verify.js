@@ -20,7 +20,7 @@ function onRegistro(e){
             alert('El código ingresado es incorrecto o es invalido, intente de nuevo.')
         }
         if(response.datos[0].RESULT == 'COINCIDE'){
-            alert('¡Su cuenta ha sido confirmada correctamente!')
+            alert('¡Su cuenta ha sido confirmada correctamente! Se le ha enviado un correo electrónico con su contraseña temporal.')
             document.getElementById('formVerify').submit();
         }
     })

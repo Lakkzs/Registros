@@ -1,4 +1,5 @@
 const db = require('../db/db')
+const codes = require('../controllers/ctrl_codes.js')
 
 module.exports = {
     generateVerification: async (req, res) => {
@@ -24,7 +25,8 @@ module.exports = {
     },
     login: async (req, res) => {
         let body = req.body
-        console.log(100, body)
+        let code = await codes.generateVerification()
+        await db.tempPass.InsertTemporalPass(body, code).datos
         await db.changeStatusCode.changeStatus(body).datos
         res.render('login/login')
     },
