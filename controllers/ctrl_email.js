@@ -4,6 +4,7 @@ const email_config = require('../config/credenciales').emailConfig
 const codes = require('../controllers/ctrl_codes.js')
 const reg = require('../controllers/ctrl_registro.js')
 
+
 module.exports = {
   rtEmail: async (req, res) => {
     try {
