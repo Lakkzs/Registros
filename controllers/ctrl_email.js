@@ -13,6 +13,7 @@ module.exports = {
       await reg.registerVerification(req.body, code)
       // expressSesion para crear sesiones se guarda id nombre correo para saber q usuario navega y mostrarle su instanceof; sequelize especie de conector de bd como mssql, nos permite hacer conexiones con multiples bd, solo se ocupa una pequeña instancia para usar connect session, para hacer guardado de la sesion; connect-session-sequelize; meterlo en el midleware, dsps crear otro para rear la sesion; req.cookies, req.session, crea un objeto con la anterior con tiempo de expiración
       const correo = req.body.txtCorreo;
+      const nombre = req.body.txtNombre
       const transporter = nodemailer.createTransport(email_config);
       const mailOptions = transporter.sendMail({
         from: 'a181648une@gmail.com',
@@ -30,7 +31,7 @@ module.exports = {
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">Cón</label>
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
@@ -39,7 +40,7 @@ module.exports = {
 
     <div style="text-align: justify;">
         <br>
-         Hola,${req.body.txtNombre} <br><br>
+         Hola, ${req.body.txtNombre} <br><br>
 
          Recibimos una solicitud para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
          El código de verificación es:<br><br>
@@ -60,7 +61,7 @@ module.exports = {
             `
 
       });
-      res.render('verificarCorreo/verificarCorreo', { txtCorreo: correo })
+      res.render('verificarCorreo/verificarCorreo', { txtCorreo: correo, txtNombre: nombre })
     } catch (error) {
       console.log(error)
     }
@@ -69,6 +70,7 @@ module.exports = {
 
   emailPass: async (req, res) => {
     try {
+      console.log(15, req)
       await db.changeStatusCode.changeStatus(req).datos //CHECHARRRRRRRRRRRRRRRRRR
       let code = await codes.generateVerification()
       await db.tempPass.InsertTemporalPass(req, code).datos
@@ -91,16 +93,16 @@ module.exports = {
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">Cón</label>
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
-        <label style="font-size:25px; color:white; vertical-align:bottom; ">Código de verificación</label>
+        <label style="font-size:25px; color:white; vertical-align:bottom; ">Contraseña Temporal</label>
     </div>
 
     <div style="text-align: justify;">
         <br>
-         Hola,${req.body.txtNombre} <br><br>
+         Hola, ${req.body.txtNombre} <br><br>
 
           Tu cuenta ha sido verificada correctamente. Para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
           Puedes utilizar la siguiente contraseña temporal:<br><br>
