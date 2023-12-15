@@ -9,7 +9,6 @@ module.exports = {
   rtEmail: async (req, res) => {
     try {
       let code = await codes.generateVerification()
-      console.log(code)
       await reg.registerVerification(req.body, code)
       // expressSesion para crear sesiones se guarda id nombre correo para saber q usuario navega y mostrarle su instanceof; sequelize especie de conector de bd como mssql, nos permite hacer conexiones con multiples bd, solo se ocupa una pequeña instancia para usar connect session, para hacer guardado de la sesion; connect-session-sequelize; meterlo en el midleware, dsps crear otro para rear la sesion; req.cookies, req.session, crea un objeto con la anterior con tiempo de expiración
       const correo = req.body.txtCorreo;
@@ -72,6 +71,7 @@ module.exports = {
     try {
       await db.changeStatusCode.changeStatus(req).datos //CHECHARRRRRRRRRRRRRRRRRR
       let code = await codes.generateVerification()
+      console.log(3, code);
       await db.tempPass.InsertTemporalPass(req, code).datos
       // expressSesion para crear sesiones se guarda id nombre correo para saber q usuario navega y mostrarle su instanceof; sequelize especie de conector de bd como mssql, nos permite hacer conexiones con multiples bd, solo se ocupa una pequeña instancia para usar connect session, para hacer guardado de la sesion; connect-session-sequelize; meterlo en el midleware, dsps crear otro para rear la sesion; req.cookies, req.session, crea un objeto con la anterior con tiempo de expiración
       const correo = req.body.txtCorreo;

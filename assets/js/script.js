@@ -32,7 +32,6 @@ function onRegistro(e){
                 body: JSON.stringify(jsonRegistro)
             }).then((response) => response.json())
             .then((response) => {
-                console.log(response)
                 if(response.datos[0].RESULT == 'EXISTE'){
                     alert('El correo ingresado no está disponible, intente de nuevo.')
                 }
