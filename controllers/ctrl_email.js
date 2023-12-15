@@ -68,7 +68,7 @@ module.exports = {
 
   emailPass: async (req, res) => {
     try {
-      await db.changeStatusCode.changeStatus(req).datos
+      await db.changeStatusCode.changeStatus(req).datos //CHECHARRRRRRRRRRRRRRRRRR
       let code = await codes.generateVerification()
       await db.tempPass.InsertTemporalPass(req, code).datos
       // expressSesion para crear sesiones se guarda id nombre correo para saber q usuario navega y mostrarle su instanceof; sequelize especie de conector de bd como mssql, nos permite hacer conexiones con multiples bd, solo se ocupa una pequeña instancia para usar connect session, para hacer guardado de la sesion; connect-session-sequelize; meterlo en el midleware, dsps crear otro para rear la sesion; req.cookies, req.session, crea un objeto con la anterior con tiempo de expiración
@@ -78,7 +78,7 @@ module.exports = {
         from: 'a181648une@gmail.com',
         cc: 'a181648une@gmail.com',
         to: `${correo}`,
-        subject: "¡Registro exitoso! 👌🏻",
+        subject: "Contraseña Temporal 🔒",
         // text: `${req.body.txtNombre}, has sido registrado correctamente 🥳. \nTu código de verificación es el siguiente: \n ${code}`
         html:
           `
@@ -101,8 +101,8 @@ module.exports = {
         <br>
          Hola,${req.body.txtNombre} <br><br>
 
-         Recibimos una solicitud para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
-          El código de verificación es:<br><br>
+          Tu cuenta ha sido verificada correctamente. Para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
+          Puedes utilizar la siguiente contraseña temporal:<br><br>
 
         
           <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
