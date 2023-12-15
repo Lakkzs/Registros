@@ -70,7 +70,6 @@ module.exports = {
 
   emailPass: async (req, res) => {
     try {
-      console.log(15, req)
       await db.changeStatusCode.changeStatus(req).datos //CHECHARRRRRRRRRRRRRRRRRR
       let code = await codes.generateVerification()
       await db.tempPass.InsertTemporalPass(req, code).datos

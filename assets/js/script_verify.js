@@ -8,7 +8,6 @@ function onRegistro(e){
         console.log(formVerify.get(key))
         jsonVerify[key] = formVerify.get(key)
     }
-    console.log(jsonVerify)
     fetch('/rt_verify', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
