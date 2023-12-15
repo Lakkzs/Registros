@@ -109,7 +109,7 @@ module.exports = {
           <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
 
 
-         Si no solicitaste este código, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
+         Si no solicitaste esta contraseña, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
          No reenvíes ni proporciones este código a otra persona.<br><br>
      
          Atentamente.<br><br>
