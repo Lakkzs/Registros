@@ -23,7 +23,7 @@ module.exports = {
         // text: `${req.body.txtNombre}, has sido registrado correctamente 🥳. \nTu código de verificación es el siguiente: \n ${code}`
         html:
           `
-            <div style="width:690px; height:550px; background-color:rgb(255, 255, 255); display:block;">
+            <div style="width:690px; height:550px; background-color:rgb(255, 255, 255); display:block; margin-left: auto; margin-right:auto;">
 
     <div style="width:100%; height:10%; margin-top:2%;align-items:center; ">
         <img style="height:90%; width:auto; display:inline-block;"
@@ -31,7 +31,7 @@ module.exports = {
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">C</label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
@@ -45,9 +45,9 @@ module.exports = {
          Recibimos una solicitud para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
          El código de verificación es:<br><br>
 
-        
-          <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
-
+          <div style="margin-right: auto; margin-left: auto; width: 10%">
+            <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
+          </div>
 
          Si no solicitaste este código, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
          No reenvíes ni proporciones este código a otra persona.<br><br>
@@ -84,7 +84,7 @@ module.exports = {
         // text: `${req.body.txtNombre}, has sido registrado correctamente 🥳. \nTu código de verificación es el siguiente: \n ${code}`
         html:
           `
-            <div style="width:690px; height:550px; background-color:rgb(255, 255, 255); display:block;">
+          <div style="width:690px; height:550px; background-color:rgb(255, 255, 255); display:block; margin-left: auto; margin-right:auto;">
 
     <div style="width:100%; height:10%; margin-top:2%;align-items:center; ">
         <img style="height:90%; width:auto; display:inline-block;"
@@ -92,7 +92,7 @@ module.exports = {
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">C</label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
@@ -107,11 +107,12 @@ module.exports = {
           Puedes utilizar la siguiente contraseña temporal:<br><br>
 
         
-          <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
-
+          <div style="margin-right: auto; margin-left: auto; width: 10%">
+            <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
+          </div>
 
          Si no solicitaste esta contraseña, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
-         No reenvíes ni proporciones este código a otra persona.<br><br>
+         No reenvíes ni proporciones esta contraseña a otra persona.<br><br>
      
          Atentamente.<br><br>
 
