@@ -5,6 +5,7 @@ const db = require('../db/db')
 const registro = require('../controllers/ctrl_registro')
 const login = require('../controllers/ctrl_login')
 const email = require('../controllers/ctrl_email')
+const landing = require('../controllers/ctrl_landing')
 const verificationEmail = require('../controllers/ctrl_codes')
 
 
@@ -17,6 +18,8 @@ router.post('/rt_verification', email.rtEmail)
 
 router.post('/rt_verify', verificationEmail.verify)
 router.post('/rt_login_view', email.emailPass)
+
+router.post('/landing', landing.landing)
 
 
 module.exports = router

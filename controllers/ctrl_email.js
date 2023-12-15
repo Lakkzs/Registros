@@ -121,7 +121,7 @@ module.exports = {
             `
 
       });
-      res.render('login/login')
+      res.render('login/login', { txtCorreo: correo })
     } catch (error) {
       console.log(error)
     }

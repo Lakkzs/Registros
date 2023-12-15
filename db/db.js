@@ -29,7 +29,7 @@ const login = {
     ingresar: async (data) => {
         try {
             let resultado = await sql_conn.request()
-            .input('USUARIO_REG', sql.VarChar, data.txtUsuario)
+            .input('USUARIO_REG', sql.VarChar, data.txtCorreo)
             .input('CONTRASENA_REG', sql.VarChar, data.txtContrasena)
             .query(`EXEC EVENTO_LOGIN @USUARIO_REG, @CONTRASENA_REG`)
             return objeto_resultado(resultado)

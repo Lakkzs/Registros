@@ -17,7 +17,7 @@ function onRegistro(e){
                 correo = jsonRegistro[key]
                 validacion = 1
             }else{
-                alert('Por favor ingrese un correo valido')
+                alert('Por favor ingrese un correo válido.')
             }
         }
     }

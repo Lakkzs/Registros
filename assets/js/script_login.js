@@ -6,52 +6,47 @@ function onRegistro(e){
     var jsonLogin = {}
     var arrFaltantes = []
 
+    var correo = ""
+    var validacion = 0
     for(var key of formLogin.keys()){
-        console.log(formLogin.get(key))
         jsonLogin[key] = formLogin.get(key)
+        if((jsonLogin[key] == '' || jsonLogin[key] == null || jsonLogin[key] == undefined)){
+            arrFaltantes.push(' ' + key.replace("txt", ""))
+        }
+        if(key == 'txtCorreo'){
+            if(jsonLogin[key].includes("@")){
+                correo = jsonLogin[key]
+                validacion = 1
+            }else{
+                alert('Por favor ingrese un correo válido.')
+            }
+        }
     }
-    console.log(jsonLogin)
-    fetch('/rt_login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(jsonLogin)
-    }).then((response) => response.json())
-        .then((response) => {
-            console.log(response)
-        })
-        .catch(function (err) {
-            console.log(err)
-        })
-
-    // for(var key of formLogin.keys()){
-    //     jsonLogin[key] = formLogin.get(key)
-    //     if((jsonLogin[key] == '' || jsonLogin[key] == null || jsonLogin[key] == undefined)){
-    //         arrFaltantes.push(' ' + key.replace("txt", ""))
-    //     }
-    // }
-
-    // if(arrFaltantes.length > 0){
-    //     alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
-    // }
-    // else{
-    //     fetch('/rt_login', {
-    //         method: 'POST',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: JSON.stringify(jsonLogin)
-    //     }).then((response) => response.json())
-    //     .then((response) => {
-    //         console.log(response)
-    //         // if(response.datos[0].RESULT == 'EXISTE'){
-    //         //     alert('El correo ingresado no está disponible, intente de nuevo.')
-    //         // }else if(response.datos[0].RESULT == 'OK'){
-    //         //     alert('El registro se ha realizado correctamente.')
-    //         //     document.getElementById("formLogin").reset();
-    //         // }
-    //     })
-    //     .catch(function (err) {
-    //         console.log(err)
-    //     })
-    // }
+    if(validacion == 1){
+        if(arrFaltantes.length > 0){
+            alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
+        }
+        else{
+            fetch('/rt_login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(jsonLogin)
+            }).then((response) => response.json())
+            .then((response) => {
+                console.log(response)
+                if(response.datos[0].RESULT == 'USUARIO NO ENCONTRADO'){
+                    alert('Los datos ingresados son incorrectos, intente de nuevo.')
+                }
+                if(response.datos[0].RESULT == 'USUARIO ENCONTRADO'){
+                    alert('Sesión iniciada correctamente.')
+                    document.getElementById('formLogin').submit();
+                }
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+        }
+    }
 }
 
 
