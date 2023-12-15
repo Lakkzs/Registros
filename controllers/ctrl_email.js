@@ -30,8 +30,8 @@ module.exports = {
             src="https://cdn.domestika.org/c_fill,dpr_auto,f_auto,h_256,pg_1,t_base_params,w_256/v1505584180/avatars/000/596/250/596250-original.jpg?1505584180">
     </div>
 
-    <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">C</label>
+    <div style=" background-color:rgb(127,176,6); height:8% ;">
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
@@ -45,9 +45,9 @@ module.exports = {
          Recibimos una solicitud para acceder a tu cuenta ${correo} con tu dirección de correo electrónico.<br>
          El código de verificación es:<br><br>
 
-          <div style="margin-right: auto; margin-left: auto; width: 10%">
-            <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
-          </div>
+          <div style="margin-right: auto; margin-left: auto; width: 100%; display: flex;">
+            <label style="text-align:center; width:100%; font-size:25px;"><b>${code}</b></label>
+          </div><br><br>
 
          Si no solicitaste este código, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
          No reenvíes ni proporciones este código a otra persona.<br><br>
@@ -91,8 +91,8 @@ module.exports = {
             src="https://cdn.domestika.org/c_fill,dpr_auto,f_auto,h_256,pg_1,t_base_params,w_256/v1505584180/avatars/000/596/250/596250-original.jpg?1505584180">
     </div>
 
-    <div style=" background-color:rgb(127,176,6); height:8 ;">
-    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; ">C</label>
+    <div style=" background-color:rgb(127,176,6); height:8% ;">
+    <label style="font-size:25px; color:rgb(127,176,6); vertical-align:bottom; "></label>
     </div>
 
     <div style=" background-color:rgb(127,176,6); height:8% ;">
@@ -107,9 +107,9 @@ module.exports = {
           Puedes utilizar la siguiente contraseña temporal:<br><br>
 
         
-          <div style="margin-right: auto; margin-left: auto; width: 10%">
-            <label style="text-align:center; width:100%; font-size:25px"><b>${code}</b></label><br><br>
-          </div>
+          <div style="margin-right: auto; margin-left: auto; width: 100%; display: flex;">
+            <label style="text-align:center; width:100%; font-size:25px;"><b>${code}</b></label>
+          </div><br><br>
 
          Si no solicitaste esta contraseña, es posible que otra persona esté intentando acceder a la cuenta: ${correo} <br>
          No reenvíes ni proporciones esta contraseña a otra persona.<br><br>
