@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
 const path = require('path')
 const hbs = require('hbs')
@@ -11,6 +12,14 @@ app.use(express.static(path.join(__dirname, 'assets/')))
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, './views/partials'))
+app.use(session({
+    secret: 'some secret',
+    cookie: {maxAge: 30000},
+    saveUninitialized: false,
+    resave: true,
+}))
+
+
 
 // Rutas
 app.use(require('./routes/rt_index'))
