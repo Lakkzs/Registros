@@ -7,6 +7,7 @@ const login = require('../controllers/ctrl_login')
 const email = require('../controllers/ctrl_email')
 const landing = require('../controllers/ctrl_landing')
 const verificationEmail = require('../controllers/ctrl_codes')
+const recuperar = require('../controllers/ctrl_recuperar')
 
 
 
@@ -20,7 +21,7 @@ router.post('/rt_verify', verificationEmail.verify)
 router.post('/rt_login_view', email.emailPass)
 
 router.post('/landing', landing.landing)
-
+router.post('/recuperar', recuperar.recuperar)
 
 module.exports = router
 

@@ -6,7 +6,8 @@ const inicio = require('../controllers/ctrl_inicio')
 const productos = require('../controllers/ctrl_productos')
 const login = require('../controllers/ctrl_login')
 const landing = require('../controllers/ctrl_landing')
-const verificationEmail = require('../controllers/ctrl_verificationEmail')
+const verificationEmail = require('../controllers/ctrl_verificationemail')
+const recuperar = require('../controllers/ctrl_recuperar')
 
 // Inicio
 router.get('/', inicio.inicio)
@@ -16,7 +17,7 @@ router.get('/verificarCorreo', verificationEmail.landing)
 // Productos
 router.get('/productos', productos.productos)
 router.get('/login', login.login)
-
+router.get('/recuperar', recuperar.recuperar)
 
 
 module.exports = router
