@@ -23,7 +23,6 @@ router.post('/rt_login_view', email.emailPass)
 
 router.post('/landing', landing.landing)
 router.post('/rt_recuperar', email.emailRecup)
-router.post('/rt_recuperarReg', recuperar.recuperarContraRegreso)
 
 module.exports = router
 

@@ -1,8 +1,3 @@
-// module.exports = {
-//     recuperar: (req, res) => {
-//         res.render('recuperar/recuperar')
-//     }
-// }
 
 const db = require('../db/db')
 
