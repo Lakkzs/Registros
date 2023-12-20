@@ -4,7 +4,7 @@ module.exports = {
         if(req.session.authenticated){
             res.render('landing/landing')
         }else{
-            res.render('login/login')
+            res.send('Es necesario iniciar sesión para ingresar a este módulo. Diríjase a localhost:3000/login')
         }
     }
 }

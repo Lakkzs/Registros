@@ -17,7 +17,8 @@ module.exports = {
         try {
             console.log(1, req)
             console.log(2, code)
-            await db.codes.guardarCodigo(req, code)
+            let res = await db.codes.guardarCodigo(req, code)
+            return res
       } catch (error) {
           console.log(error)
           res.json({estatus: 'ERROR'})
