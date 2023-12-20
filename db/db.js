@@ -45,7 +45,7 @@ const codes = {
             .input('CORREO_REG', sql.VarChar, data.txtCorreo)
             .input('CODIGO_CODES', sql.VarChar, code)
             .query(`EXEC EVENTO_CODIGO @CORREO_REG, @CODIGO_CODES`)
-            return resultado
+            return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
         }
