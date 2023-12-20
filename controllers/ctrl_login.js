@@ -3,7 +3,12 @@ const db = require('../db/db')
 
 module.exports = {
     login: async (req, res) => {
-        res.render('login/login')
+        if(req.body.txtCorreo){
+            const correo = req.body.txtCorreo;
+            res.render('login/login', { txtCorreo: correo })
+        }else{
+            res.render('login/login')
+        }
     },
     rtLogin: async (req, res) => {
         try {

@@ -142,6 +142,7 @@ module.exports = {
       let resp = await db.tempPass.RecoupPass(req, code)
       const correo = req.body.txtCorreo;
       res.json({status: 'OK', resp})
+      console.log(resp)
       if (resp.datos[0].RESULT == 'ACTUALIZADO') {
         const transporter = nodemailer.createTransport(email_config);
         const mailOptions = transporter.sendMail({
@@ -169,7 +170,7 @@ module.exports = {
   
       <div style="text-align: justify;">
           <br>
-           Hola, ${req.body.txtNombre} <br><br>
+           Hola, ${resp.datos[0].txtNombre} <br><br>
   
            Recibimos una solicitud para modificar la contraseña de su cuenta: ${correo} <br>
            Su <b>nueva contraseña</b> es: 

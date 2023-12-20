@@ -11,7 +11,8 @@ module.exports = {
     recuperar: async (req, res) => {
         res.render('recuperar/recuperar')
     },
-    recuperarContra: async(req, res) => {
-        
+    recuperarContraRegreso: async(req, res) => {
+        const correo = req.body.txtCorreo;
+        res.render('login/login', { txtCorreo: correo })
     }
 }

@@ -14,6 +14,7 @@ const recuperar = require('../controllers/ctrl_recuperar')
 router.post('/rt_registro', registro.rtRegistro)
 
 router.post('/rt_login', login.rtLogin)
+router.post('/login', login.login)
 
 router.post('/rt_verification', email.rtEmail)
 
@@ -22,7 +23,7 @@ router.post('/rt_login_view', email.emailPass)
 
 router.post('/landing', landing.landing)
 router.post('/rt_recuperar', email.emailRecup)
-// router.post('/rt_recuperar', recuperar.recuperarContra)
+router.post('/rt_recuperarReg', recuperar.recuperarContraRegreso)
 
 module.exports = router
 
