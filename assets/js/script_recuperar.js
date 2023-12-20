@@ -2,19 +2,19 @@
 function onRegistro(e){
     e.preventDefault()
 
-    var formRegistro = new FormData(document.getElementById('formRecuperar'))
-    var jsonRegistro = {}
+    var formRecuperar = new FormData(document.getElementById('formRecuperar'))
+    var jsonRecuperar = {}
     var arrFaltantes = []
     var correo = ""
     var validacion = 0
-    for(var key of formRegistro.keys()){
-        jsonRegistro[key] = formRegistro.get(key)
-        if((jsonRegistro[key] == '' || jsonRegistro[key] == null || jsonRegistro[key] == undefined)){
+    for(var key of formRecuperar.keys()){
+        jsonRecuperar[key] = formRecuperar.get(key)
+        if((jsonRecuperar[key] == '' || jsonRecuperar[key] == null || jsonRecuperar[key] == undefined)){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
         if(key == 'txtCorreo'){
-            if(jsonRegistro[key].includes("@")){
-                correo = jsonRegistro[key]
+            if(jsonRecuperar[key].includes("@")){
+                correo = jsonRecuperar[key]
                 validacion = 1
             }else{
                 alert('Por favor ingrese un correo válido.')
@@ -26,18 +26,19 @@ function onRegistro(e){
             alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
         }
         else{
-            fetch('/recuperar', {
+            fetch('/rt_recuperar', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(jsonRegistro)
+                body: JSON.stringify(jsonRecuperar)
             }).then((response) => response.json())
             .then((response) => {
-                if(response.datos[0].RESULT == 'EXISTE'){
+                console.log(response)
+                if(response.resp.datos[0].RESULT == 'INCORRECTO'){
                     alert('El correo ingresado no está registrado, intente de nuevo.')
                 }
-                if(response.datos[0].RESULT == 'OK'){
-                    alert('La recuperación se ha realizado correctamente, se le ha enviado un correo.')
-                    document.getElementById('formRegistro').submit();
+                if(response.resp.datos[0].RESULT == 'ACTUALIZADO'){
+                    alert('La recuperación se ha realizado correctamente, se le ha enviado un correo con su nueva contraseña.')
+                    document.getElementById('formRecuperar').submit();
                 }
             })
             .catch(function (err) {
@@ -51,3 +52,4 @@ function onRegistro(e){
         }
     }
 }
+

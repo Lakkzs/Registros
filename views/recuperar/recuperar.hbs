@@ -16,7 +16,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
     <br><br>
-    <form class="mt-5" id="formRecuperar" method="post" action="/recuperar">
+    <form class="mt-5" id="formRecuperar" method="get" action="/login">
         <div class="titulo">
             <label class="tit"> Recuperar Contraseña </label><br>
         </div>
@@ -25,6 +25,7 @@
             <div class="ins">
                 <label class="form-label"> Correo Electrónico: </label>
                 <input type="input" class="form-control" placeholder="hector@prointernet.mx" name="txtCorreo" value="{{txtCorreo}}"> 
+                {{!-- <input type="input" class="form-control" placeholder="hector@prointernet.mx" name="txtContrasena" value="{{txtContrasena}}" hidden>  --}}
                 
             </div>
         </div><br>

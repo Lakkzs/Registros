@@ -80,6 +80,7 @@ const changeStatusCode = {
 const tempPass = {
     InsertTemporalPass: async(data, pass) => {
         try{
+
             let resultado = await sql_conn.request()
             .input('CORREO_REG', sql.VarChar, data.body.txtCorreo)
             .input('CONTRASENA', sql.VarChar, pass)
@@ -88,7 +89,19 @@ const tempPass = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    RecoupPass: async(data, pass) => {
+        try{
+
+            let resultado = await sql_conn.request()
+            .input('CORREO_REG', sql.VarChar, data.body.txtCorreo)
+            .input('CONTRASENA', sql.VarChar, pass)
+            .query(`EXEC EVENTO_RECUPERAR_CONTRASENA @CORREO_REG, @CONTRASENA`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
 
 module.exports = {
