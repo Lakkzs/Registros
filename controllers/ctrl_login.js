@@ -16,6 +16,7 @@ module.exports = {
             let body = req.body
             const {email, password} = req.body
             let datos = (await db.login.ingresar(body)).datos
+            const user = datos[0].USUARIO
             if(body.txtCorreo && body.txtContrasena){
                 if(req.session.authenticated){
                     res.json(req.session)
@@ -23,7 +24,7 @@ module.exports = {
                     if(datos[0].RESULT == "USUARIO ENCONTRADO"){
                         req.session.authenticated = true;
                         req.session.user = {
-                            email, password
+                            email, password, user
                         }
                         res.json({status: 'OK', datos})
                     }else{
