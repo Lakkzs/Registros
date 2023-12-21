@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.pantalla{
+    width: 100%;
+    display: flex;
+}
+.nav{
+    width: 15%;
+    float: left;
+}
+.contenedor{
+    width: 80%;
+    height: auto;
+    float: right;
+    margin-left: 5%;
+}
+.parametros{
+    display: flex;
+    margin-top: 4%;
+    gap: 1%;
+    width: 93%;
+}
+.buscador{
+    width: 50%;
+    gap: 5%;
+    text-align: center;
+}
+.filtros{
+    width: 50%;
+    display: flex;
+    gap: 2%;
+    height: 44px;
+}
+select{
+    width: 50%;
+    border-radius: 5px;
+}
+.tabla{
+    width: 93%;
+    text-align: center;
+    border-width: 1px;
+}
+table{
+    width: 100%;
+    border: 1px solid black;
+    border-width: 1px;
+}
+thead, td, tr, th, tbody{
+    border: 1px solid black;
+}
+.parametros2{
+    display: flex;
+    margin-top: 4%;
+    gap: 1%;
+    width: 93%;
+    margin-left: 53.5%;
+}
+.cantidad{
+    width: 7%;
+}
+#cantidadMostrar{
+    width: 100%;
+    height: 44px;
+}
+.paginador{
+    width: 85%;
+}
+.paginas{
+    display: flex;
+}
+.pagina{
+    width: 5%;
+    height: 44px;
+    background-color: white;
+    margin-left: 1px;
+    border: 1px solid black;
+}
+.pagina:hover{
+    background-color: rgb(235, 235, 235);
+}
