@@ -8,7 +8,6 @@ window.onload = function(){
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
     let params = new URLSearchParams(window.location.search);
-    params.set('p', 0)
     params.set('c', c)
     window.location.search = params;
     
@@ -29,7 +28,7 @@ function changeURLNumber(number) {
     // url.searchParams.set('p', number)
     // console.log(url.href)
     
-    let params = new URLSearchParams(window.location.search);
+    let params = new URLSearchParams(window.location.search);   
     params.set('p', number);
     params.set('c', c)
     window.location.search = params;
