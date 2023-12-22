@@ -106,9 +106,35 @@ const tempPass = {
 const loadTable = {
     loadTableData: async (req, res) => {
         try {
-            let resultado = await sql_conn.request()
-            .query('EXEC EVENTO_PAGINACION 1, 100')
-            return objeto_resultado(resultado)
+            console.log(555555555, req)
+            let p = parseInt(req.p) + 1
+            let c = parseInt(req.c)
+            console.log(p, c)
+            if(p != NaN && c == NaN){
+                console.log(1)
+                let resultado = await sql_conn.request()
+                .input('PageNumber', sql.Int, p)
+                .query('EXEC EVENTO_PAGINACION @PageNumber, 20')
+                return objeto_resultado(resultado)
+            }else if(p == NaN && c != NaN){
+                console.log(2)
+                let resultado = await sql_conn.request()
+                .input('RowsOfPage', sql.Int, c)
+                .query('EXEC EVENTO_PAGINACION 1, @RowsOfPage')
+                return objeto_resultado(resultado)
+            }else if(p != NaN && c != NaN){
+                console.log(3)
+                let resultado = await sql_conn.request()
+                .input('PageNumber', sql.Int, p)
+                .input('RowsOfPage', sql.Int, c)
+                .query('EXEC EVENTO_PAGINACION @PageNumber, @RowsOfPage')
+                return objeto_resultado(resultado)
+            }else if(p == NaN && c == NaN){
+                console.log(4)
+                let resultado = await sql_conn.request()
+                .query('EXEC EVENTO_PAGINACION 1, 20')
+                return objeto_resultado(resultado)
+            }
         } catch (error) {
             
         }

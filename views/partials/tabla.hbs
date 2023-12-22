@@ -68,8 +68,7 @@
         </div>
         <div class="parametros2">
             <div class="cantidad">
-                <select name="Cantidad de datos" id="cantidadMostrar" name="cantidad">
-                    <option value="Cantidad" selected disabled hidden> Cantidad </option>
+                <select name="Cantidad de datos" id="cantidadMostrar" name="cantidad" onchange="changeCantidad(value)">
                     <option value="20"> 20 </option>
                     <option value="40"> 40 </option>
                     <option value="60"> 60 </option>
@@ -79,14 +78,14 @@
             </div>
             <div class="paginador">
                 <div class="paginas">
-                    <button class="pagina" name="1" title="Primer página"> < </button>
+                    <button class="pagina" name="1" onclick="changeURLNumber(0)" title="Primer página"> < </button>
                     <button class="pagina" name="2" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
                     <button class="pagina" name="3" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
                     <button class="pagina" name="4" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
                     <button class="pagina" name="5" onclick="changeURLNumber(3)" title="Página 4"> 4 </button>
                     <button class="pagina" name="6" onclick="changeURLNumber(4)" title="Página 5"> 5 </button>
                     <button class="pagina" name="7" onclick="changeURLNumber(5)" title="Página 6"> 6 </button>
-                    <button class="pagina" name="8" title="Última página"> > </button>
+                    <button class="pagina" name="8" onclick="changeURLNumber(5)" title="Última página"> > </button>
                 </div>
             </div>
         </div>
