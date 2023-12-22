@@ -3,133 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Tabla</title>
     <link rel="stylesheet" href="/css/styleTabla.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
 </head>
 </html>
 <div class="pantalla">
-    <div class="nav">
+    {{!-- <div class="nav">
         {{> navbar}}
-    </div>
+    </div> --}}
     <div class="contenedor">
-        <div class="parametros">
-            <div class="buscador">
-                <div class="input-group mb-1">
-                    <input type="text" id="busqueda" class="form-control" placeholder="Héctor Leonel" name="txtBusqueda">
-                    <span class="input-group-text" style="cursor: pointer">
-                        <button class="bi bi-search" title="Buscar"></button>
-                    </span>
-                </div>
-            </div><br>
-            <div class="filtros">
-                <select name="Filtro 1" id="">
-                    <option value="Órden" selected disabled hidden> Órden </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-                <select name="Filtro 2" id="">
-                    <option value="Departamento" selected disabled hidden> Departamento </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-                <select name="Filtro 3" id="">
-                    <option value="Puesto" selected disabled hidden> Puesto </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-            </div>
-        </div><br><br>
-        <div class="tabla">
-            <table>
-                <thead>
-                    <th>Columna 1</th>
-                    <th>Columna 2</th>
-                    <th>Columna 3</th>
-                    <th>Columna 4</th>
-                    <th>Columna 5</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Hola1</td>
-                        <td>Hola1</td>
-                        <td>Hola1</td>
-                        <td>Hola1</td>
-                        <td>Hola1</td>
-                    </tr>
-                    <tr>
-                        <td>Hola2</td>
-                        <td>Hola2</td>
-                        <td>Hola2</td>
-                        <td>Hola2</td>
-                        <td>Hola2</td>
-                    </tr>
-                    <tr>
-                        <td>Hola3</td>
-                        <td>Hola3</td>
-                        <td>Hola3</td>
-                        <td>Hola3</td>
-                        <td>Hola3</td>
-                    </tr>
-                    <tr>
-                        <td>Hola4</td>
-                        <td>Hola4</td>
-                        <td>Hola4</td>
-                        <td>Hola4</td>
-                        <td>Hola4</td>
-                    </tr>
-                    <tr>
-                        <td>Hola5</td>
-                        <td>Hola5</td>
-                        <td>Hola5</td>
-                        <td>Hola5</td>
-                        <td>Hola5</td>
-                    </tr>
-                    <tr>
-                        <td>Hola6</td>
-                        <td>Hola6</td>
-                        <td>Hola6</td>
-                        <td>Hola6</td>
-                        <td>Hola6</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="parametros2">
-            <div class="cantidad">
-                <select name="Cantidad de datos" id="cantidadMostrar">
-                    <option value="Cantidad" selected disabled hidden> Cantidad </option>
-                    <option value="20"> 20 </option>
-                    <option value="40"> 40 </option>
-                    <option value="60"> 60 </option>
-                    <option value="80"> 80 </option>
-                    <option value="100"> 100 </option>
-                </select>
-            </div>
-            <div class="paginador">
-                <div class="paginas">
-                    <button class="pagina" title="Primer página"> < </button>
-                    <button class="pagina" title="Página 1"> 1 </button>
-                    <button class="pagina" title="Página 2"> 2 </button>
-                    <button class="pagina" title="Página 3"> 3 </button>
-                    <button class="pagina" title="Página 4"> 4 </button>
-                    <button class="pagina" title="Página 5"> 5 </button>
-                    <button class="pagina" title="Página 6"> 6 </button>
-                    <button class="pagina" title="Última página"> > </button>
-                </div>
-            </div>
-        </div>
+        {{> tabla}}
+        
     </div>
 </div>
 
-<script>
-    
-</script>

@@ -103,7 +103,18 @@ const tempPass = {
         }
     },
 }
+const loadTable = {
+    loadTableData: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .query('EXEC EVENTO_PAGINACION 1, 100')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            
+        }
+    }
+}
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, 
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable,
 }
