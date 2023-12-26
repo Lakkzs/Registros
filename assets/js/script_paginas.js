@@ -1,15 +1,11 @@
 let c = 20
 
-
-window.onload = function(){
-
-}
-
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
     let params = new URLSearchParams(window.location.search);
     params.set('c', c)
-    window.location.search = params;
+    //window.location.search = params;
+    window.history.replaceState({}, "", "tabla?"+params);
     
 
     fetch('/tabla?' + params, {
@@ -25,13 +21,12 @@ function changeCantidad(cantidad){
 }
 
 function changeURLNumber(number) {
-    // url.searchParams.set('p', number)
-    // console.log(url.href)
-    
+
     let params = new URLSearchParams(window.location.search);   
     params.set('p', number);
     params.set('c', c)
-    window.location.search = params;
+    //window.location.search = params;
+    window.history.replaceState({}, "", "tabla?"+params);
     
 
     fetch('/tabla?' + params, {
@@ -44,6 +39,8 @@ function changeURLNumber(number) {
     .catch(function (err) {
         console.log(err)
     })
+
+
 
     // fetch(url.href, {
     //     method: 'GET',
