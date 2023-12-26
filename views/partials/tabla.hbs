@@ -14,36 +14,6 @@
 </head>
 </html>
     <div class="contenedor">
-        <div class="parametros">
-            <div class="buscador">
-                <div class="input-group mb-1">
-                    <input type="text" id="busqueda" class="form-control" placeholder="Héctor Leonel" name="txtBusqueda">
-                    <span class="input-group-text" style="cursor: pointer">
-                        <button class="bi bi-search" title="Buscar"></button>
-                    </span>
-                </div>
-            </div><br>
-            <div class="filtros">
-                <select name="Filtro 1" id="">
-                    <option value="Órden" selected disabled hidden> Órden </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-                <select name="Filtro 2" id="">
-                    <option value="Departamento" selected disabled hidden> Departamento </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-                <select name="Filtro 3" id="">
-                    <option value="Puesto" selected disabled hidden> Puesto </option>
-                    <option value="Filtro 1"> Filtro 1 </option>
-                    <option value="Filtro 2"> Filtro 2 </option>
-                    <option value="Filtro 3"> Filtro 3 </option>
-                </select>
-            </div>
-        </div><br><br>
         <div class="tabla">
             <table>
                 <thead>
@@ -65,30 +35,6 @@
                     {{/each}}
                 </tbody>
             </table>
-        </div>
-        <div class="parametros2">
-            <div class="cantidad">
-                <select name="Cantidad de datos" id="cantidadMostrar" name="cantidad" onchange="changeCantidad(value)">
-                    <option value="{{c}}" selected hidden disabled> Cantidad </option>
-                    <option value="20"> 20 </option>
-                    <option value="40"> 40 </option>
-                    <option value="60"> 60 </option>
-                    <option value="80"> 80 </option>
-                    <option value="100"> 100 </option>
-                </select>
-            </div>
-            <div class="paginador">
-                <div class="paginas">
-                    <button class="pagina" name="1" onclick="changeURLNumber(0)" title="Primer página"> < </button>
-                    <button class="pagina" name="2" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
-                    <button class="pagina" name="3" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
-                    <button class="pagina" name="4" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
-                    <button class="pagina" name="5" onclick="changeURLNumber(3)" title="Página 4"> 4 </button>
-                    <button class="pagina" name="6" onclick="changeURLNumber(4)" title="Página 5"> 5 </button>
-                    <button class="pagina" name="7" onclick="changeURLNumber(5)" title="Página 6"> 6 </button>
-                    <button class="pagina" name="8" onclick="changeURLNumber(5)" title="Última página"> > </button>
-                </div>
-            </div>
         </div>
     </div>
 
