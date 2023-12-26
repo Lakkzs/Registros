@@ -1,16 +1,11 @@
 let c = 20
 
-
-window.onload = function(){
-
-}
-
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
     let params = new URLSearchParams(window.location.search);
     params.set('c', c)
     window.location.search = params;
-    
+    localStorage.setItem('cantidad', cantidad)
 
     fetch('/tabla?' + params, {
         method: 'GET',
@@ -30,7 +25,7 @@ function changeURLNumber(number) {
     
     let params = new URLSearchParams(window.location.search);   
     params.set('p', number);
-    params.set('c', c)
+    params.set('c', localStorage.cantidad)
     window.location.search = params;
     
 
