@@ -28,7 +28,11 @@ function changeURLNumber(number) {
 
     let params = new URLSearchParams(window.location.search);   
     params.set('p', number);
-    params.set('c', localStorage.cantidad)
+    if(localStorage.cantidad == undefined){
+        params.set('c', 20)
+    }else{
+        params.set('c', localStorage.cantidad)
+    }
     //window.location.search = params;
     window.history.replaceState({}, "", "tabla?"+params);
     
@@ -46,16 +50,4 @@ function changeURLNumber(number) {
         console.log(err)
     })
 
-
-
-    // fetch(url.href, {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json' },
-    // }).then((response) => response.json())
-    // .then((response) => {
-    //     console.log(response)
-    // })
-    // .catch(function (err) {
-    //     console.log(err)
-    // })
 }
