@@ -1,8 +1,6 @@
 {{> headPlantilla}}
 <div class="pantalla" id="todo">
-        <div class="nav">
-            {{> navbar}}
-        </div>
+    {{> navbar}}
     <div id="container">
         <div class="contenedor">
             {{> tablaFinal}}
@@ -10,3 +8,13 @@
     </div>
 </div>
 
+<style>
+    .pantalla{
+        width: 100vw;
+        display: flex;
+    }
+    .container, .contenedor{
+        width: 100%;
+        padding-left: 5%;
+    }
+</style>

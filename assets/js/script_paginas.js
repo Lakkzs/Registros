@@ -3,6 +3,7 @@ let c = 20
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
     let params = new URLSearchParams(window.location.search);
+    params.set('p', 0)
     params.set('c', c)
     localStorage.setItem('cantidad', cantidad)
     //window.location.search = params;
@@ -15,6 +16,8 @@ function changeCantidad(cantidad){
     }).then((response) => response.text())
     .then((response) => {
         console.log(13, response)
+        document.getElementById("container").remove()
+        document.getElementById("todo").innerHTML = response;
     })
     .catch(function (err) {
         console.log(err)
