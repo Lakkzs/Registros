@@ -23,6 +23,7 @@ router.get('/productos', productos.productos)
 router.get('/login', login.login)
 router.get('/recuperar', recuperar.recuperar)
 router.get('/tabla', tabla.tabla)
+router.get('/seccion', tabla.seccion)
 
 router.get('/table_data', table.data)
 

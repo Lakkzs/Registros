@@ -14,5 +14,8 @@ module.exports = {
             console.log(150, resultado)
             res.render('tabla/tabla', {data: resultado.datos})
         }
+    },
+    seccion: async(req,res) => {
+        res.render('seccion/seccion')
     }
 }

@@ -12,7 +12,7 @@ function changeCantidad(cantidad){
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
-    }).then((response) => response.json())
+    }).then((response) => response.text())
     .then((response) => {
         console.log(13, response)
     })
@@ -33,9 +33,11 @@ function changeURLNumber(number) {
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
-    }).then((response) => response.json())
+    }).then((response) => response.text())
     .then((response) => {
         console.log(13, response)
+        document.getElementById("container").remove()
+        document.getElementById("todo").innerHTML = response;
     })
     .catch(function (err) {
         console.log(err)
