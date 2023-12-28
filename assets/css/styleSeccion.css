@@ -22,6 +22,11 @@
     background-color: rgb(225, 231, 231);
     height: 100%;
     border: 5px solid rgb(255, 255, 255);
+    place-items: center;
+    display: grid;
+    font-size: 25px;
+    color: rgb(3, 3, 37);
+    font-weight: bold;
 }
 
 .linea2{
