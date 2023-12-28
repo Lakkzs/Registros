@@ -161,7 +161,7 @@ const loadInfo = {
         try{
             let resultado = await sql_conn.request()
             .query('EXEC NUMERO_TOTAL')
-            return objeto_resultado(resultado)
+            return objeto_resultado2(resultado)
         }
         catch (error){
             console.log(error)
