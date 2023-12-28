@@ -1,5 +1,7 @@
 let c = 20
-let pags = Paginas
+let quinto = 5
+let variable
+
 
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
@@ -8,6 +10,7 @@ function changeCantidad(cantidad){
     params.set('c', c)
     localStorage.setItem('cantidad', cantidad)
     window.history.replaceState({}, "", "tabla?"+params);
+
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -30,12 +33,8 @@ function changeURLNumber(number) {
     }else{
         params.set('c', localStorage.cantidad)
     }
-    if(number == 5){
-        let element1 = document.getElementById('Cuarto')
-        let element2 = document.getElementById('Quinto')
-        let element3 = document.getElementById('Sexto')
-    }
     window.history.replaceState({}, "", "tabla?"+params);
+    variable = number
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -48,9 +47,5 @@ function changeURLNumber(number) {
     .catch(function (err) {
         console.log(err)
     })
-
-}
-
-function numerosPaginacion(){
 
 }

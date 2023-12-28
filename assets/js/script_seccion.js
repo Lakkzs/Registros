@@ -1,4 +1,16 @@
 const tablaAltas = document.getElementById('altas');
+let enero = document.getElementById('enero').value;
+let febrero = document.getElementById('febrero').value;
+let marzo = document.getElementById('marzo').value;
+let abril = document.getElementById('abril').value;
+let mayo = document.getElementById('mayo').value;
+let junio = document.getElementById('junio').value;
+let julio = document.getElementById('julio').value;
+let agosto = document.getElementById('agosto').value;
+let septiembre = document.getElementById('septiembre').value;
+let octubre = document.getElementById('octubre').value;
+let noviembre = document.getElementById('noviembre').value;
+let diciembre = document.getElementById('diciembre').value;
 
   new Chart(tablaAltas, {
     type: 'line',
@@ -6,8 +18,8 @@ const tablaAltas = document.getElementById('altas');
       labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       datasets: [{
         label: 'ALTAS EN EL AÑO',
-        data: [12, 50, 3, 5, 2, 3, 20,45,26,47,51,1],
-        borderWidth: 1
+        data: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre],
+        borderWidth: 3
       }]
     },
     options: {
