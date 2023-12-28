@@ -37,6 +37,10 @@ const objeto_resultado = (resultado) => {
     return {estatus: 'OK', datos: resultado.recordset}
 }
 
+const objeto_resultado2 = (resultado) => {
+    return {estatus: 'OK', datos: resultado.recordsets}
+}
+
 module.exports = {
-    sql_conn, sql, objeto_resultado
+    sql_conn, sql, objeto_resultado, objeto_resultado2
 } 

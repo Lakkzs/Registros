@@ -11,14 +11,16 @@
     </div>
     <div class="paginador">
         <div class="paginas">
-            <button class="pagina" name="1" onclick="changeURLNumber(0)" title="Primer página"> < </button>
-            <button class="pagina" name="2" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
-            <button class="pagina" name="3" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
-            <button class="pagina" name="4" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
-            <button class="pagina" name="5" onclick="changeURLNumber(3)" title="Página 4"> 4 </button>
-            <button class="pagina" name="6" onclick="changeURLNumber(4)" title="Página 5"> 5 </button>
-            <button class="pagina" name="7" onclick="changeURLNumber(5)" title="Página 6"> 6 </button>
-            <button class="pagina" name="8" onclick="changeURLNumber(5)" title="Última página"> > </button>
+            {{#each paginas}}
+                <button class="pagina" id="Inicio" onclick="changeURLNumber(0)" title="Primer página"> < </button>
+                <button class="pagina" id="Primero" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
+                <button class="pagina" id="Segundo" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
+                <button class="pagina" id="Tercero" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
+                <button class="pagina" id="Cuarto" onclick="changeURLNumber(3)" title="Página 4"> 4 </button>
+                <button class="pagina" id="Quinto" onclick="changeURLNumber(4)" title="Página 5"> 5 </button>
+                <button class="pagina" id="Sexto" onclick="changeURLNumber(5)" title="Página 6"> 6 </button>
+            <button class="pagina" id="Ultimo" onclick="changeURLNumber({{Paginas}}-1)" title="Última página"> > </button>
+            {{/each}}
         </div>
     </div>
 </div>

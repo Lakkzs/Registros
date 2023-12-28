@@ -1,4 +1,4 @@
-const  { sql, sql_conn, objeto_resultado } = require('../config/conexion')
+const  { sql, sql_conn, objeto_resultado, objeto_resultado2 } = require('../config/conexion')
 
 const registro = {
     registrar: async (data) => {
@@ -122,7 +122,8 @@ const loadTable = {
             .input('PageNumber', sql.Int, p)
             .input('RowsOfPage', sql.Int, c)
             .query('EXEC EVENTO_PAGINACION @PageNumber, @RowsOfPage')
-            return objeto_resultado(resultado)
+            console.log(999, resultado.recordsets)
+            return objeto_resultado2(resultado)
             
             // if(p != NaN && c == NaN){
             //     console.log(1)

@@ -7,12 +7,12 @@ module.exports = {
             console.log(1, 'asd')
             let resultado = await db.loadTable.loadTableData(req.query)
             console.log(150, resultado)
-            res.render('tabla/tabla', {data: resultado.datos})
+            res.render('tabla/tabla', {tabla: resultado.datos[0], paginas: resultado.datos[1]})
         }else{
             console.log(0, 'dsa')
             let resultado = await db.loadTable.loadTableData({p: 0, c: 20})
             console.log(150, resultado)
-            res.render('tabla/tabla', {data: resultado.datos})
+            res.render('tabla/tabla', {tabla: resultado.datos[0], paginas: resultado.datos[1]})
         }
     },
     seccion: async(req,res) => {

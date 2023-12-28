@@ -1,4 +1,5 @@
 let c = 20
+let pags = Paginas
 
 function changeCantidad(cantidad){
     c = parseInt(cantidad)
@@ -6,10 +7,7 @@ function changeCantidad(cantidad){
     params.set('p', 0)
     params.set('c', c)
     localStorage.setItem('cantidad', cantidad)
-    //window.location.search = params;
     window.history.replaceState({}, "", "tabla?"+params);
-    
-
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -25,7 +23,6 @@ function changeCantidad(cantidad){
 }
 
 function changeURLNumber(number) {
-
     let params = new URLSearchParams(window.location.search);   
     params.set('p', number);
     if(localStorage.cantidad == undefined){
@@ -33,10 +30,12 @@ function changeURLNumber(number) {
     }else{
         params.set('c', localStorage.cantidad)
     }
-    //window.location.search = params;
+    if(number == 5){
+        let element1 = document.getElementById('Cuarto')
+        let element2 = document.getElementById('Quinto')
+        let element3 = document.getElementById('Sexto')
+    }
     window.history.replaceState({}, "", "tabla?"+params);
-    
-
     fetch('/tabla?' + params, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -49,5 +48,9 @@ function changeURLNumber(number) {
     .catch(function (err) {
         console.log(err)
     })
+
+}
+
+function numerosPaginacion(){
 
 }
