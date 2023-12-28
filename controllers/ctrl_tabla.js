@@ -15,7 +15,5 @@ module.exports = {
             res.render('tabla/tabla', {data: resultado.datos})
         }
     },
-    seccion: async(req,res) => {
-        res.render('seccion/seccion')
-    }
+
 }

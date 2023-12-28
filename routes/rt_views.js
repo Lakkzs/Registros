@@ -11,6 +11,7 @@ const recuperar = require('../controllers/ctrl_recuperar')
 const cms = require('../controllers/ctrl_cms')
 const tabla = require('../controllers/ctrl_tabla')
 const table = require('../controllers/ctrl_table.js')
+const seccion = require('../controllers/ctrl_seccion.js')
 
 // Inicio
 router.get('/', inicio.inicio)
@@ -23,7 +24,7 @@ router.get('/productos', productos.productos)
 router.get('/login', login.login)
 router.get('/recuperar', recuperar.recuperar)
 router.get('/tabla', tabla.tabla)
-router.get('/seccion', tabla.seccion)
+router.get('/seccion', seccion.seccion)
 
 router.get('/table_data', table.data)
 
