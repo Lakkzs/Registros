@@ -155,7 +155,6 @@ const loadTable = {
         }
     }
 }
-
 const loadInfo = {
     loadInfoData: async (req, res) => {
         try{
@@ -164,6 +163,15 @@ const loadInfo = {
             return objeto_resultado2(resultado)
         }
         catch (error){
+            console.log(error)
+        }
+    },
+    loadInfoMonths: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .query('EXEC ALTAS_AÑO')
+            return objeto_resultado2(resultado)
+        } catch (error) {
             console.log(error)
         }
     }
