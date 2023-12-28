@@ -172,3 +172,6 @@ const loadInfo = {
 module.exports = {
     registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo
 }
+
+
+
