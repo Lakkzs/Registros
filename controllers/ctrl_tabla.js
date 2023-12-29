@@ -25,7 +25,7 @@ module.exports = {
                 res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Cuarto: 4, Quinto: 5})
             }if(Max == 6){
                 console.log('seisssssss')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
             }
             else{
                 if(parseInt(req.query.p) >= 5){
