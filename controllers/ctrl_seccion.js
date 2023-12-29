@@ -20,8 +20,21 @@ module.exports = {
         let octubre = resultado2.datos[9][0].ALTA_OCTUBRE
         let noviembre = resultado2.datos[10][0].ALTA_NOVIMEBRE
         let diciembre = resultado2.datos[11][0].ALTA_DICIEMBRE
+
+        let resultado3 = await db.loadInfo.loadInfoYears()
+        let actual = resultado3.datos[0][0].ALTA_AÑO_ACTUAL
+        let pasado = resultado3.datos[1][0].ALTA_AÑO_PASADO
+        let antepasado = resultado3.datos[2][0].ALTA_AÑO_ANTEPASADO
+        let pasadoAntepasado = resultado3.datos[3][0].ALTA_AÑO_PASADO_ANTEPASADO
+        let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
+
+        let resultado4 = await db.loadInfo.loadInfoBirthday()
+        let nombre = resultado4.datos[0].NOMBRE
+        let dia = resultado4.datos[1].DIA
+        console.log(resultado4.datos)
         
         res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
-            MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre})
+            MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
+            ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos})
     }
 }

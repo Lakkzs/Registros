@@ -32,14 +32,23 @@ let diciembre = document.getElementById('diciembre').value;
   });
 
   const tablaAños = document.getElementById('altasAños');
+  let actual = document.getElementById('actual').value;
+  let pasado = document.getElementById('pasado').value;
+  let antepasado = document.getElementById('antepasado').value;
+  let pasadoAntepasado = document.getElementById('pasadoAntepasado').value;
+  let añoactual = new Date().getFullYear();
+  let añoPasado = new Date().getFullYear()-1;
+  let añoAntepasado = new Date().getFullYear()-2;
+  let añoPasadoAntepasado = new Date().getFullYear()-3;
+
 
   new Chart(tablaAños, {
     type: 'bar',
     data: {
-      labels: ['2020','2021','2022','2023'],
+      labels: [añoPasadoAntepasado,añoAntepasado ,añoPasado ,añoactual],
       datasets: [{
-        label: 'ALTAS EN EL AÑO',
-        data: [20,52,65,70],
+        label: 'ALTAS EN LOS ULTIMOS AÑOS',
+        data: [pasadoAntepasado,antepasado,pasado,actual],
         borderWidth: 1
       }]
     },

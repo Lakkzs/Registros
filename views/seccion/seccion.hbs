@@ -29,11 +29,11 @@
                     {{NUMERO_MUJER}} MUJERES
                 </div>
                 <div class="col-sm-4 cuadro">
-                    {{NUMERO_HOMBRE}} HOMBRES 
+                    {{NUMERO_HOMBRE}} HOMBRES
                 </div>
                 <div class="col-sm-4 cuadro">
                     {{NUMERO_TOTAL}} COLABORADORES
-                </div>         
+                </div>
             </div>
 
             <div class="linea2">
@@ -52,26 +52,32 @@
                     <input type="text" id="noviembre" value="{{NOVIEMBRE}}" hidden>
                     <input type="text" id="diciembre" value="{{DICIEMBRE}}" hidden>
                 </div>
-                 <div class="col-sm-5 cuadro">
-                  <canvas id="altasAños"></canvas>
+                <div class="col-sm-5 cuadro">
+                    <canvas id="altasAños"></canvas>
+                    <input type="text" id="actual" value="{{ACTUAL}}" hidden>
+                    <input type="text" id="pasado" value="{{PASADO}}" hidden>
+                    <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
+                    <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
                 </div>
 
             </div>
 
             <div class="linea3">
                 <div class="col-sm-3 cuadro">
-                    CUMPLEAÑOS<br>
-                    -Camila <br>
-                    -Hector
+                    CUMPLEAÑOS DEL MES<br>
+                    {{#each cumpleanos}}
+                    -{{NOMBRE}}: {{MES}} {{DIA}}<br>
+                    {{/each}}
+                    
                 </div>
                 <div class="col-sm-3 cuadro">
                     # PROYECTOS ACTIVOS
                 </div>
                 <div class="col-sm-3 cuadro">
-                    
+
                 </div>
                 <div class="col-sm-3 cuadro">
-                   
+
                 </div>
             </div>
         </div>

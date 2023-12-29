@@ -174,6 +174,24 @@ const loadInfo = {
         } catch (error) {
             console.log(error)
         }
+    },
+    loadInfoYears: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC ALTAS_AÑOS_ANTERIORES')
+            return objeto_resultado2(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
+    loadInfoBirthday: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC FECHA_CUMPLEANOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
