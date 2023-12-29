@@ -10,19 +10,19 @@ module.exports = {
             console.log('Max', Max)
             if(Max == 1){
                 console.log('unoooooooo')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: false, Terc: false, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
             }if(Max == 2){
                 console.log('dossssssss')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: false, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
             }if(Max == 3){
                 console.log('tresssssss')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
             }if(Max == 4){
                 console.log('cuatrooooo')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cuarto: 4,})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
             }if(Max == 5){
                 console.log('cincoooooo')
-                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Cuarto: 4, Quinto: 5})
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
             }if(Max == 6){
                 console.log('seisssssss')
                 res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
@@ -42,9 +42,6 @@ module.exports = {
                     }else{
                         res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: cuarto, Quinto: quinto, Sexto: sexto})
                     }
-                }else{
-                    console.log(888)
-                    res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
                 }
             }
         }else{
@@ -52,7 +49,25 @@ module.exports = {
             let resultado = await db.loadTable.loadTableData({p: 0, c: 20})
             let Max = resultado.datos[1][0].Paginas
             console.log(150, resultado.datos[1][0].Paginas)
-            res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
+            if(Max == 1){
+                console.log('unoooooooo')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: false, Terc: false, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }if(Max == 2){
+                console.log('dossssssss')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: false, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }if(Max == 3){
+                console.log('tresssssss')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: false, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }if(Max == 4){
+                console.log('cuatrooooo')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: false, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }if(Max == 5){
+                console.log('cincoooooo')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: false, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }else{
+                console.log('seisssssss')
+                res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
+            }
         }
     },
 
