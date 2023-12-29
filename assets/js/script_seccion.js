@@ -25,7 +25,11 @@ let diciembre = document.getElementById('diciembre').value;
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: 
+          {
+            stepSize:1
+          }
         }
       }
     }
@@ -55,9 +59,31 @@ let diciembre = document.getElementById('diciembre').value;
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: 
+          {
+            stepSize:1
+          }
         }
       }
+    }
+  });
+
+  const tablaColaboradores = document.getElementById('colaboradores');
+  let mujer = document.getElementById('mujeres').value;
+  let hombre = document.getElementById('hombres').value;
+  new Chart(tablaColaboradores, {
+    type: 'pie',
+    data: {
+      labels: ['Hombres', 'Mujeres'],
+      datasets: [{
+        label: 'COLABORADORES',
+        data: [hombre,mujer],
+        borderWidth: 3
+      }]
+    },
+    options: {
+      
     }
   });
 
