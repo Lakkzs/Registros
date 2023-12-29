@@ -12,12 +12,24 @@
     <div class="paginador">
         <div class="paginas">
                 <button class="pagina" id="Inicio" onclick="changeURLNumber(0)" title="Primer página"> < </button>
-                <button class="pagina" id="Primero" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
-                <button class="pagina" id="Segundo" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
-                <button class="pagina" id="Tercero" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
-                <button class="pagina" id="Cuarto" onclick="changeURLNumber({{Cuarto}}-1)" title="Página 4"> {{Cuarto}} </button>
-                <button class="pagina" id="Quinto" onclick="changeURLNumber({{Quinto}}-1)" title="Página 5"> {{Quinto}} </button>
-                <button class="pagina" id="Sexto" onclick="changeURLNumber({{Sexto}}-1)" title="Página 6"> {{Sexto}} </button>
+                {{#if Prim}}
+                    <button class="pagina" id="Primero" onclick="changeURLNumber(0)" title="Página 1"> 1 </button>
+                {{/if}}
+                {{#if Segs}}
+                    <button class="pagina" id="Segundo" onclick="changeURLNumber(1)" title="Página 2"> 2 </button>
+                {{/if}}
+                {{#if Terc}}
+                    <button class="pagina" id="Tercero" onclick="changeURLNumber(2)" title="Página 3"> 3 </button>
+                {{/if}}
+                {{#if Cuat}}
+                    <button class="pagina" id="Cuarto" onclick="changeURLNumber({{Cuarto}}-1)" title="Página 4"> {{Cuarto}} </button>
+                {{/if}}
+                {{#if Cinc}}
+                    <button class="pagina" id="Quinto" onclick="changeURLNumber({{Quinto}}-1)" title="Página 5"> {{Quinto}} </button>
+                {{/if}}
+                {{#if Seis}}
+                    <button class="pagina" id="Sexto" onclick="changeURLNumber({{Sexto}}-1)" title="Página 6"> {{Sexto}} </button>
+                {{/if}}
                 <button class="pagina" id="Ultimo" onclick="changeURLNumber({{Paginas}}-1)" title="Última página"> > </button>
         </div>
     </div>
