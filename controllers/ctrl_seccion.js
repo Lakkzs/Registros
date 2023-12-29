@@ -29,8 +29,6 @@ module.exports = {
         let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
 
         let resultado4 = await db.loadInfo.loadInfoBirthday()
-        let nombre = resultado4.datos[0].NOMBRE
-        let dia = resultado4.datos[1].DIA
         console.log(resultado4.datos)
         
         res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 

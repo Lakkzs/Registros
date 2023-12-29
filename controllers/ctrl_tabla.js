@@ -52,7 +52,7 @@ module.exports = {
             let resultado = await db.loadTable.loadTableData({p: 0, c: 20})
             let Max = resultado.datos[1][0].Paginas
             console.log(150, resultado.datos[1][0].Paginas)
-            res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Cuarto: 4, Quinto: 5, Sexto: 6})
+            res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
         }
     },
 

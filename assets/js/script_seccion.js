@@ -25,7 +25,10 @@ let diciembre = document.getElementById('diciembre').value;
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
         }
       }
     }
@@ -55,7 +58,10 @@ let diciembre = document.getElementById('diciembre').value;
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
         }
       }
     }
