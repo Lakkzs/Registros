@@ -37,7 +37,7 @@ function changeURLNumber(number) {
     variable = number
     fetch('/tabla?' + params, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Tabla': 'REGISTRO_T' },
     }).then((response) => response.text())
     .then((response) => {
         console.log(13, response)
