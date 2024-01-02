@@ -9,7 +9,7 @@ function onRegistro(e){
     var validacion = 0
     for(var key of formRegistro.keys()){
         jsonRegistro[key] = formRegistro.get(key)
-        if((jsonRegistro[key] == '' || jsonRegistro[key] == null || jsonRegistro[key] == undefined) && (key != 'txtNum_Interior')){
+        if((jsonRegistro[key] == '' || jsonRegistro[key] == null || jsonRegistro[key] == undefined || jsonRegistro[key] == 'Nada') && (key != 'txtNum_Interior')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
         if(key == 'txtCorreo'){

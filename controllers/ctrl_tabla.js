@@ -3,6 +3,7 @@ const db = require('../db/db')
 module.exports = {
     tabla: async (req, res) => {
         console.log(100000000000000000, req.query)
+        console.log(req.headers.tabla)
         if(Object.keys(req.query).length != 0){
             console.log(1, 'asd', parseInt(req.query.p))
             let resultado = await db.loadTable.loadTableData(req.query)
@@ -42,6 +43,10 @@ module.exports = {
                     }else{
                         res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: cuarto, Quinto: quinto, Sexto: sexto})
                     }
+                }
+                else{
+                    console.log('seisssssss')
+                    res.render('tabla/tabla', {tabla: resultado.datos[0], Paginas: Max, Prim: true, Segs: true, Terc: true, Cuat: true, Cinc: true, Seis: true, Cuarto: 4, Quinto: 5, Sexto: 6})
                 }
             }
         }else{
