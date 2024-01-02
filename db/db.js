@@ -192,6 +192,15 @@ const loadInfo = {
         }catch(error){
             console.log(error)
         }
+    },
+    loadInfoDate: async(req,res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC FECHA_HOY')
+            return objeto_resultado2(resultado)
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 

@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
     <div class="ah">
         <div class="col-sm-2">
             {{> navbar}}
@@ -24,6 +25,8 @@
             <div class="tit">
                 INTRANET PRO
             </div>
+
+
             <div class="linea">
                 <div class="col-sm-4 cuadro">
                     {{NUMERO_MUJER}} MUJERES
@@ -66,20 +69,46 @@
                 <div class="col-sm-3 cuadro">
                     CUMPLEAÑOS DEL MES<br>
                     {{#each cumpleanos}}
-                    -{{NOMBRE}}: {{MES}} {{DIA}}<br>
+                    🎂{{NOMBRE}}: {{MES}} {{DIA}}<br>
                     {{/each}}
-
                 </div>
                 <div class="col-sm-3 cuadro">
-                    # PROYECTOS ACTIVOS
+                    ANIVERSARIOS DEL MES
+                    
                 </div>
                 <div class="col-sm-3 cuadro">
                     <canvas id="colaboradores"></canvas>
                     <input type="text" id="mujeres" value="{{NUMERO_MUJER}}" hidden>
                     <input type="text" id="hombres" value="{{NUMERO_HOMBRE}}" hidden>
                 </div>
-                <div class="col-sm-3 cuadro">
+                <div class="col-sm-3 cuadro" style="font-size:100px">
+                    <b>{{DIA}}/{{MES}}</b>
+                </div>
+            </div>
 
+            <div class="linea3">
+                <div class="col-sm-12 cuadro">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                             <div class="carousel-item active">
+                                <img src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/soluciones-para-internet-e43c924d" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://media.licdn.com/dms/image/D4E0BAQHJ6Ni1VDAwsA/company-logo_200_200/0/1692633298022/prointernetmx_logo?e=2147483647&v=beta&t=FtHLeWhePeVvMNsBFsBDgDiKS0UtmIYocDIjF40nbD0" class="d-block w-100" >
+                            </div>
+                           
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
