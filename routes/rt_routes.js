@@ -4,16 +4,20 @@ const router = express.Router()
 const db = require('../db/db')
 const registro = require('../controllers/ctrl_registro')
 const login = require('../controllers/ctrl_login')
+const logout = require('../controllers/ctrl_logout')
 const email = require('../controllers/ctrl_email')
 const landing = require('../controllers/ctrl_landing')
 const verificationEmail = require('../controllers/ctrl_codes')
 const recuperar = require('../controllers/ctrl_recuperar')
+const cms = require('../controllers/ctrl_cms')
 
 
 router.post('/rt_registro', registro.rtRegistro)
 
 router.post('/rt_login', login.rtLogin)
 router.post('/login', login.login)
+router.post('/logout', logout.logout)
+router.post('/cms', cms.cms)
 
 router.post('/rt_verification', email.rtEmail)
 
