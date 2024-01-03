@@ -8,15 +8,17 @@ const login = require('../controllers/ctrl_login')
 const landing = require('../controllers/ctrl_landing')
 const verificationEmail = require('../controllers/ctrl_verificationemail')
 const recuperar = require('../controllers/ctrl_recuperar')
+const cms = require('../controllers/ctrl_cms')
 const tabla = require('../controllers/ctrl_tabla')
 const table = require('../controllers/ctrl_table.js')
 const seccion = require('../controllers/ctrl_seccion.js')
-const info= require('../controllers/ctrl_info.js')
+const altas = require('../controllers/ctrl_altas.js')
 
 // Inicio
 router.get('/', inicio.inicio)
 router.get('/landing', landing.landing)
 router.get('/verificarCorreo', verificationEmail.landing)
+router.get('/cms', cms.cms)
 
 // Productos
 router.get('/productos', productos.productos)
@@ -26,7 +28,14 @@ router.get('/tabla', tabla.tabla)
 router.get('/seccion', seccion.seccion)
 
 router.get('/table_data', table.data)
-router.get('/info', info.info)
+
+//Altas
+router.get('/alta_Empresas', altas.empresas)
+router.get('/alta_TUsuario', altas.tUsuario)
+router.get('/alta_Departamentos', altas.departamentos)
+router.get('/alta_Perfiles', altas.perfiles)
+router.get('/alta_Puestos', altas.puestos)
+router.get('/alta_Colaborador', altas.colaborador)
 
 
 module.exports = router
