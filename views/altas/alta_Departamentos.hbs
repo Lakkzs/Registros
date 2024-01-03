@@ -22,49 +22,32 @@
         </div>
         <div class="col-sm-10">
             <br><br>
-            <form class="mt-5" id="formInfo" method="post" action="/login">
+            <form class="mt-5" id="formAltaDepartamentos" method="post" action="/login">
                 <div class="titulo">
-                    <label class="tit"> Información Laboral </label><br>
+                    <label class="tit"> Alta de Departamentos </label><br>
                 </div>
                 <div class="mb-3 rec">
-
                     <div class="ins">
-                        <label class="form-label"> Colaborador </label>
-                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                        </select>
-
+                        <label class="form-label"> Nombre del departamento </label>
+                        <input type="input" class="form-control" placeholder="Desarrollo" name="txtNombre">
                     </div>
                     <div class="ins">
-                        <label class="form-label"> Fecha Ingreso </label>
-                        <input type="date" class="form-control" name="txtFecha_Entrada">
+                        <label class="form-label"> Descripción </label>
+                        <input type="input" class="form-control" placeholder="Área de desarrollo" name="txtDescripcion">
                     </div>
                     <div class="ins">
-                        <label class="form-label"> Fecha Salida </label>
-                        <input type="date" class="form-control" name="txtFecha_Salida">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Departamento </label>
-                        <select type="select" class="form-control" name="txtDepartamento"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
-                        </select>
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Puesto </label>
-                        <select type="select" class="form-control" name="txtPuesto"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
-                        </select>
-
+                        <label class="form-label"> Imagen del departamento </label>
+                        <input type="file" accept="image/png, image/jpeg, image/jpg, image/avif" class="form-control" name="txtImagen">
                     </div>
                     <div class="but">
-                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button> 
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Registrar Departamento </button> 
                         <br>
                     </div>
                 </div><br>
             </form>
         </div>
     </div>
-    <script src="/js/script_info.js"></script>
+    <script src="/js/script_altaDepartamentos.js"></script>
 </body>
 
 </html>

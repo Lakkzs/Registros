@@ -9,7 +9,7 @@ function onRegistro(e){
     var validacion = 0
     for(var key of formRegistroColaborador.keys()){
         jsonRegistroColaborador[key] = formRegistroColaborador.get(key)
-        if((jsonRegistroColaborador[key] == '' || jsonRegistroColaborador[key] == null || jsonRegistroColaborador[key] == undefined || jsonRegistroColaborador[key] == 'Nada')){
+        if((jsonRegistroColaborador[key] == '' || jsonRegistroColaborador[key] == null || jsonRegistroColaborador[key] == undefined || jsonRegistroColaborador[key] == 'Nada') && (key != 'txtNum_Interior')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
         if(key == 'txtCorreo'){

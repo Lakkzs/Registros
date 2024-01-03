@@ -31,7 +31,7 @@ router.get('/table_data', table.data)
 
 //Altas
 router.get('/alta_Empresas', altas.empresas)
-router.get('/alta_TUsuario', altas.tUsuario)
+router.get('/alta_TipoUsuario', altas.tipoUsuario)
 router.get('/alta_Departamentos', altas.departamentos)
 router.get('/alta_Perfiles', altas.perfiles)
 router.get('/alta_Puestos', altas.puestos)

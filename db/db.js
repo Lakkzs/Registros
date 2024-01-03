@@ -200,6 +200,34 @@ const altas = {
             console.log(error)
         }
     },
+    altaDepartamento: async(req, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
+            .input('IMAGEN', sql.VarBinary, req.txtImagen)
+            .input('EMPRESA', sql.Int, 1)
+            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @DESCRIPCION, @IMAGEN, @EMPRESA`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    altaPuesto: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombres)
+            .input('DESCRIPCION', sql.VarChar, req.txtApellidos)
+            .input('MISION', sql.VarChar, req.txtCorreo)
+            .input('OBJETIVO', sql.VarChar, req.txtCorreo)
+            .input('DEPARTAMENTO', sql.Int, 1)
+            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
 
 module.exports = {
