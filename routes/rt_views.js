@@ -12,6 +12,7 @@ const cms = require('../controllers/ctrl_cms')
 const tabla = require('../controllers/ctrl_tabla')
 const table = require('../controllers/ctrl_table.js')
 const seccion = require('../controllers/ctrl_seccion.js')
+const info= require('../controllers/ctrl_info.js')
 
 // Inicio
 router.get('/', inicio.inicio)
@@ -27,6 +28,7 @@ router.get('/tabla', tabla.tabla)
 router.get('/seccion', seccion.seccion)
 
 router.get('/table_data', table.data)
+router.get('/info', info.info)
 
 
 module.exports = router

@@ -201,6 +201,15 @@ const loadInfo = {
         }catch(error){
             console.log(error)
         }
+    },
+    loadInfoAniversary: async(req,res) =>{
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC ANIVERSARIOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 

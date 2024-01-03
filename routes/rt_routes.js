@@ -10,7 +10,6 @@ const verificationEmail = require('../controllers/ctrl_codes')
 const recuperar = require('../controllers/ctrl_recuperar')
 
 
-
 router.post('/rt_registro', registro.rtRegistro)
 
 router.post('/rt_login', login.rtLogin)
@@ -23,7 +22,6 @@ router.post('/rt_login_view', email.emailPass)
 
 router.post('/landing', landing.landing)
 router.post('/rt_recuperar', email.emailRecup)
-
 module.exports = router
 
 

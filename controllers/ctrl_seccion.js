@@ -34,8 +34,13 @@ module.exports = {
         let resultado5 = await db.loadInfo.loadInfoDate()
         let dia = resultado5.datos[0][0].DIA_FECHA 
         let mes = resultado5.datos[1][0].MES_FECHA
+
+        let resultado6 = await db.loadInfo.loadInfoAniversary() 
+        console.log(resultado6.datos)
+        
         res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
             MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
-            ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes })
+            ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
+            aniversario: resultado6.datos })
     }
 }
