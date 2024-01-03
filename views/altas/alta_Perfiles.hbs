@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Perfiles</title>
+    <link rel="stylesheet" href="/css/styleRecuperar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <div class="ah">
+        <div class="col-sm-2">
+            {{> navbar}}
+        </div>
+        <div class="col-sm-10">
+            <br><br>
+            <form class="mt-5" id="formInfo" method="post" action="/login">
+                <div class="titulo">
+                    <label class="tit"> Información Laboral </label><br>
+                </div>
+                <div class="mb-3 rec">
+
+                    <div class="ins">
+                        <label class="form-label"> Colaborador </label>
+                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                        </select>
+
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Fecha Ingreso </label>
+                        <input type="date" class="form-control" name="txtFecha_Entrada">
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Fecha Salida </label>
+                        <input type="date" class="form-control" name="txtFecha_Salida">
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Departamento </label>
+                        <select type="select" class="form-control" name="txtDepartamento"> 
+                            <option value="Nada" selected hidden>Seleccione una opción</option>
+                        </select>
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Puesto </label>
+                        <select type="select" class="form-control" name="txtPuesto"> 
+                            <option value="Nada" selected hidden>Seleccione una opción</option>
+                        </select>
+
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button> 
+                        <br>
+                    </div>
+                </div><br>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script_info.js"></script>
+</body>
+
+</html>

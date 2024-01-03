@@ -124,32 +124,6 @@ const loadTable = {
             .query('EXEC EVENTO_PAGINACION @PageNumber, @RowsOfPage')
             console.log(999, resultado.recordsets)
             return objeto_resultado2(resultado)
-            
-            // if(p != NaN && c == NaN){
-            //     console.log(1)
-            //     let resultado = await sql_conn.request()
-            //     .input('PageNumber', sql.Int, p)
-            //     .query('EXEC EVENTO_PAGINACION @PageNumber, 20')
-            //     return objeto_resultado(resultado)
-            // }else if(p == NaN && c != NaN){
-            //     console.log(2)
-            //     let resultado = await sql_conn.request()
-            //     .input('RowsOfPage', sql.Int, c)
-            //     .query('EXEC EVENTO_PAGINACION 1, @RowsOfPage')
-            //     return objeto_resultado(resultado)
-            // }else if(p != NaN && c != NaN){
-            //     console.log(3)
-            //     let resultado = await sql_conn.request()
-            //     .input('PageNumber', sql.Int, p)
-            //     .input('RowsOfPage', sql.Int, c)
-            //     .query('EXEC EVENTO_PAGINACION @PageNumber, @RowsOfPage')
-            //     return objeto_resultado(resultado)
-            // }else if(p == NaN && c == NaN){
-            //     console.log(4)
-            //     let resultado = await sql_conn.request()
-            //     .query('EXEC EVENTO_PAGINACION 1, 20')
-            //     return objeto_resultado(resultado)
-            // }
         } catch (error) {
             console.log(error)
         }
@@ -159,7 +133,7 @@ const loadInfo = {
     loadInfoData: async (req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC NUMERO_TOTAL')
+            .query('EXEC CONSULTA_NUMERO_TOTAL')
             return objeto_resultado2(resultado)
         }
         catch (error){
@@ -169,7 +143,7 @@ const loadInfo = {
     loadInfoMonths: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
-            .query('EXEC ALTAS_AÑO')
+            .query('EXEC CONSULTA_ALTAS_ANIO')
             return objeto_resultado2(resultado)
         } catch (error) {
             console.log(error)
@@ -178,7 +152,7 @@ const loadInfo = {
     loadInfoYears: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC ALTAS_AÑOS_ANTERIORES')
+            .query('EXEC CONSULTA_ALTAS_AÑOS_ANTERIORES')
             return objeto_resultado2(resultado)
         }catch(error){
             console.log(error)
@@ -187,7 +161,7 @@ const loadInfo = {
     loadInfoBirthday: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC FECHA_CUMPLEANOS')
+            .query('EXEC CONSULTA_FECHA_CUMPLEANOS')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -196,7 +170,7 @@ const loadInfo = {
     loadInfoDate: async(req,res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC FECHA_HOY')
+            .query('EXEC CONSULTA_FECHA_HOY')
             return objeto_resultado2(resultado)
         }catch(error){
             console.log(error)
@@ -205,16 +179,31 @@ const loadInfo = {
     loadInfoAniversary: async(req,res) =>{
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC ANIVERSARIOS')
+            .query('EXEC CONSULTA_ANIVERSARIOS')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
         }
     }
 }
+const altas = {
+    altaColaborador: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombres)
+            .input('APELLIDO', sql.VarChar, req.txtApellidos)
+            .input('CORREO', sql.VarChar, req.txtCorreo)
+            .input('EMPRESA', sql.Int, 1)
+            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+}
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas
 }
 
 

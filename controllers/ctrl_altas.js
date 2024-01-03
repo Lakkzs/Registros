@@ -1,3 +1,5 @@
+const db = require('../db/db')
+
 module.exports = {
     empresas: (req, res) => {
         res.render('altas/alta_Empresas')
@@ -16,5 +18,15 @@ module.exports = {
     },
     colaborador: (req, res) => {
         res.render('altas/alta_Colaborador')
-    }
+    },
+    rt_altaColaborador: async (req, res) => {
+        try {
+            let body = req.body
+            let datos = (await db.altas.altaColaborador(body)).datos
+            res.json({status: 'OK', datos})
+        } catch (error) {
+            console.log(error)
+            res.json({estatus: 'ERROR'})
+        }
+    },
 }
