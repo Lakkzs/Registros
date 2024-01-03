@@ -8,6 +8,11 @@
 <body>
     <h1>Landing</h1>
     <p>{{txtUsuario}}</p>
-
+    <form action="/login" method="post" id="formLogout">
+        <div class="boton">
+            <button type="button" class="btn btn-primary" style="margin-left: 20px;" onclick="cerrarSesion()">Cerrar Sesión</button>
+            <script src="/js/script_logout.js"></script>
+        </div>
+    </form>
 </body>
 </html>
