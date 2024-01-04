@@ -239,7 +239,7 @@ const altas = {
             console.log(error)
         }
     },
-    altaPuesto: async(req, res) => {
+    altaPuestos: async(req, res) => {
         try {
             console.log(req)
             let resultado = await sql_conn.request()
