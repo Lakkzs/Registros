@@ -22,42 +22,21 @@
         </div>
         <div class="col-sm-10">
             <br><br>
-            <form class="mt-5" id="formInfo" method="post" action="/login">
+            <form class="mt-5" id="formAltaTipoUsuario">
                 <div class="titulo">
-                    <label class="tit"> Información Laboral </label><br>
+                    <label class="tit"> Alta de Tipos de Usuario </label><br>
                 </div>
                 <div class="mb-3 rec">
-
                     <div class="ins">
-                        <label class="form-label"> Colaborador </label>
-                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                        </select>
-
+                        <label class="form-label"> Nombre </label>
+                        <input type="input" class="form-control" placeholder="Colaborador" name="txtNombre">
                     </div>
                     <div class="ins">
-                        <label class="form-label"> Fecha Ingreso </label>
-                        <input type="date" class="form-control" name="txtFecha_Entrada">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Fecha Salida </label>
-                        <input type="date" class="form-control" name="txtFecha_Salida">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Departamento </label>
-                        <select type="select" class="form-control" name="txtDepartamento"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
-                        </select>
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Puesto </label>
-                        <select type="select" class="form-control" name="txtPuesto"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
-                        </select>
-
+                        <label class="form-label"> Descripción </label>
+                        <input type="input" class="form-control" placeholder="Se les considera de esta manera a las personas que brindan sus servicios a ProInternet. " name="txtDescripcion">
                     </div>
                     <div class="but">
-                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button> 
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Registrar Tipo de Usuario </button> 
                         <br>
                     </div>
                 </div><br>

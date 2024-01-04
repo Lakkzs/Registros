@@ -73,11 +73,22 @@ module.exports = {
             res.json({estatus: 'ERROR'})
         }
     },
-    rt_infoEmpresa: async(req, res) => {
+    rt_altaPuestos: async(req, res) => {
         try{
             console.log(777,req)
             let body = req.body
             let datos = (await db.altas.altaPuestos(body)).datos
+            console.log(datos)
+            res.json({status: 'OK', datos})
+        } catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    },
+    rt_altaTipoUsuario: async(req, res) => {
+        try{
+            let body = req.body
+            let datos = (await db.altas.altaTipoUsuario(body)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch(error){

@@ -253,6 +253,26 @@ const altas = {
             console.log(error)
         }
     },
+    altaTransitorio: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    altaTipoUsuario: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
+            .input('EMPRESA', sql.Int, 1)
+            .query(`EXEC EVENTO_CREAR_USUARIO @NOMBRE, @DESCRIPCION, @EMPRESA`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     cargaDepartamentos: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
