@@ -5,8 +5,6 @@ function onRegistro(e){
     var formRegistroDepartamentos = new FormData(document.getElementById('formAltaDepartamentos'))
     var jsonRegistroDepartamentos = {}
     var arrFaltantes = []
-    var correo = ""
-    var validacion = 0
     for(var key of formRegistroDepartamentos.keys()){
         jsonRegistroDepartamentos[key] = formRegistroDepartamentos.get(key)
         if((jsonRegistroDepartamentos[key] == '' || jsonRegistroDepartamentos[key] == null || jsonRegistroDepartamentos[key] == undefined || jsonRegistroDepartamentos[key] == 'Nada' || jsonRegistroDepartamentos[key].name == '')){
@@ -16,7 +14,6 @@ function onRegistro(e){
             jsonRegistroDepartamentos[key] = formRegistroDepartamentos.get(key).name
         }
     }
-    console.log(jsonRegistroDepartamentos)
     if(arrFaltantes.length > 0){
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
     }
@@ -29,10 +26,10 @@ function onRegistro(e){
         .then((response) => {
             console.log(response)
             if(response.datos[0].RESULT == 'EXISTE'){
-                alert('El nombre del departamento no está disponible, intente de nuevo.')
+                alert('El nombre ingresado no está disponible, intente de nuevo.')
             }
             if(response.datos[0].RESULT == 'OK'){
-                alert('El registro del departamento se ha realizado correctamente.')
+                alert('El departamento ha sido registrado correctamente.')
                 document.getElementById('formAltaDepartamentos').reset();
             }
         })
