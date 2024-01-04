@@ -11,6 +11,7 @@ const verificationEmail = require('../controllers/ctrl_codes')
 const recuperar = require('../controllers/ctrl_recuperar')
 const cms = require('../controllers/ctrl_cms')
 const altas = require('../controllers/ctrl_altas')
+const info = require('../controllers/ctrl_info')
 
 
 router.post('/rt_registro', registro.rtRegistro)
@@ -31,12 +32,12 @@ router.post('/rt_recuperar', email.emailRecup)
 //ALTAS
 router.post('/rt_altaColaborador', altas.rt_altaColaborador)
 router.post('/rt_altaDepartamentos', altas.rt_altaDepartamentos)
-router.post('/rt_altaPuestos', altas.rt_altaPuestos)
 router.post('/rt_altaEmpresas', altas.rt_altaEmpresas)
 
 
 
 //INFO COLABORADOR
+router.post('/rt_infoEmpresa', info.rt_infoEmpresa)
 
 
 module.exports = router

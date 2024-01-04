@@ -10,12 +10,6 @@ module.exports = {
     departamentos: (req, res) => {
         res.render('altas/alta_Departamentos')
     },
-    perfiles: async(req, res) => {
-        let resultado = await db.altas.cargaColaboradores()
-        let resultado2 = await db.altas.cargaDepartamentos()
-        let resultado3 = await db.altas.cargaPuestos()
-        res.render('altas/alta_Perfiles', {colaboradores: resultado.datos, departamentos: resultado2.datos, puestos: resultado3.datos})
-    },
     puestos: async(req, res) => {
         let resultado = await db.altas.cargaDepartamentos()
         res.render('altas/alta_Puestos', {departamentos: resultado.datos})
@@ -51,18 +45,6 @@ module.exports = {
         } catch (error) {
             console.log(error)
             res.json({estatus: 'ERROR'})
-        }
-    },
-    rt_altaPuestos: async(req, res) => {
-        try{
-            console.log(777,req)
-            let body = req.body
-            let datos = (await db.altas.altaPuestos(body)).datos
-            console.log(datos)
-            res.json({status: 'OK', datos})
-        } catch(error){
-            console.log(error)
-            res.json({estatus:'ERROR'})
         }
     },
     rt_altaEmpresas: async (req, res) => {

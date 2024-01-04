@@ -214,7 +214,21 @@ const altas = {
             console.log(error)
         }
     },
-   
+    altaPuestos: async(req, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
+            .input('MISION', sql.VarChar, req.txtMision)
+            .input('OBJETIVO', sql.VarChar, req.txtObjetivo)
+            .input('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
+            .query(`EXEC EVENTO_CREAR_PUESTO @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     altaEmpresa: async(req, res) => {
         try {
             console.log(req)
@@ -234,21 +248,6 @@ const altas = {
             // .input('IMAGEN', sql.VarBinary, 0x0123)
             // .input('IMAGEN', sql.VarBinary, 0x0123)
             .query(`EXEC EVENTO_CREAR_EMPRESA @NOMBRE, @RAZON_SOCIAL, @RFC, @CALLE, @COLONIA, @N_EXTERIOR, @N_INTERIOR, @COD_POSTAL, @PAIS, @ESTADO, @CIUDAD, 0X0123, 0X0123, 0X0123`)
-            return objeto_resultado(resultado)
-        } catch (error) {
-            console.log(error)
-        }
-    },
-    altaPuestos: async(req, res) => {
-        try {
-            console.log(req)
-            let resultado = await sql_conn.request()
-            .input('NOMBRE', sql.VarChar, req.txtNombre)
-            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
-            .input('MISION', sql.VarChar, req.txtMision)
-            .input('OBJETIVO', sql.VarChar, req.txtObjetivo)
-            .input('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
-            .query(`EXEC EVENTO_CREAR_PUESTO @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
@@ -281,11 +280,21 @@ const altas = {
             console.log(error)
         }
     },
-
+}
+const infoColaborador = {
+    cargaInfoEmpresa: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_PUESTOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
 }
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador
 }
 
 
