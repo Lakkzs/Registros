@@ -26,7 +26,7 @@ module.exports = {
 
         let resultado3 = await db.altas.cargaInfoEmpresa(datos)
         console.log(3, resultado3)
-        // res.json({estatus: 'ERROR'})
+        res.json({puesto: resultado3.datos})
     },
     rt_Departamentos: async(req,res) => {
         let 

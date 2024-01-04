@@ -8,6 +8,7 @@ function cargaPuesto(value){
     }).then((response) => response.json())
     .then((response) => {
         console.log(response)
+        let l = response
     })
     .catch(function (err) {
         console.log(err)
