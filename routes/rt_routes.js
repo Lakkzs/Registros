@@ -34,6 +34,7 @@ router.post('/rt_altaColaborador', altas.rt_altaColaborador)
 router.post('/rt_altaDepartamentos', altas.rt_altaDepartamentos)
 router.post('/rt_altaEmpresas', altas.rt_altaEmpresas)
 router.post('/rt_infoEmpresa', altas.rt_infoEmpresa)
+router.post('/rt_cargaPuesto', altas.cargaPuestos)
 
 
 

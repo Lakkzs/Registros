@@ -1,3 +1,17 @@
+function cargaPuesto(value){
+    console.log(value)
+    fetch('/rt_cargaPuesto', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: value
+    }).then((response) => response.json())
+    .then((response) => {
+        console.log(response)
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
+}
 
 function onRegistro(e){
     e.preventDefault()

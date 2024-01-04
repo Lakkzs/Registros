@@ -33,7 +33,7 @@
                         <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
-                            <option value={{NOMBRES_COLABORADOR}}> {{NOMBRES_COLABORADOR}} </option>
+                            <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}} </option>
                             {{/each}}
                         </select>
  
@@ -50,14 +50,14 @@
                         <label class="form-label"> Transitorio </label>
                         <select type="select" class="form-control" name="txtDepartamento">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
-                            {{#each departamentos}}
-                            <option value={{NOMBRE_DEPARTAMENTO}}> {{NOMBRE_DEPARTAMENTO}} </option>
+                            {{#each perfiles}}
+                            <option value={{PERFIL}}> {{PERFIL}} </option>
                             {{/each}}
                         </select>
                     </div>
                     <div class="ins">
                         <label class="form-label"> Departamento </label>
-                        <select type="select" class="form-control" name="txtDepartamento">
+                        <select type="select" class="form-control" name="txtDepartamento" onchange="cargaPuesto(value)">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each departamentos}}
                             <option value={{NOMBRE_DEPARTAMENTO}}> {{NOMBRE_DEPARTAMENTO}} </option>
