@@ -4,6 +4,9 @@ function myFunction() {
 function myFunctionAltas() {
     document.getElementById("myDropdown1").classList.toggle("show");
 }
+function myFunctionInfoAdicional() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+}
     // Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
     if (!e.target.matches('.dropbtn')) {

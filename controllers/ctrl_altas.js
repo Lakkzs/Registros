@@ -28,6 +28,9 @@ module.exports = {
         res.render('altas/alta_Colaborador')
 
     },
+    transitorios: (req, res) => {
+        res.render('altas/alta_Transitorios')
+    },
     rt_altaColaborador: async (req, res) => {
         try {
             let body = req.body
