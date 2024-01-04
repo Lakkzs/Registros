@@ -21,11 +21,11 @@ module.exports = {
         res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos})
     },
     cargaPuestos: async(req,res) => {
-        let datos = req
-        console.log(datos)
+        let datos = req.body
+        console.log(2, datos)
 
         let resultado3 = await db.altas.cargaInfoEmpresa(datos)
-        console.log(resultado3)
+        console.log(3, resultado3)
         // res.json({estatus: 'ERROR'})
     },
     rt_Departamentos: async(req,res) => {
