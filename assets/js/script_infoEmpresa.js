@@ -1,9 +1,10 @@
 function cargaPuesto(value){
-    console.log(value)
+    let departamento = {value}
+    console.log(1, value)
     fetch('/rt_cargaPuesto', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: value
+        body: JSON.stringify(departamento)
     }).then((response) => response.json())
     .then((response) => {
         console.log(response)

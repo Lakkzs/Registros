@@ -293,9 +293,10 @@ const altas = {
     },
     cargaInfoEmpresa: async(req, res) => {
         try{
+            console.log(4, req.value)
             let resultado = await sql_conn.request()
-            .input ('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
-            .query('EXEC CONSULTA_PUESTOS')
+            .input ('DEPARTAMENTO', sql.VarChar, req.value)
+            .query('EXEC CONSULTA_PUESTOS @DEPARTAMENTO')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -304,7 +305,8 @@ const altas = {
     cargaPuestos: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_PUESTOS')
+            .input ('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
+            .query('EXEC CONSULTA_PUESTOS @DEPARTAMENTO')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
