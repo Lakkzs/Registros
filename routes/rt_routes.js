@@ -31,6 +31,10 @@ router.post('/rt_recuperar', email.emailRecup)
 //ALTAS
 router.post('/rt_altaColaborador', altas.rt_altaColaborador)
 router.post('/rt_altaDepartamentos', altas.rt_altaDepartamentos)
+router.post('/rt_altaPuestos', altas.rt_altaPuestos)
+
+
+
 
 
 module.exports = router

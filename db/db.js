@@ -214,20 +214,30 @@ const altas = {
             console.log(error)
         }
     },
-    altaPuesto: async(req, res) => {
+    altaPuestos: async(req, res) => {
         try {
+            console.log(req)
             let resultado = await sql_conn.request()
-            .input('NOMBRE', sql.VarChar, req.txtNombres)
-            .input('DESCRIPCION', sql.VarChar, req.txtApellidos)
-            .input('MISION', sql.VarChar, req.txtCorreo)
-            .input('OBJETIVO', sql.VarChar, req.txtCorreo)
-            .input('DEPARTAMENTO', sql.Int, 1)
-            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
+            .input('MISION', sql.VarChar, req.txtMision)
+            .input('OBJETIVO', sql.VarChar, req.txtObjetivo)
+            .input('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
+            .query(`EXEC EVENTO_CREAR_PUESTO @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
         }
     },
+    cargaDepartamentos: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_DEPARTAMENTOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 
 module.exports = {

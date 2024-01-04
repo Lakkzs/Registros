@@ -22,42 +22,39 @@
         </div>
         <div class="col-sm-10">
             <br><br>
-            <form class="mt-5" id="formInfo" method="post" action="/login">
+            <form class="mt-5" id="formAltaPuestos">
                 <div class="titulo">
-                    <label class="tit"> Información Laboral </label><br>
+                    <label class="tit"> Alta Puestos </label><br>
                 </div>
                 <div class="mb-3 rec">
 
                     <div class="ins">
-                        <label class="form-label"> Colaborador </label>
-                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                        </select>
-
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Fecha Ingreso </label>
-                        <input type="date" class="form-control" name="txtFecha_Entrada">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Fecha Salida </label>
-                        <input type="date" class="form-control" name="txtFecha_Salida">
-                    </div>
-                    <div class="ins">
                         <label class="form-label"> Departamento </label>
-                        <select type="select" class="form-control" name="txtDepartamento"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
+                        <select type="select" class="form-control" name="txtDepartamento">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            {{#each departamentos}}
+                            <option value="{{NOMBRE_DEPARTAMENTO}}">{{NOMBRE_DEPARTAMENTO}}</option>
+                            {{/each}}
                         </select>
                     </div>
                     <div class="ins">
-                        <label class="form-label"> Puesto </label>
-                        <select type="select" class="form-control" name="txtPuesto"> 
-                            <option value="Nada" selected hidden>Seleccione una opción</option>
-                        </select>
-
+                        <label class="form-label"> Nombre </label>
+                        <input type="input" class="form-control" name="txtNombre" placeholder="Añada un Nombre">
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Descripción </label>
+                        <input type="input" class="form-control" name="txtDescripcion" placeholder="Añada una Descripción">
+                    </div>
+                     <div class="ins">
+                        <label class="form-label"> Misión </label>
+                        <input type="input" class="form-control" name="txtMision" placeholder="Añada una Misión">
+                    </div>
+                    <div class="ins">
+                        <label class="form-label"> Objetivo </label>
+                        <input type="input" class="form-control" name="txtObjetivo" placeholder="Añada un Objetivo">
                     </div>
                     <div class="but">
-                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button> 
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Aceptar </button> 
                         <br>
                     </div>
                 </div><br>
