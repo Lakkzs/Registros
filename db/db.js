@@ -313,7 +313,7 @@ const altas = {
     cargaPerfiles: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_PERFILES')
+            .query('EXEC CONSULTA_TRANSITORIO')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
