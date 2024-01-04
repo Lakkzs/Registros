@@ -10,8 +10,11 @@ module.exports = {
     departamentos: (req, res) => {
         res.render('altas/alta_Departamentos')
     },
-    perfiles: (req, res) => {
-        res.render('altas/alta_Perfiles')
+    perfiles: async(req, res) => {
+        let resultado = await db.altas.cargaColaboradores()
+        let resultado2 = await db.altas.cargaDepartamentos()
+        let resultado3 = await db.altas.cargaPuestos()
+        res.render('altas/alta_Perfiles', {colaboradores: resultado.datos, departamentos: resultado2.datos, puestos: resultado3.datos})
     },
     puestos: async(req, res) => {
         let resultado = await db.altas.cargaDepartamentos()
