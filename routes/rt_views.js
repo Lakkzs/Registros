@@ -13,6 +13,7 @@ const tabla = require('../controllers/ctrl_tabla')
 const table = require('../controllers/ctrl_table.js')
 const seccion = require('../controllers/ctrl_seccion.js')
 const altas = require('../controllers/ctrl_altas.js')
+const info = require('../controllers/ctrl_info.js')
 
 // Inicio
 router.get('/', inicio.inicio)
@@ -33,9 +34,15 @@ router.get('/table_data', table.data)
 router.get('/alta_Empresas', altas.empresas)
 router.get('/alta_TipoUsuario', altas.tipoUsuario)
 router.get('/alta_Departamentos', altas.departamentos)
-router.get('/alta_Perfiles', altas.perfiles)
 router.get('/alta_Puestos', altas.puestos)
 router.get('/alta_Colaborador', altas.colaborador)
+router.get('/alta_Transitorios', altas.transitorios)
+
+router.get('/info_Adicional', info.infoAdicional)
+router.get('/info_Empresa', info.infoEmpresa)
+router.get('/info_Estudios', info.infoEstudios)
+router.get('/info_Emergencia', info.infoEmergencia)
+router.get('/info_Salud', info.infoSalud)
 
 
 module.exports = router

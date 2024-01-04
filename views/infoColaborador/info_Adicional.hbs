@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Empresas</title>
+    <link rel="stylesheet" href="/css/styleAltaEmpresa.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <div class="ah">
+        <div class="col-sm-2">
+            {{> navbar}}
+        </div>
+        <div class="col-sm-10">
+            <br><br>
+            <form class="mt-5" id="formAltaEmpresa">
+                <div class="titulo">
+                    <label class="tit"> Información Adicional </label><br>
+                </div>
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Nombre de la empresa </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="ProInternet" name="txtNombre">
+                    </div>
+                </div>
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Razón Social </label>
+                        <label class="form-label"> RFC </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control"  placeholder="ProInternet SA de CV" name="txtRazon_Social">
+                        <input type="input" class="form-control"  placeholder="RORH030926GC5" name="txtRFC">
+                    </div>
+                </div>                
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Calle </label>
+                        <label class="form-label"> Número exterior </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control"  placeholder="Jose de Escandon" name="txtCalle">
+                        <input type="input" class="form-control"  placeholder="308" name="txtNum_Exterior">
+                    </div>
+                </div> 
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Número interior </label>
+                        <label class="form-label"> Colonia </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control"  placeholder="0" name="txtNum_Interior">
+                        <input type="input" class="form-control"  placeholder="Zona Centro" name="txtColonia">
+                    </div>
+                </div> 
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Código Postal </label>
+                        <label class="form-label"> Pais </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control"  placeholder="89000" name="txtCP">
+                        <input type="input" class="form-control"  placeholder="MEXICO" name="txtPais">
+                    </div>
+                </div> 
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Ciudad </label>
+                        <label class="form-label"> Estado </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control"  placeholder="TAMPICO" name="txtCiudad">
+                        <input type="input" class="form-control"  placeholder="TAMAULIPAS" name="txtEstado">
+                    </div>
+                </div> 
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Logo Full </label>
+                        <label class="form-label"> Logo una tinta </label>
+                        <label class="form-label"> Avatar de la empresa</label>
+
+                    </div>
+                    <div class="ins">
+                        <input type="file" accept="image/png, image/jpeg, image/jpg, image/avif" class="form-control" name="txtLogo_Full">
+                        <input type="file" accept="image/png, image/jpeg, image/jpg, image/avif" class="form-control" name="txtLogo_Una_Tinta">
+                        <input type="file" accept="image/png, image/jpeg, image/jpg, image/avif" class="form-control" name="txtAvatar">
+                    </div>
+                    <div class="ins">
+                    </div>
+                    <div class="ins">
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Registrar Empresa </button> 
+                        <br>
+                    </div>
+                </div><br>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script_altaEmpresas.js"></script>
+</body>
+
+</html>
