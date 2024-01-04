@@ -34,6 +34,7 @@ module.exports = {
             console.log(777, req)
             let body = req.body
             let datos = (await db.altas.altaDepartamento(body)).datos
+            console.log(datos)
             res.json({status: 'OK', datos})
         } catch (error) {
             console.log(error)

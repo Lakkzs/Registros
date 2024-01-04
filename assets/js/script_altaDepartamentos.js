@@ -29,10 +29,10 @@ function onRegistro(e){
         .then((response) => {
             console.log(response)
             if(response.datos[0].RESULT == 'EXISTE'){
-                alert('El correo ingresado no está disponible, intente de nuevo.')
+                alert('El nombre del departamento no está disponible, intente de nuevo.')
             }
             if(response.datos[0].RESULT == 'OK'){
-                alert('El registro se ha realizado correctamente, se le ha enviado un correo de confirmación con su contraseña temporal.')
+                alert('El registro del departamento se ha realizado correctamente.')
                 document.getElementById('formAltaDepartamentos').reset();
             }
         })

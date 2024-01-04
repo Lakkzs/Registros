@@ -206,9 +206,9 @@ const altas = {
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombre)
             .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
-            .input('IMAGEN', sql.VarBinary, req.txtImagen)
+            // .input('IMAGEN', sql.VarBinary, 0x0123)
             .input('EMPRESA', sql.Int, 1)
-            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @DESCRIPCION, @IMAGEN, @EMPRESA`)
+            .query(`EXEC EVENTO_CREAR_DEPARTAMENTO @NOMBRE, @DESCRIPCION, 0x0123, @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
