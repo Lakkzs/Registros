@@ -214,7 +214,32 @@ const altas = {
             console.log(error)
         }
     },
-    altaPuestos: async(req, res) => {
+   
+    altaEmpresa: async(req, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('RAZON_SOCIAL', sql.VarChar, req.txtRazon_Social)
+            .input('RFC', sql.VarChar, req.txtRFC)
+            .input('CALLE', sql.VarChar, req.txtCalle)
+            .input('COLONIA', sql.VarChar, req.txtColonia)
+            .input('N_EXTERIOR', sql.VarChar, req.txtNum_Exterior)
+            .input('N_INTERIOR', sql.VarChar, req.txtNum_Interior)
+            .input('COD_POSTAL', sql.VarChar, req.txtCP)
+            .input('PAIS', sql.VarChar, req.txtPais)
+            .input('ESTADO', sql.VarChar, req.txtEstado)
+            .input('CIUDAD', sql.VarChar, req.txtCiudad)
+            // .input('IMAGEN', sql.VarBinary, 0x0123)
+            // .input('IMAGEN', sql.VarBinary, 0x0123)
+            // .input('IMAGEN', sql.VarBinary, 0x0123)
+            .query(`EXEC EVENTO_CREAR_EMPRESA @NOMBRE, @RAZON_SOCIAL, @RFC, @CALLE, @COLONIA, @N_EXTERIOR, @N_INTERIOR, @COD_POSTAL, @PAIS, @ESTADO, @CIUDAD, 0X0123, 0X0123, 0X0123`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    altaPuesto: async(req, res) => {
         try {
             console.log(req)
             let resultado = await sql_conn.request()

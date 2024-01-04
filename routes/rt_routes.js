@@ -35,6 +35,7 @@ router.post('/rt_altaPuestos', altas.rt_altaPuestos)
 
 
 
+router.post('/rt_altaEmpresas', altas.rt_altaEmpresas)
 
 
 module.exports = router
