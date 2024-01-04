@@ -271,6 +271,15 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfoEmpresa: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_PUESTOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
     cargaPuestos: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -282,15 +291,7 @@ const altas = {
     },
 }
 const infoColaborador = {
-    cargaInfoEmpresa: async(req, res) => {
-        try{
-            let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_PUESTOS')
-            return objeto_resultado(resultado)
-        }catch(error){
-            console.log(error)
-        }
-    },
+    
 }
 
 module.exports = {
