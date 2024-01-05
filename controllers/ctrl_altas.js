@@ -22,11 +22,12 @@ module.exports = {
     },
     cargaPuestos: async(req,res) => {
         let datos = req.body
-        console.log(2, datos)
-
         let resultado3 = await db.altas.cargaInfoEmpresa(datos)
-        console.log(3, resultado3)
-        res.json({puesto: resultado3.datos})
+        // console.log(3, resultado3)
+        res.render('partials/select',{opciones: resultado3.datos}, (error, html) => {
+            console.log(html)
+            res.json({html})
+        })
     },
     rt_Departamentos: async(req,res) => {
         let 

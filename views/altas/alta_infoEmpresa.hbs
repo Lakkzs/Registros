@@ -66,13 +66,10 @@
                     </div>
                     <div class="ins">
                         <label class="form-label"> Puesto </label>
-                        <select type="select" class="form-control" name="txtPuesto">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            {{#each l}}
-                            <option value={{NOMBRE_PUESTO}}> {{NOMBRE_PUESTO}} </option>
-                            {{/each}}
-                        </select>
- 
+                        <div id="puestos">
+                        {{> select name="puesto" id="puesto"}}
+
+                        </div>
                     </div>
                     <div class="but">
                         <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button>

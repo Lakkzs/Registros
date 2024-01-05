@@ -1,14 +1,20 @@
+
+let puestosss = [{NOMBRE_PUESTO: 'Lider', id:1}, {NOMBRE_PUESTO: 'Ma', id: 2}, {NOMBRE_PUESTO: 'ma1', id: 3}]
 function cargaPuesto(value){
     let departamento = {value}
-    console.log(1, value)
     fetch('/rt_cargaPuesto', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(departamento)
     }).then((response) => response.json())
     .then((response) => {
-        console.log(response)
-        let l = response
+        console.log(10, response)
+        document.getElementById('puestos').innerHTML = response.html
+        // for(var i = 0; i < response.puesto.length; i++){
+        //     puestos.push(response.puesto[i])
+        // }
+        // console.log(170, puestosss)
+        // document.getElementById('txtPuesto').removeAttribute('disabled')
     })
     .catch(function (err) {
         console.log(err)
