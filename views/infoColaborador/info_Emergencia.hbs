@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Empresas</title>
+    <link rel="stylesheet" href="/css/styleAltaEmpresa.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <div class="ah">
+        <div class="col-sm-2">
+            {{> navbar}}
+        </div>
+        <div class="col-sm-10">
+            <br><br>
+            <form class="mt-5" id="formAltaEmpresa">
+                <div class="titulo">
+                    <label class="tit"> Información Contactos Emergencia </label><br>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Colaborador </label>
+                    </div>
+                    <div class="ins">
+                        <select type="select" class="form-control" name="txtColaborador">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            {{#each colaboradores}}
+                            <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}}
+                            </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Primer Contacto </label>
+                    </div>
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtNombre">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="txtApellido">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="txtParentesco">
+
+                        <select type="number" class="form-control" name="txtCelular" id="parentesco"
+                            onchange="otro(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano">Hermano/a</option>
+                            <option value="Esposo">Esposo/a</option>
+                            <option value="Hijo">Hijo/a</option>
+                            <option value="Abuelo">Abuelo/a</option>
+                            <option value="Tío">Tío/a</option>
+                            <option value="Amigo">Amigo/a</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtParentesco">
+                    </div>
+                </div>
+
+                {{!----------------------------------- SEGUNDO CONTACTO --------------------------------------}}
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Segundo Contacto </label>
+                    </div>
+
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtNombre">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="txtApellido">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="txtParentesco">
+
+                        <select type="number" class="form-control" name="txtCelular" id="parentesco2"
+                            onchange="otro2(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano">Hermano/a</option>
+                            <option value="Esposo">Esposo/a</option>
+                            <option value="Hijo">Hijo/a</option>
+                            <option value="Abuelo">Abuelo/a</option>
+                            <option value="Tío">Tío/a</option>
+                            <option value="Amigo">Amigo/a</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto2" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtParentesco">
+                    </div>
+                </div>
+
+ {{!----------------------------------- TERCER CONTACTO --------------------------------------}}
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Tercer Contacto </label>
+                    </div>
+
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtNombre">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="txtApellido">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="txtParentesco">
+
+                        <select type="number" class="form-control" name="txtCelular" id="parentesco3"
+                            onchange="otro3(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano">Hermano/a</option>
+                            <option value="Esposo">Esposo/a</option>
+                            <option value="Hijo">Hijo/a</option>
+                            <option value="Abuelo">Abuelo/a</option>
+                            <option value="Tío">Tío/a</option>
+                            <option value="Amigo">Amigo/a</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto3" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="txtParentesco">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="ins">
+                    </div>
+                    <div class="ins">
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%"
+                            onclick="onRegistro(event)"> Guardar </button>
+                        <br>
+                    </div>
+                </div><br>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script_info.js"></script>
+</body>
+
+</html>
