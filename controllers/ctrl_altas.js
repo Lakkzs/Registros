@@ -108,6 +108,24 @@ module.exports = {
             console.log(error)
             res.json({estatus:'ERROR'})
         }
-    }
+    },
+    rt_cargaInfoEmpresa: async(req, res) => {
+        try{
+            let datos = req.body
+            let resultado = (await db.altas.cargaInfoLaboral(datos)).datos
+            let resultado2 = await db.altas.cargaDepartamentos()
+            let resultado4= await db.altas.cargaPerfiles()
+            console.log(11, resultado[0])
+            // res.json({status: 'OK', resultado}) 
+            res.render('partials/infoLaboral',{datos: resultado[0], departamentos: resultado2.datos, perfiles: resultado4.datos, txtFecha_Entrada: resultado[0].FECHA_INGRESO_INF_COL_EMPRESA, txtFecha_Salida: resultado[0].FECHA_SALIDA_INF_COL_EMPRESA, NOMBRE_TRANSITORIO: resultado[0].NOMBRE_TRANSITORIO, NOMBRE_DEPARTAMENTO: resultado[0].NOMBRE_DEPARTAMENTO, NOMBRE_PUESTO: resultado[0].NOMBRE_PUESTO}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }
+        catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    },
 
 }
