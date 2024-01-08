@@ -33,19 +33,19 @@
                         <label class="form-label"> Colaborador* </label>
                     </div>
                     <div class="ins">
-                        <select type="select" class="form-control" name="txtColaborador">
+                        <select type="select" class="form-control" name="txtColaborador" id="txtColaborador">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
                             <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}}
                             </option>
                             {{/each}}
                         </select>
-                        <button type="submit" class="btn btn-dark" style=" width: 10%"
-                            onclick="onRegistro(event)"> ⁂ </button>
+                        <button type="submit" class="btn btn-dark" style=" width: 10%" onclick="onRegistro(event)"> ⁂
+                        </button>
                     </div>
                 </div>
 
-                  <div class="mb-3 rec">
+                {{!-- <div class="mb-3 rec">
                     <div class="lab">
                         <label class="form-label"> Estado Civil* </label>
                     </div>
@@ -58,25 +58,12 @@
                             <option value="Viudo">Viudo/a</option>
                         </select>
                     </div>
+                </div> --}}
+
+                <div id="estado">
+                    {{> infoAdicional}}
                 </div>
 
-
-                <div class="mb-3 rec">
-                    <div class="lab">
-                        <label class="form-label"> ¿Alguna persona depende de usted?* </label>
-                        <label class="form-label"> Especifique el número de personas dependientes: </label>
-                    </div>
-                    <div class="ins">
-                       <select type="select" class="form-control" name="txtDependencia" onchange="dependencia(value)">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            <option value=1>Si</option>
-                            <option value=0>No</option>
-                        </select>
-                        <input type="number" class="form-control" placeholder="0" name="txt" disabled  id="numero">
-                    </div>
-                </div>
-                
-                
                 <div class="mb-3 rec">
                     <div class="ins">
                     </div>

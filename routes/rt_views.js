@@ -39,10 +39,11 @@ router.get('/alta_Colaborador', altas.colaborador)
 router.get('/alta_Transitorios', altas.transitorios)
 router.get('/alta_infoEmpresa', altas.infoEmpresa)
 
-router.get('/info_Adicional', info.infoAdicional)
 router.get('/info_Estudios', info.infoEstudios)
 router.get('/info_Emergencia', info.infoEmergencia)
 router.get('/info_Salud', info.infoSalud)
+router.get('/info_Adicional', info.infoAdicional)
+
 
 
 module.exports = router

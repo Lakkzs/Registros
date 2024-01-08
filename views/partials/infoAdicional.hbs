@@ -1,0 +1,33 @@
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> Estado Civil* </label>
+    </div>
+
+    <div class="ins">
+        <select type="select" class="form-control" name={{name}} id={{id}}>
+            <option value="Nada" selected hidden> Seleccione una opción </option>
+            <option value={{ESTADO_CIVIL_COLABORADOR_AD}} selected hidden> {{ESTADO_CIVIL_COLABORADOR_AD}} </option>
+            <option value="Soltero">Soltero/a</option>
+            <option value="Casado">Casado/a</option>
+            <option value="Divorciado">Divorciado/a</option>
+            <option value="Viudo">Viudo/a</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> ¿Alguna persona depende de usted?* </label>
+        <label class="form-label"> Especifique el número de personas dependientes: </label>
+    </div>
+    <div class="ins">
+        <select type="select" class="form-control" name={{name2}} id={{id2}} onchange="dependencia(value)">
+            <option value="Nada" selected hidden> Seleccione una opción </option>
+            <option value={{DEPENDENCIA_COLABORADOR_AD}} selected hidden> {{DEPENDENCIA_COLABORADOR_AD}} </option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        </select>
+        <input type="number" class="form-control" placeholder="0" name={{name3}} disabled id={{name3}}
+            value={{NUM_DEPENDIENTES_COLABORADOR_AD}}>
+    </div>
+</div>

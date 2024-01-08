@@ -108,6 +108,14 @@ module.exports = {
             console.log(error)
             res.json({estatus:'ERROR'})
         }
+    },
+    rt_infoAdicional: async(req,res) => {
+        let datos = req.body
+        let resultado = await db.altas.cargaDatosColaboradores(datos)
+        console.log(3, resultado.datos[0].ESTADO_CIVIL_COLABORADOR_AD)
+        res.render('partials/infoAdicional',{ESTADO_CIVIL_COLABORADOR_AD: resultado.datos[0].ESTADO_CIVIL_COLABORADOR_AD, name: "txtEstado", id:"txtEstado",DEPENDENCIA_COLABORADOR_AD: resultado.datos[0].DEPENDENCIA_COLABORADOR_AD, name1:"txtDependencia", id1:"txtDependencia",NUM_DEPENDIENTES_COLABORADOR_AD:resultado.datos[0].NUM_DEPENDIENTES_COLABORADOR_AD, name3: "txtNumero", id3: "txtNumero"}, (error, html) => {
+            res.json({html})
+        })
     }
 
 }

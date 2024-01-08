@@ -244,9 +244,6 @@ const altas = {
             .input('PAIS', sql.VarChar, req.txtPais)
             .input('ESTADO', sql.VarChar, req.txtEstado)
             .input('CIUDAD', sql.VarChar, req.txtCiudad)
-            // .input('IMAGEN', sql.VarBinary, 0x0123)
-            // .input('IMAGEN', sql.VarBinary, 0x0123)
-            // .input('IMAGEN', sql.VarBinary, 0x0123)
             .query(`EXEC EVENTO_CREAR_EMPRESA @NOMBRE, @RAZON_SOCIAL, @RFC, @CALLE, @COLONIA, @N_EXTERIOR, @N_INTERIOR, @COD_POSTAL, @PAIS, @ESTADO, @CIUDAD, 0X0123, 0X0123, 0X0123`)
             return objeto_resultado(resultado)
         } catch (error) {
@@ -345,6 +342,18 @@ const altas = {
             .query('EXEC CONSULTA_TRANSITORIO')
             return objeto_resultado(resultado)
         }catch(error){
+            console.log(error)
+        }
+    },
+    cargaDatosColaboradores: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.txtColaborador)
+            .query('EXEC CONSULTA_DATOS_COLABORADORES @FOLIO')
+            console.log(100, resultado)
+            return objeto_resultado(resultado)
+        }
+        catch(error){
             console.log(error)
         }
     }

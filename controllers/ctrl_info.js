@@ -17,16 +17,5 @@ module.exports = {
     infoSalud: (req, res) => {
         res.render('infoColaborador/info_Salud')
     },
-    rt_infoAdicional: async(req,res) => {
-        try{
-            console.log(777,req)
-            let body = req.body
-            let datos = (await db.altas.altaPuestos(body)).datos
-            console.log(datos)
-            res.json({status: 'OK', datos})
-        } catch(error){
-            console.log(error)
-            res.json({estatus:'ERROR'})
-        }
-    }
+ 
 }

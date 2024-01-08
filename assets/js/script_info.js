@@ -24,7 +24,7 @@ function otro3(value) {
 
 function dependencia(value) {
     console.log(value, typeof (value))
-    if (value == 1) {
+    if (value == "Si") {
         document.getElementById('numero').removeAttribute('disabled');
     } else {
         document.getElementById('numero').setAttribute('disabled', 'disabled');
@@ -33,19 +33,18 @@ function dependencia(value) {
 
 function onRegistro(e) {
     e.preventDefault()
+    let txtColaborador = document.getElementById('txtColaborador').value
+    var jsonRegistroInformacion= {txtColaborador}
 
-    fetch('/rt_infoAdicional', {
+    fetch('/rt_info_Adicional', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(jsonRegistroPuestos)
+        body: JSON.stringify(jsonRegistroInformacion)
     }).then((response) => response.json())
     .then((response) => {
         console.log(response)
-        if(response.datos[0].RESULT == 'EXISTE'){
-        }
-        if(response.datos[0].RESULT == 'NO EXISTE'){
-            alert('EL COLABORADR AUN NO CUENTA CON DATOS INGRESADOS')
-        }
+        document.getElementById('estado').innerHTML = response.html
+
     })
     .catch(function (err) {
         console.log(err)
