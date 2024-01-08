@@ -1,5 +1,5 @@
 
-let puestosss = [{NOMBRE_PUESTO: 'Lider', id:1}, {NOMBRE_PUESTO: 'Ma', id: 2}, {NOMBRE_PUESTO: 'ma1', id: 3}]
+
 function cargaPuesto(value){
     let departamento = {value}
     fetch('/rt_cargaPuesto', {
