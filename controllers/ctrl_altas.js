@@ -24,7 +24,7 @@ module.exports = {
         let datos = req.body
         let resultado3 = await db.altas.cargaInfoEmpresa(datos)
         // console.log(3, resultado3)
-        res.render('partials/select',{opciones: resultado3.datos}, (error, html) => {
+        res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto"}, (error, html) => {
             console.log(html)
             res.json({html})
         })
@@ -97,4 +97,17 @@ module.exports = {
             res.json({estatus:'ERROR'})
         }
     },
+    rt_infoEmpresa: async(req, res) => {
+        try{
+            let datos = req.body
+            let resultado5 = (await db.altas.altaInfoLaboral(datos)).datos
+            console.log(resultado5)
+            res.json({status: 'OK', resultado5}) 
+        }
+        catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    }
+
 }
