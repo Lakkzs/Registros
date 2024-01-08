@@ -1,5 +1,6 @@
 <select type="select" class="form-control" name="{{name}}" id="{{id}}">
     <option value="Nada" selected hidden> Seleccione una opción </option>
+    <option value="{{NOMBRE_PUESTO}}" selected hidden> {{NOMBRE_PUESTO}} </option>
     {{#each opciones}}
         <option value="{{value}}"> {{valor}} </option>
     {{/each}}

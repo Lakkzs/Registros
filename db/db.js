@@ -356,7 +356,18 @@ const altas = {
         catch(error){
             console.log(error)
         }
-    }
+    },
+    cargaInfoLaboral: async(req, res) => {
+        try{
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.value)
+            .query('EXEC CONSULTA_INFO_LABORAL @FOLIO')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
 }
 const infoColaborador = {
     

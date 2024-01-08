@@ -27,48 +27,17 @@
                     <label class="tit"> Información Laboral </label><br>
                 </div>
                 <div class="mb-3 rec">
- 
                     <div class="ins">
                         <label class="form-label"> Colaborador </label>
-                        <select type="select" class="form-control" name="txtColaborador">
+                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador" onchange="datosCol(value)">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
                             <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}} </option>
                             {{/each}}
                         </select>
- 
                     </div>
-                    <div class="ins">
-                        <label class="form-label"> Fecha Ingreso </label>
-                        <input type="date" class="form-control" name="txtFecha_Entrada">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Fecha Salida </label>
-                        <input type="date" class="form-control" name="txtFecha_Salida">
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Transitorio </label>
-                        <select type="select" class="form-control" name="txtTransitorio">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            {{#each perfiles}}
-                            <option value={{TRANSITORIO}}> {{TRANSITORIO}} </option>
-                            {{/each}}
-                        </select>
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Departamento </label>
-                        <select type="select" class="form-control" name="txtDepartamento" onchange="cargaPuesto(value)">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            {{#each departamentos}}
-                            <option value={{NOMBRE_DEPARTAMENTO}}> {{NOMBRE_DEPARTAMENTO}} </option>
-                            {{/each}}
-                        </select>
-                    </div>
-                    <div class="ins">
-                        <label class="form-label"> Puesto </label>
-                        <div id="puestos">
-                        {{> select name="txtPuesto" id="puesto"}}
-                        </div>
+                    <div id="informacion">
+                        {{> infoLaboral}}
                     </div>
                     <div class="but">
                         <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Actualizar </button>

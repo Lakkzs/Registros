@@ -1,4 +1,24 @@
-
+function datosCol(value){
+    let colaborador = {value}
+    console.log(colaborador)
+    fetch('/rt_cargaInfoEmpresa', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(colaborador)
+    }).then((response) => response.json())
+    .then((response) => {
+        console.log(10, response)
+        document.getElementById('informacion').innerHTML = response.html
+        // for(var i = 0; i < response.puesto.length; i++){
+        //     puestos.push(response.puesto[i])
+        // }
+        // console.log(170, puestosss)
+        // document.getElementById('txtPuesto').removeAttribute('disabled')
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
+}
 
 function cargaPuesto(value){
     let departamento = {value}

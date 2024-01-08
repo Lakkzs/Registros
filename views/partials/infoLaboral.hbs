@@ -1,0 +1,34 @@
+<div class="ins">
+    <label class="form-label"> Fecha Ingreso </label>
+    <input type="date" class="form-control" name="txtFecha_Entrada" value="{{txtFecha_Entrada}}">
+</div>
+<div class="ins">
+    <label class="form-label"> Fecha Salida </label>
+    <input type="date" class="form-control" name="txtFecha_Salida" value="{{txtFecha_Salida}}">
+</div>
+<div class="ins">
+    <label class="form-label"> Transitorio </label>
+    <select type="select" class="form-control" name="txtTransitorio">
+        <option value="Nada" selected hidden> Seleccione una opción </option>
+        <option value="{{NOMBRE_TRANSITORIO}}" selected hidden> {{NOMBRE_TRANSITORIO}} </option>
+        {{#each perfiles}}
+        <option value={{TRANSITORIO}}> {{TRANSITORIO}} </option>
+        {{/each}}
+    </select>
+</div>
+<div class="ins">
+    <label class="form-label"> Departamento </label>
+    <select type="select" class="form-control" name="txtDepartamento" onchange="cargaPuesto(value)">
+        <option value="Nada" selected hidden> Seleccione una opción </option>
+        <option value="{{NOMBRE_DEPARTAMENTO}}" selected hidden> {{NOMBRE_DEPARTAMENTO}} </option>
+        {{#each departamentos}}
+        <option value={{NOMBRE_DEPARTAMENTO}}> {{NOMBRE_DEPARTAMENTO}} </option>
+        {{/each}}
+    </select>
+</div>
+<div class="ins">
+    <label class="form-label"> Puesto </label>
+    <div id="puestos">
+        {{> select name="txtPuesto" id="puesto"}}
+    </div>
+</div>
