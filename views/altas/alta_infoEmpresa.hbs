@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-10">
             <br><br>
-            <form class="mt-5" id="formInfo" method="post" action="/login">
+            <form class="mt-5" id="formInfoLaboral">
                 <div class="titulo">
                     <label class="tit"> Información Laboral </label><br>
                 </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="ins">
                         <label class="form-label"> Transitorio </label>
-                        <select type="select" class="form-control" name="txtDepartamento">
+                        <select type="select" class="form-control" name="txtTransitorio">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each perfiles}}
                             <option value={{TRANSITORIO}}> {{TRANSITORIO}} </option>
@@ -67,8 +67,7 @@
                     <div class="ins">
                         <label class="form-label"> Puesto </label>
                         <div id="puestos">
-                        {{> select name="puesto" id="puesto"}}
-
+                        {{> select name="txtPuesto" id="puesto"}}
                         </div>
                     </div>
                     <div class="but">
