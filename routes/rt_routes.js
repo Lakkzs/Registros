@@ -37,6 +37,8 @@ router.post('/rt_infoEmpresa', altas.rt_infoEmpresa)
 router.post('/rt_cargaPuesto', altas.cargaPuestos)
 router.post('/rt_altaPuestos', altas.rt_altaPuestos)
 router.post('/rt_altaTipoUsuario', altas.rt_altaTipoUsuario)
+router.post('/rt_infoAdicional', altas.rt_altaTipoUsuario)
+
 
 
 

@@ -73,3 +73,4 @@ function onRegistro2(e) {
     }
 
 }
+

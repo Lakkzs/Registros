@@ -31,7 +31,7 @@ function onRegistro(e){
   
     for(var key of formRegistroColaborador.keys()){
         jsonRegistroColaborador[key] = formRegistroColaborador.get(key)
-        if((jsonRegistroColaborador[key] == '' || jsonRegistroColaborador[key] == null || jsonRegistroColaborador[key] == undefined || jsonRegistroColaborador[key] == 'Nada') && (key != 'txtNum_Interior')){
+        if((jsonRegistroColaborador[key] == '' || jsonRegistroColaborador[key] == null || jsonRegistroColaborador[key] == undefined || jsonRegistroColaborador[key] == 'Nada') && (key != 'txtFecha_Salida')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
     }

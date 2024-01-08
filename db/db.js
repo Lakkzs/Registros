@@ -256,15 +256,26 @@ const altas = {
     altaInfoLaboral: async(req, res) => {
         try{
             console.log(req)
-            let resultado = await sql_conn.request()
-            .input('FOLIO',sql.Int,req.txtColaborador)
-            .input('FECHA_INGRESO',sql.Date,req.txtFecha_Entrada)
-            .input('FECHA_SALIDA',sql.Date,req.txtFecha_Salida)
-            .input('TRANSITORIO',sql.VarChar,req.txtTransitorio)
-            .input('DEPARTAMENTO',sql.VarChar,req.txtDepartamento)
-            .input('PUESTO',sql.VarChar,req.txtPuesto)
-            .query(`EXEC EVENTO_CREAR_INFO_LABORAL @FOLIO,@FECHA_INGRESO,@FECHA_SALIDA,@TRANSITORIO,@DEPARTAMENTO,@PUESTO`)
-            return objeto_resultado(resultado)
+            if(req.txtFecha_Salida == ''){
+                let resultado = await sql_conn.request()
+                .input('FOLIO',sql.Int,req.txtColaborador)
+                .input('FECHA_INGRESO',sql.Date,req.txtFecha_Entrada)
+                .input('TRANSITORIO',sql.VarChar,req.txtTransitorio)
+                .input('DEPARTAMENTO',sql.VarChar,req.txtDepartamento)
+                .input('PUESTO',sql.VarChar,req.txtPuesto)
+                .query(`EXEC EVENTO_CREAR_INFO_LABORAL @FOLIO,@FECHA_INGRESO,NULL,@TRANSITORIO,@DEPARTAMENTO,@PUESTO`)
+                return objeto_resultado(resultado)
+            }else{
+                let resultado = await sql_conn.request()
+                .input('FOLIO',sql.Int,req.txtColaborador)
+                .input('FECHA_INGRESO',sql.Date,req.txtFecha_Entrada)
+                .input('FECHA_SALIDA',sql.Date,req.txtFecha_Salida)
+                .input('TRANSITORIO',sql.VarChar,req.txtTransitorio)
+                .input('DEPARTAMENTO',sql.VarChar,req.txtDepartamento)
+                .input('PUESTO',sql.VarChar,req.txtPuesto)
+                .query(`EXEC EVENTO_CREAR_INFO_LABORAL @FOLIO,@FECHA_INGRESO,@FECHA_SALIDA,@TRANSITORIO,@DEPARTAMENTO,@PUESTO`)
+                return objeto_resultado(resultado)
+            }
         }catch(error){
             console.log(error)
         }
