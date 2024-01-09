@@ -277,14 +277,6 @@ const altas = {
             console.log(error)
         }
     },
-    altaTransitorio: async (req, res) => {
-        try {
-            let resultado = await sql_conn.request()
-            
-        } catch (error) {
-            console.log(error)
-        }
-    },
     altaTipoUsuario: async (req, res) => {
         try {
             let resultado = await sql_conn.request()
@@ -365,6 +357,18 @@ const altas = {
             .query('EXEC CONSULTA_INFO_LABORAL @FOLIO')
             return objeto_resultado(resultado)
         }catch(error){
+            console.log(error)
+        }
+    },
+    altaTransitorios: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('NOMBRE', sql.VarChar, req.txtNombre)
+            .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
+            .input('USUARIO', sql.Int, 3)
+            .query(`EXEC EVENTO_CREAR_TRANSITORIO @NOMBRE, @DESCRIPCION, @USUARIO`)
+            return objeto_resultado(resultado)
+        } catch (error) {
             console.log(error)
         }
     },

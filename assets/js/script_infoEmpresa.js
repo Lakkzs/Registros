@@ -1,27 +1,46 @@
 function datosCol(value){
     let colaborador = {value}
     console.log(colaborador)
+    // document.getElementById('formInfoLaboral').reset();
+    // let cols = document.getElementsByClassName('form-control')
+    // for(let i = 0; i < cols.length; i++){
+    //     cols[i].selectedIndex = -1
+    //     // if(cols[i].value == value){
+    //     //     document.getElementById('selc').removeAttribute('selected')
+    //     //     cols[i].setAttribute('selected', 'selected')
+    //     // }
+    // }
+    // document.getElementById('txtColaborador').value = colaborador
     fetch('/rt_cargaInfoEmpresa', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(colaborador)
     }).then((response) => response.json())
-    .then((response) => {
+    .then(async (response) => {
         console.log(10, response)
         document.getElementById('informacion').innerHTML = response.html
-        // for(var i = 0; i < response.puesto.length; i++){
-        //     puestos.push(response.puesto[i])
-        // }
-        // console.log(170, puestosss)
-        // document.getElementById('txtPuesto').removeAttribute('disabled')
+        if(document.getElementsByClassName('depSeleccion')[0].value != ''){
+            let sel = document.getElementsByClassName('seleccione')
+            for(let i = 0; i < sel.length; i++){
+                sel[i].removeAttribute('selected')
+            }
+            let dep = document.getElementsByClassName('depSeleccion')
+            for(let i = 0; i < dep.length; i++){
+                dep[i].setAttribute('selected', 'selected')
+            }
+            let element = document.getElementById('txtDepartamento').value
+            let element1 = document.getElementById('puesto').value
+            await cargaPuesto(element, element1)
+        }
     })
     .catch(function (err) {
         console.log(err)
     })
 }
 
-function cargaPuesto(value){
-    let departamento = {value}
+async function cargaPuesto(value, consulta){
+    let departamento = {value, consulta}
+    console.log(100, departamento)
     fetch('/rt_cargaPuesto', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -30,11 +49,14 @@ function cargaPuesto(value){
     .then((response) => {
         console.log(10, response)
         document.getElementById('puestos').innerHTML = response.html
-        // for(var i = 0; i < response.puesto.length; i++){
-        //     puestos.push(response.puesto[i])
-        // }
-        // console.log(170, puestosss)
-        // document.getElementById('txtPuesto').removeAttribute('disabled')
+        let sel = document.getElementsByClassName('seleccione')
+        for(let i = 0; i < sel.length; i++){
+            sel[i].removeAttribute('selected')
+        }
+        let dep = document.getElementsByClassName('depSeleccion')
+        for(let i = 0; i < dep.length; i++){
+            dep[i].setAttribute('selected', 'selected')
+        }
     })
     .catch(function (err) {
         console.log(err)
