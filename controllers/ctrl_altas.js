@@ -22,13 +22,21 @@ module.exports = {
     },
     cargaPuestos: async(req,res) => {
         let datos = req.body
+        console.log(777, datos)
         let resultado3 = await db.altas.cargaInfoEmpresa(datos)
         // console.log(3, resultado3)
         console.log(150, datos)
-        res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto", NOMBRE_PUESTO: datos.consulta}, (error, html) => {
-            console.log(html)
-            res.json({html})
-        })
+        if(datos.consulta){
+            res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto", NOMBRE_PUESTO: datos.consulta}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }else{
+            res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto"}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }
     },
     rt_Departamentos: async(req,res) => {
         let 

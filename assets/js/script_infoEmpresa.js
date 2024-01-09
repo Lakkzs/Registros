@@ -1,16 +1,6 @@
 function datosCol(value){
     let colaborador = {value}
     console.log(colaborador)
-    // document.getElementById('formInfoLaboral').reset();
-    // let cols = document.getElementsByClassName('form-control')
-    // for(let i = 0; i < cols.length; i++){
-    //     cols[i].selectedIndex = -1
-    //     // if(cols[i].value == value){
-    //     //     document.getElementById('selc').removeAttribute('selected')
-    //     //     cols[i].setAttribute('selected', 'selected')
-    //     // }
-    // }
-    // document.getElementById('txtColaborador').value = colaborador
     fetch('/rt_cargaInfoEmpresa', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -49,13 +39,15 @@ async function cargaPuesto(value, consulta){
     .then((response) => {
         console.log(10, response)
         document.getElementById('puestos').innerHTML = response.html
-        let sel = document.getElementsByClassName('seleccione')
-        for(let i = 0; i < sel.length; i++){
-            sel[i].removeAttribute('selected')
-        }
-        let dep = document.getElementsByClassName('depSeleccion')
-        for(let i = 0; i < dep.length; i++){
-            dep[i].setAttribute('selected', 'selected')
+        if(document.getElementsByClassName('depSeleccion')[0].value != ''){
+            let sel = document.getElementsByClassName('seleccione')
+            for(let i = 0; i < sel.length; i++){
+                sel[i].removeAttribute('selected')
+            }
+            let dep = document.getElementsByClassName('depSeleccion')
+            for(let i = 0; i < dep.length; i++){
+                dep[i].setAttribute('selected', 'selected')
+            }
         }
     })
     .catch(function (err) {
