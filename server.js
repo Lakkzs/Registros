@@ -14,7 +14,7 @@ app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, './views/partials'))
 app.use(session({
     secret: 'some secret',
-    cookie: {maxAge: 30000},
+    cookie: {maxAge: 86400000},
     saveUninitialized: false,
     resave: true,
 }))

@@ -1,14 +1,12 @@
 function onRegistro(e){
     e.preventDefault()
 
-    var formRegistroColaborador = new FormData(document.getElementById('formAltaColaborador'))
-    var jsonRegistroColaborador = {}
+    var formRegistroEstudios = new FormData(document.getElementById('formInfoEstudios'))
+    var jsonRegistroEstudios = {}
     var arrFaltantes = []
-    var correo = ""
-    var validacion = 0
-    for(var key of formRegistroColaborador.keys()){
-        jsonRegistroColaborador[key] = formRegistroColaborador.get(key)
-        if((jsonRegistroColaborador[key] == '' || jsonRegistroColaborador[key] == null || jsonRegistroColaborador[key] == undefined || jsonRegistroColaborador[key] == 'Nada') && (key != 'txtNum_Interior')){
+    for(var key of formRegistroEstudios.keys()){
+        jsonRegistroEstudios[key] = formRegistroEstudios.get(key)
+        if((jsonRegistroEstudios[key] == '' || jsonRegistroEstudios[key] == null || jsonRegistroEstudios[key] == undefined || jsonRegistroEstudios[key] == 'Nada')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
     }
@@ -16,19 +14,19 @@ function onRegistro(e){
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
     }
     else{
-        fetch('/rt_altaColaborador', {
+        fetch('/rt_altaInfoEstudios', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(jsonRegistroColaborador)
+            body: JSON.stringify(jsonRegistroEstudios)
         }).then((response) => response.json())
         .then((response) => {
             console.log(response)
             if(response.datos[0].RESULT == 'EXISTE'){
-                alert('El correo ingresado no está disponible, intente de nuevo.')
+                alert('El usuario ingresado no está disponible, intente de nuevo.')
             }
             if(response.datos[0].RESULT == 'OK'){
-                alert('El registro se ha realizado correctamente, se le ha enviado un correo de confirmación con su contraseña temporal.')
-                document.getElementById('formAltaColaborador').reset();
+                alert('La información de estudios se ha registrado correctamente.')
+                document.getElementById('formInfoEstudios').reset();
             }
         })
         .catch(function (err) {

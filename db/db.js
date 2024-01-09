@@ -374,7 +374,22 @@ const altas = {
     },
 }
 const infoColaborador = {
-    
+    altaInfoEstudios: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, 1)
+            .input('ESCUELA', sql.VarChar, req.txtEscuela)
+            .input('CARRERA', sql.VarChar, req.txtCarrera)
+            .input('HORA_ENTRADA', sql.VarChar, req.txtEntrada)
+            .input('HORA_SALIDA', sql.VarChar, req.txtSalida)
+            .input('PERIODO', sql.VarChar, req.txtPeriodo)
+            .input('PERIODICIDAD', sql.VarChar, req.txtPeriodicidad)
+            .query(`EXEC EVENTO_CREAR_INFO_ESTUDIOS_COLABORADOR @FOLIO, @ESCUELA, @CARRERA, @HORA_ENTRADA, @HORA_SALIDA, @PERIODO, @PERIODICIDAD`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
 
 module.exports = {
