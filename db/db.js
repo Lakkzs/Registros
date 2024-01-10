@@ -194,7 +194,8 @@ const altas = {
             .input('APELLIDO', sql.VarChar, req.txtApellidos)
             .input('CORREO', sql.VarChar, req.txtCorreo)
             .input('EMPRESA', sql.Int, 1)
-            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA`)
+            .input('USUARIO', sql.Int, 3)
+            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA, @USUARIO`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
@@ -385,6 +386,22 @@ const infoColaborador = {
             .input('PERIODO', sql.VarChar, req.txtPeriodo)
             .input('PERIODICIDAD', sql.VarChar, req.txtPeriodicidad)
             .query(`EXEC EVENTO_CREAR_INFO_ESTUDIOS_COLABORADOR @FOLIO, @ESCUELA, @CARRERA, @HORA_ENTRADA, @HORA_SALIDA, @PERIODO, @PERIODICIDAD`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    altaInfoSalud: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, 3)
+            .input('SANGRE', sql.VarChar, req.txtSangre)
+            .input('ALERGIAS', sql.VarChar, req.txtAlergias)
+            .input('PADECIMIENTOS', sql.VarChar, req.txtPadecimientos)
+            .input('DISCAPACIDAD', sql.VarChar, req.txtDiscapacidad)
+            .input('VACUNACION_COVID', sql.VarChar, req.txtCovid)
+            .input('ANTECEDENTES', sql.VarChar, req.txtAntecedentes)
+            .query(`EXEC EVENTO_CREAR_INFO_SALUD_COLABORADOR @FOLIO, @SANGRE, @ALERGIAS, @PADECIMIENTOS, @DISCAPACIDAD, @VACUNACION_COVID, @ANTECEDENTES`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
