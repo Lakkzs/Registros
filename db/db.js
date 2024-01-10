@@ -278,6 +278,30 @@ const altas = {
             console.log(error)
         }
     },
+    altaInfoAdicional: async (req,res) => {
+        try{
+            if(req.txtNumero == '' || req.txtNumero == undefined || req.txtNumero== NaN)
+            {
+                let resultado = await sql_conn.request()
+                .input('FOLIO',sql.Int,req.txtColaborador)
+                .input('ESTADO',sql.VarChar,req.txtEstado)
+                .input('DEPENDENCIA',sql.VarChar,req.txtDependencia)
+                .query(`EXEC EVENTO_CREAR_INFO_ADICIONAL @FOLIO,@ESTADO,@DEPENDENCIA,NULL`)
+                return objeto_resultado(resultado)
+
+            }else{
+                let resultado = await sql_conn.request()
+                .input('FOLIO',sql.Int,req.txtColaborador)
+                .input('ESTADO',sql.VarChar,req.txtEstado)
+                .input('DEPENDENCIA',sql.VarChar,req.txtDependencia)
+                .input('NUMERO',sql.VarChar,req.txtNumero)
+                .query(`EXEC EVENTO_CREAR_INFO_ADICIONAL @FOLIO,@ESTADO,@DEPENDENCIA,@NUMERO`)
+                return objeto_resultado(resultado)
+            }
+        }catch(error){
+            console.log(error) 
+        }
+    },
     altaTipoUsuario: async (req, res) => {
         try {
             let resultado = await sql_conn.request()

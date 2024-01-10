@@ -102,6 +102,25 @@ function onRegistro2(e) {
 
     if (arrFaltantes.length > 0) {
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
+    }else{
+        fetch('/rt_altaAdicional', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(jsonInfo)
+        }).then((response) => response.json())
+        .then((response) => {
+            console.log(response)
+            if(response.datos[0].RESULT == 'ACTUALIZADO'){
+                alert('La información adicional ha sido actualizada correctamente.')
+            }
+            if(response.datos[0].RESULT == 'OK'){
+                alert('La información adicional ha sido registrada correctamente.')
+                document.getElementById('formInfoAdicional').reset();
+            }
+        })
+        .catch(function (err) {
+            console.log(err)
+        }) 
     }
 
 }

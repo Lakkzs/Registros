@@ -230,5 +230,16 @@ module.exports = {
             res.json({estatus:'ERROR'})
         }
     },
+    rt_altaAdicional: async(req,res) => {
+        try{
+            let body = req.body
+            let datos = (await db.altas.altaInfoAdicional(body)).datos
+            console.log(datos)
+            res.json({status: 'OK', datos})
+        } catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    }
 
 }
