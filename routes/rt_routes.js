@@ -40,7 +40,7 @@ router.post('/rt_altaTipoUsuario', altas.rt_altaTipoUsuario)
 router.post('/rt_altaTransitorios', altas.rt_altaTransitorios)
 router.post('/rt_info_Adicional', altas.rt_infoAdicional)
 
-//router.post('/rt_infoAdicional', altas.rt_infoAdicional)
+router.post('/rt_altaAdicional', altas.rt_altaAdicional)
 router.post('/rt_cargaInfoEmpresa', altas.rt_cargaInfoEmpresa)
 
 
