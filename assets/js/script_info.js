@@ -36,28 +36,31 @@ function dependencia(value) {
     let txtColaborador = document.getElementById('txtColaborador').value
     var jsonRegistroInformacion= {txtColaborador}
 
-
-    fetch('/rt_info_Adicional', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(jsonRegistroInformacion)
-    }).then((response) => response.json())
-    .then(async (response) => {
-        console.log(598,response)
-        document.getElementById('estado').innerHTML = response.html
-        let element = document.getElementById('txtDependencia').value
-        let element1 = document.getElementById('txtNumero').value
-        if(element == 'Si'){
-            let sel = document.getElementById('txtNumero')
-            sel.removeAttribute('disabled')
-        }else{
-            let sel = document.getElementById('txtNumero')
-            sel.setAttribute('disabled','disabled')
-        }
-    })
-    .catch(function (err) {
-        console.log(err)
-    })
+    if(txtColaborador == 'Nada' || txtColaborador== undefined) {
+        alert(`Por favor llene los siguientes campos faltantes: Colaborador`)
+    }else{
+        fetch('/rt_info_Adicional', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(jsonRegistroInformacion)
+        }).then((response) => response.json())
+        .then(async (response) => {
+            document.getElementById('estado').innerHTML = response.html
+            let element = document.getElementById('txtDependencia').value
+            let element1 = document.getElementById('txtNumero').value
+            if(element == 'Si'){
+                let sel = document.getElementById('txtNumero')
+                sel.removeAttribute('disabled')
+            }else{
+                let sel = document.getElementById('txtNumero')
+                sel.setAttribute('disabled','disabled')
+            }
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+    }
+    
 
 }
 

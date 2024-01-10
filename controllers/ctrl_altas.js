@@ -180,7 +180,6 @@ module.exports = {
     },
     rt_infoAdicional: async(req,res) => {
         let datos = req.body
-        console.log(5898,datos)
         let resultado = await db.altas.cargaDatosColaboradores(datos)
         console.log(3, resultado.datos[0])
         if(resultado.datos[0] != undefined){
