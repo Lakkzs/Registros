@@ -390,6 +390,22 @@ const infoColaborador = {
             console.log(error)
         }
     },
+    altaInfoSalud: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, 3)
+            .input('SANGRE', sql.VarChar, req.txtSangre)
+            .input('ALERGIAS', sql.VarChar, req.txtAlergias)
+            .input('PADECIMIENTOS', sql.VarChar, req.txtPadecimientos)
+            .input('DISCAPACIDAD', sql.VarChar, req.txtDiscapacidad)
+            .input('VACUNACION_COVID', sql.VarChar, req.txtCovid)
+            .input('ANTECEDENTES', sql.VarChar, req.txtAntecedentes)
+            .query(`EXEC EVENTO_CREAR_INFO_SALUD_COLABORADOR @FOLIO, @SANGRE, @ALERGIAS, @PADECIMIENTOS, @DISCAPACIDAD, @VACUNACION_COVID, @ANTECEDENTES`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
 
 module.exports = {

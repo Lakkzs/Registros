@@ -46,6 +46,7 @@ router.post('/rt_cargaInfoEmpresa', altas.rt_cargaInfoEmpresa)
 
 //INFO COLABORADOR
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR
+router.post('/rt_altaInfoSalud', info.rt_altaInfoSalud) //ESTO ES LO QUE SUBE EL COLABORADOR
 
 module.exports = router
 

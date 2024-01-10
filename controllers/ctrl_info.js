@@ -27,4 +27,14 @@ module.exports = {
             res.json({estatus: 'ERROR'})
         }
     },
+    rt_altaInfoSalud: async (req, res) => {
+        try {
+            let body = req.body
+            let datos = (await db.infoColaborador.altaInfoSalud(body)).datos
+            res.json({status: 'OK', datos})
+        } catch (error) {
+            console.log(error)
+            res.json({estatus: 'ERROR'})
+        }
+    },
 }
