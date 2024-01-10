@@ -194,7 +194,8 @@ const altas = {
             .input('APELLIDO', sql.VarChar, req.txtApellidos)
             .input('CORREO', sql.VarChar, req.txtCorreo)
             .input('EMPRESA', sql.Int, 1)
-            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA`)
+            .input('USUARIO', sql.Int, 3)
+            .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA, @USUARIO`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
