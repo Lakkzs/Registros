@@ -25,32 +25,65 @@ function otro3(value) {
 function dependencia(value) {
     console.log(value, typeof (value))
     if (value == "Si") {
-        document.getElementById('numero').removeAttribute('disabled');
+        document.getElementById('txtNumero').removeAttribute('disabled');
     } else {
-        document.getElementById('numero').setAttribute('disabled', 'disabled');
+        document.getElementById('txtNumero').setAttribute('disabled', 'disabled');
     }
 }
 
-function onRegistro(e) {
+ function onRegistro(e) {
     e.preventDefault()
     let txtColaborador = document.getElementById('txtColaborador').value
     var jsonRegistroInformacion= {txtColaborador}
+
 
     fetch('/rt_info_Adicional', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(jsonRegistroInformacion)
     }).then((response) => response.json())
-    .then((response) => {
-        console.log(response)
+    .then(async (response) => {
+        console.log(598,response)
         document.getElementById('estado').innerHTML = response.html
-
+        let element = document.getElementById('txtDependencia').value
+        let element1 = document.getElementById('txtNumero').value
+        if(element == 'Si'){
+            let sel = document.getElementById('txtNumero')
+            sel.removeAttribute('disabled')
+        }else{
+            let sel = document.getElementById('txtNumero')
+            sel.setAttribute('disabled','disabled')
+        }
     })
     .catch(function (err) {
         console.log(err)
     })
 
 }
+
+
+async function cargaDependientes(value, consulta){
+    let depende = {value, consulta}
+    console.log(152, depende)
+    fetch('/rt_info_Adicional', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(depende)
+    }).then((response) => response.json())
+    .then((response) => {
+        console.log(5, response)
+        document.getElementById('estado').innerHTML = response.html
+        if(document.getElementsByClassName('depDepende')[0].value == 'Si'){
+            let sel = document.getElementsByClassName('numDepen')
+            sel.removeAttribute('disabled')
+        }
+        if(document.getElementsByClassName('depDepende')[0].value != 'Si'){
+            let sel2 = document.getElementsByClassName('numDepen')
+            sel2.setAttribute('disabled','disabled')
+        }
+    })
+}
+
 
 function onRegistro2(e) {
     e.preventDefault()
@@ -72,4 +105,5 @@ function onRegistro2(e) {
     }
 
 }
+
 

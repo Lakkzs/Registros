@@ -339,10 +339,10 @@ const altas = {
     },
     cargaDatosColaboradores: async(req, res) => {
         try {
+            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, req.txtColaborador)
             .query('EXEC CONSULTA_DATOS_COLABORADORES @FOLIO')
-            console.log(100, resultado)
             return objeto_resultado(resultado)
         }
         catch(error){

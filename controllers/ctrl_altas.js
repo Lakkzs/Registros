@@ -120,11 +120,19 @@ module.exports = {
     },
     rt_infoAdicional: async(req,res) => {
         let datos = req.body
+        console.log(5898,datos)
         let resultado = await db.altas.cargaDatosColaboradores(datos)
-        console.log(3, resultado.datos[0].ESTADO_CIVIL_COLABORADOR_AD)
-        res.render('partials/infoAdicional',{ESTADO_CIVIL_COLABORADOR_AD: resultado.datos[0].ESTADO_CIVIL_COLABORADOR_AD, name: "txtEstado", id:"txtEstado",DEPENDENCIA_COLABORADOR_AD: resultado.datos[0].DEPENDENCIA_COLABORADOR_AD, name1:"txtDependencia", id1:"txtDependencia",NUM_DEPENDIENTES_COLABORADOR_AD:resultado.datos[0].NUM_DEPENDIENTES_COLABORADOR_AD, name3: "txtNumero", id3: "txtNumero"}, (error, html) => {
-            res.json({html})
-        })
+        console.log(3, resultado.datos[0])
+        if(resultado.datos[0] != undefined){
+            res.render('partials/infoAdicional',{ESTADO_CIVIL_COLABORADOR_AD: resultado.datos[0].ESTADO_CIVIL_COLABORADOR_AD, name: "txtEstado", id:"txtEstado",DEPENDENCIA_COLABORADOR_AD: resultado.datos[0].DEPENDENCIA_COLABORADOR_AD, name2:"txtDependencia", id2:"txtDependencia",NUM_DEPENDIENTES_COLABORADOR_AD:resultado.datos[0].NUM_DEPENDIENTES_COLABORADOR_AD, name3: "txtNumero", id3: "txtNumero"}, (error, html) => {
+                res.json({html})
+            })
+        }else{
+            res.render('partials/infoAdicional',{name: "txtEstado", id:"txtEstado", name2:"txtDependencia", id2:"txtDependencia", name3: "txtNumero", id3: "txtNumero"}, (error, html) => {
+                res.json({html})
+            })
+        }
+        
     },
     rt_cargaInfoEmpresa: async(req, res) => {
         try{
