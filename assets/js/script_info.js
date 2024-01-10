@@ -28,6 +28,8 @@ function dependencia(value) {
         document.getElementById('txtNumero').removeAttribute('disabled');
     } else {
         document.getElementById('txtNumero').setAttribute('disabled', 'disabled');
+        document.getElementById('txtNumero').value = 0
+
     }
 }
 
