@@ -30,6 +30,7 @@ module.exports = {
     rt_altaInfoSalud: async (req, res) => {
         try {
             let body = req.body
+            console.log(req.session.user)
             let datos = (await db.infoColaborador.altaInfoSalud(body)).datos
             res.json({status: 'OK', datos})
         } catch (error) {

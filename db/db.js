@@ -377,6 +377,7 @@ const altas = {
 const infoColaborador = {
     altaInfoEstudios: async(req, res) => {
         try {
+            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, 1)
             .input('ESCUELA', sql.VarChar, req.txtEscuela)
@@ -393,6 +394,7 @@ const infoColaborador = {
     },
     altaInfoSalud: async(req, res) => {
         try {
+            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, 3)
             .input('SANGRE', sql.VarChar, req.txtSangre)
