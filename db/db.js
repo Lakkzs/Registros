@@ -184,6 +184,15 @@ const loadInfo = {
         }catch(error){
             console.log(error)
         }
+    },
+    loadEmpresas: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_EMPRESAS')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 const altas = {
