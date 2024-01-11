@@ -399,11 +399,11 @@ const altas = {
     },
 }
 const infoColaborador = {
-    altaInfoEstudios: async(req, res) => {
+    altaInfoEstudios: async(req, datos, res) => {
         try {
             console.log(req)
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, 1)
+            .input('FOLIO', sql.Int, datos.folio)
             .input('ESCUELA', sql.VarChar, req.txtEscuela)
             .input('CARRERA', sql.VarChar, req.txtCarrera)
             .input('HORA_ENTRADA', sql.VarChar, req.txtEntrada)
@@ -416,11 +416,11 @@ const infoColaborador = {
             console.log(error)
         }
     },
-    altaInfoSalud: async(req, res) => {
+    altaInfoSalud: async(req, datos, res) => {
         try {
-            console.log(req)
+            console.log(datos)
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, 3)
+            .input('FOLIO', sql.Int, datos.folio)
             .input('SANGRE', sql.VarChar, req.txtSangre)
             .input('ALERGIAS', sql.VarChar, req.txtAlergias)
             .input('PADECIMIENTOS', sql.VarChar, req.txtPadecimientos)
