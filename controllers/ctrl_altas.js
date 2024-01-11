@@ -55,7 +55,8 @@ module.exports = {
     rt_altaColaborador: async (req, res) => {
         try {
             let body = req.body
-            let datos = (await db.altas.altaColaborador(body)).datos
+            let data = req.session.user
+            let datos = (await db.altas.altaColaborador(body, data)).datos
             let code = await codes.generateVerification()
             let resp = await db.tempPass.InsertTemporalPass(req, code)
             res.json({status: 'OK', datos})
@@ -123,7 +124,8 @@ module.exports = {
         try {
             console.log(777, req)
             let body = req.body
-            let datos = (await db.altas.altaDepartamento(body)).datos
+            let data = req.session.user
+            let datos = (await db.altas.altaDepartamento(body, data)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch (error) {
@@ -158,7 +160,8 @@ module.exports = {
     rt_altaTipoUsuario: async(req, res) => {
         try{
             let body = req.body
-            let datos = (await db.altas.altaTipoUsuario(body)).datos
+            let data = req.session.user
+            let datos = (await db.altas.altaTipoUsuario(body, data)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch(error){

@@ -196,13 +196,13 @@ const loadInfo = {
     }
 }
 const altas = {
-    altaColaborador: async(req, res) => {
+    altaColaborador: async(req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombres)
             .input('APELLIDO', sql.VarChar, req.txtApellidos)
             .input('CORREO', sql.VarChar, req.txtCorreo)
-            .input('EMPRESA', sql.Int, 1)
+            .input('EMPRESA', sql.Int, datos.id_empresa)
             .input('USUARIO', sql.Int, 3)
             .query(`EXEC EVENTO_CREAR_COLABORADOR @NOMBRE, @APELLIDO, @CORREO, @EMPRESA, @USUARIO`)
             return objeto_resultado(resultado)
@@ -210,14 +210,14 @@ const altas = {
             console.log(error)
         }
     },
-    altaDepartamento: async(req, res) => {
+    altaDepartamento: async(req, datos, res) => {
         try {
             console.log(req)
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombre)
             .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
             // .input('IMAGEN', sql.VarBinary, 0x0123)
-            .input('EMPRESA', sql.Int, 1)
+            .input('EMPRESA', sql.Int, datos.id_empresa)
             .query(`EXEC EVENTO_CREAR_DEPARTAMENTO @NOMBRE, @DESCRIPCION, 0x0123, @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
@@ -311,12 +311,12 @@ const altas = {
             console.log(error) 
         }
     },
-    altaTipoUsuario: async (req, res) => {
+    altaTipoUsuario: async (req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombre)
             .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
-            .input('EMPRESA', sql.Int, 1)
+            .input('EMPRESA', sql.Int, datos.id_empresa)
             .query(`EXEC EVENTO_CREAR_USUARIO @NOMBRE, @DESCRIPCION, @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
@@ -343,7 +343,6 @@ const altas = {
     },
     cargaInfoEmpresa: async(req, res) => {
         try{
-            console.log(4, req.value)
             let resultado = await sql_conn.request()
             .input ('DEPARTAMENTO', sql.VarChar, req.value)
             .query('EXEC CONSULTA_PUESTOS @DEPARTAMENTO')
@@ -373,7 +372,6 @@ const altas = {
     },
     cargaDatosColaboradores: async(req, res) => {
         try {
-            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, req.txtColaborador)
             .query('EXEC CONSULTA_DATOS_COLABORADORES @FOLIO')
@@ -385,7 +383,6 @@ const altas = {
     },
     cargaInfoLaboral: async(req, res) => {
         try{
-            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, req.value)
             .query('EXEC CONSULTA_INFO_LABORAL @FOLIO')
@@ -410,7 +407,6 @@ const altas = {
 const infoColaborador = {
     altaInfoEstudios: async(req, datos, res) => {
         try {
-            console.log(req)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, datos.folio)
             .input('ESCUELA', sql.VarChar, req.txtEscuela)
@@ -427,7 +423,6 @@ const infoColaborador = {
     },
     altaInfoSalud: async(req, datos, res) => {
         try {
-            console.log(datos)
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, datos.folio)
             .input('SANGRE', sql.VarChar, req.txtSangre)
