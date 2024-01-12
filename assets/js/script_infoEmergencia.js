@@ -60,62 +60,25 @@ function onRegistro2(e) {
        
         if ((jsonInfo[key] == '' || jsonInfo[key] == null || jsonInfo[key] == undefined || jsonInfo[key] == 'Nada' ) ) { 
             arrFaltantes.push(' ' + key.replace("txt", ""))       
-       }
-
-    //    if(key == 'txtParentesco'){
-    //     console.log(111)
-    //     if(jsonInfo[key] != 'Otro'){
-    //     console.log(222)
-    //     flag1=true;
-    //     }else{
-    //         flag1=false;
-    //     }
-    //    }
-
-    //    if(flag1==true){
-    //     console.log(333)
-    //     arrFaltantes.pop()
-    //     flag1=false
-    //    }
-
-    //    if(key == 'txtParentesco2'){
-    //     console.log(444)
-    //     if(jsonInfo[key] != 'Otro'){
-    //     console.log(555)
-
-    //         flag2=true;
-    //     }else{
-    //         flag2=false;
-    //     }
-    //    }
-
-    //    if(flag2==true){
-    //     console.log(666)
-    //     arrFaltantes.pop()
-    //     flag2=false
-
-
-    //    }
-
-    //    if(key == 'txtParentesco3'){
-    //     console.log(777)
-    //     if(jsonInfo[key] != 'Otro'){
-    //     console.log(888)
-
-    //         flag3=true;
-    //     }else{
-    //         flag3=false;
-    //     }
-    //    }
-
-    //    if(flag3==true){
-    //     console.log(999)
-    //     arrFaltantes.pop()
-    //     flag3=false
-
-    //    }
+        }
     }
 
+    console.log(6, jsonInfo)
+    if(jsonInfo.txtParentesco != 'Otro' && jsonInfo.txtParentesco != 'Nada'){
+        console.log(1231231)
+        let indArr = arrFaltantes.findIndex(element => element == ' Otro')
+        arrFaltantes.splice(indArr, 1)
+    }
+    if(jsonInfo.txtParentesco2 != 'Otro' && jsonInfo.txtParentesco2 != 'Nada'){
+        console.log(1231231)
+        let indArr = arrFaltantes.findIndex(element => element == ' Otro2')
+        arrFaltantes.splice(indArr, 1)
+    }
+    if(jsonInfo.txtParentesco3 != 'Otro' && jsonInfo.txtParentesco3 != 'Nada'){
+        console.log(1231231)
+        let indArr = arrFaltantes.findIndex(element => element == ' Otro3')
+        arrFaltantes.splice(indArr, 1)
+    }
 
     console.log(7,arrFaltantes)
 
