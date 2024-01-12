@@ -50,15 +50,74 @@ function onRegistro2(e) {
     var formInfo = new FormData(document.getElementById('formContacto'))
     var jsonInfo = {}
     var arrFaltantes = []
+    var flag1= false;
+    var flag2= false;
+    var flag3= false;
 
     for (var key of formInfo.keys()) {
         jsonInfo[key] = formInfo.get(key)
         console.log(jsonInfo[key])
-        if ((jsonInfo[key] == '' || jsonInfo[key] == null || jsonInfo[key] == undefined || jsonInfo[key] == 'Nada' ) &&
-         (key != 'txtOtro' && key != 'txtOtro2'&& key != 'txtOtro3' )) {
-            arrFaltantes.push(' ' + key.replace("txt", ""))
-        }
+       
+        if ((jsonInfo[key] == '' || jsonInfo[key] == null || jsonInfo[key] == undefined || jsonInfo[key] == 'Nada' ) ) { 
+            arrFaltantes.push(' ' + key.replace("txt", ""))       
+       }
+
+    //    if(key == 'txtParentesco'){
+    //     console.log(111)
+    //     if(jsonInfo[key] != 'Otro'){
+    //     console.log(222)
+    //     flag1=true;
+    //     }else{
+    //         flag1=false;
+    //     }
+    //    }
+
+    //    if(flag1==true){
+    //     console.log(333)
+    //     arrFaltantes.pop()
+    //     flag1=false
+    //    }
+
+    //    if(key == 'txtParentesco2'){
+    //     console.log(444)
+    //     if(jsonInfo[key] != 'Otro'){
+    //     console.log(555)
+
+    //         flag2=true;
+    //     }else{
+    //         flag2=false;
+    //     }
+    //    }
+
+    //    if(flag2==true){
+    //     console.log(666)
+    //     arrFaltantes.pop()
+    //     flag2=false
+
+
+    //    }
+
+    //    if(key == 'txtParentesco3'){
+    //     console.log(777)
+    //     if(jsonInfo[key] != 'Otro'){
+    //     console.log(888)
+
+    //         flag3=true;
+    //     }else{
+    //         flag3=false;
+    //     }
+    //    }
+
+    //    if(flag3==true){
+    //     console.log(999)
+    //     arrFaltantes.pop()
+    //     flag3=false
+
+    //    }
     }
+
+
+    console.log(7,arrFaltantes)
 
     if (arrFaltantes.length > 0) {
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
@@ -85,6 +144,15 @@ function onRegistro2(e) {
     }
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
