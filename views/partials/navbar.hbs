@@ -13,12 +13,17 @@
     </div><br>
     <div class="dropdown">
         <div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">EMPRESA
-                <i class="fa fa-caret-down"></i>
-            </button>
+            {{#unless varias}}
+                <button class="dropbtn" onclick="myFunction()">{{EMPRESA}}</button>
+            {{else}}
+                <button class="dropbtn" onclick="myFunction()">EMPRESAS
+                    <i class="fa fa-caret-down"></i>
+                </button>
+            {{/unless}}
             <div class="dropdown-content" id="myDropdown">
-                <a href="#prointernet">PROINTERNET</a>
-                <a href="#addex">ADDEX</a>
+                {{#each empresa}}
+                    <a href="#{{EMPRESA}}"> {{EMPRESA}} </a>
+                {{/each}}
             </div>
         </div>
     </div>

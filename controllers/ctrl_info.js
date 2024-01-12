@@ -15,12 +15,14 @@ module.exports = {
         res.render('infoColaborador/info_Emergencia',{colaboradores: resultado.datos})
     },
     infoSalud: (req, res) => {
+        console.log(req.session)
         res.render('infoColaborador/info_Salud')
     },
     rt_altaInfoEstudios: async (req, res) => {
         try {
             let body = req.body
-            let datos = (await db.infoColaborador.altaInfoEstudios(body)).datos
+            let folio = req.session.user
+            let datos = (await db.infoColaborador.altaInfoEstudios(body, folio)).datos
             res.json({status: 'OK', datos})
         } catch (error) {
             console.log(error)
@@ -28,9 +30,11 @@ module.exports = {
         }
     },
     rt_altaInfoSalud: async (req, res) => {
+        console.log(req.session.user)
         try {
             let body = req.body
-            let datos = (await db.infoColaborador.altaInfoSalud(body)).datos
+            let folio = req.session.user
+            let datos = (await db.infoColaborador.altaInfoSalud(body, folio)).datos
             res.json({status: 'OK', datos})
         } catch (error) {
             console.log(error)

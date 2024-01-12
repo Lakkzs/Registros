@@ -2,6 +2,7 @@ const db = require('../db/db')
 
 module.exports = {
     seccion: async(req,res) => {
+        console.log(req.session)
         let resultado = await db.loadInfo.loadInfoData()
         let n_mujer = resultado.datos[0][0].NUMERO_MUJERES
         let n_hombre = resultado.datos[1][0].NUMERO_HOMBRES
