@@ -6,7 +6,7 @@
     <div class="ins">
         <select type="select" class="form-control" name={{name}} id={{id}}>
             <option value="Nada" selected hidden> Seleccione una opción </option>
-            <option value={{ESTADO_CIVIL_COLABORADOR_AD}} selected hidden> {{ESTADO_CIVIL_COLABORADOR_AD}} </option>
+            <option value="{{ESTADO_CIVIL_COLABORADOR_AD}}" selected hidden> {{ESTADO_CIVIL_COLABORADOR_AD}} </option>
             <option value="Soltero">Soltero/a</option>
             <option value="Casado">Casado/a</option>
             <option value="Divorciado">Divorciado/a</option>
@@ -23,11 +23,11 @@
     <div class="ins">
         <select type="select" class="form-control" name={{name2}} id={{id2}} onchange="dependencia(value)">
             <option value="Nada" selected hidden> Seleccione una opción </option>
-            <option value={{DEPENDENCIA_COLABORADOR_AD}}  selected hidden> {{DEPENDENCIA_COLABORADOR_AD}} </option>
+            <option value="{{DEPENDENCIA_COLABORADOR_AD}}"  selected hidden> {{DEPENDENCIA_COLABORADOR_AD}} </option>
             <option value="Si">Si</option>
             <option value="No">No</option>
         </select>
         <input type="number" class="form-control" placeholder="0" name={{name3}} class="numDepen" disabled id={{id3}}
-            value={{NUM_DEPENDIENTES_COLABORADOR_AD}}>
+            value="{{NUM_DEPENDIENTES_COLABORADOR_AD}}">
     </div>
 </div>

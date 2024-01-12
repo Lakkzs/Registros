@@ -33,7 +33,7 @@
                         <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
-                            <option value={{NOMBRES_COLABORADOR}}> {{NOMBRES_COLABORADOR}} </option>
+                            <option value="{{NOMBRES_COLABORADOR}}"> {{NOMBRES_COLABORADOR}} </option>
                             {{/each}}
                         </select>
 
@@ -51,7 +51,7 @@
                         <select type="select" class="form-control" name="txtDepartamento"> 
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each departamentos}}
-                            <option value={{NOMBRE_DEPARTAMENTO}}> {{NOMBRE_DEPARTAMENTO}} </option>
+                            <option value="{{NOMBRE_DEPARTAMENTO}}"> {{NOMBRE_DEPARTAMENTO}} </option>
                             {{/each}}
                         </select>
                     </div>
@@ -60,7 +60,7 @@
                         <select type="select" class="form-control" name="txtPuesto"> 
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each puestos}}
-                            <option value={{NOMBRE_PUESTO}}> {{NOMBRE_PUESTO}} </option>
+                            <option value="{{NOMBRE_PUESTO}}"> {{NOMBRE_PUESTO}} </option>
                             {{/each}}
                         </select>
 
