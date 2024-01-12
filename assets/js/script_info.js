@@ -1,26 +1,4 @@
-function otro(value) {
-    if (value == "Otro") {
-        document.getElementById('oculto').removeAttribute('hidden');
-    } else {
-        document.getElementById('oculto').setAttribute('hidden', 'hidden');
-    }
-}
 
-function otro2(value) {
-    if (value == "Otro") {
-        document.getElementById('oculto2').removeAttribute('hidden');
-    } else {
-        document.getElementById('oculto2').setAttribute('hidden', 'hidden');
-    }
-}
-
-function otro3(value) {
-    if (value == "Otro") {
-        document.getElementById('oculto3').removeAttribute('hidden');
-    } else {
-        document.getElementById('oculto3').setAttribute('hidden', 'hidden');
-    }
-}
 
 function dependencia(value) {
     console.log(value, typeof (value))

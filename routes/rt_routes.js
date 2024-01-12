@@ -42,6 +42,8 @@ router.post('/rt_info_Adicional', altas.rt_infoAdicional)
 
 router.post('/rt_altaAdicional', altas.rt_altaAdicional)
 router.post('/rt_cargaInfoEmpresa', altas.rt_cargaInfoEmpresa)
+router.post('/rt_info_Emergencia', altas.rt_cargaContactos)
+router.post('/rt_altaEmergencia', altas.rt_altaContactos)
 
 
 //INFO COLABORADOR

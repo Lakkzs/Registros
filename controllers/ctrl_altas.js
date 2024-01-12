@@ -218,6 +218,53 @@ module.exports = {
             res.json({estatus:'ERROR'})
         }
     },
+    rt_cargaContactos: async(req,res) => {
+        let datos = req.body
+        let resultado = (await db.altas.cargaContactosEmergencia(datos)).datos
+        console.log(387, resultado[0])
+        if(resultado[0] != undefined){
+            let opcion =  resultado[0].PARENTESCO_CONTACTO;
+            let opcion2 =  resultado[0].PARENTESCO_CONTACTO_2;
+            let opcion3 =  resultado[0].PARENTESCO_CONTACTO_3;
+            let opciones = ["Padre","Madre", "Hermano/a", "Esposo/a", "Hijo/a", "Abuelo/a", "Tío/a", "Amigo/a", "Otro"];
+            let flag = true
+            if(opciones.includes(opcion) ){
+                flag= true
+            }else{
+                flag=false
+            }
+            let flag2 = true
+            if(opciones.includes(opcion2) ){
+                flag2= true
+            }else{
+                flag2=false
+            }
+            let flag3 = true
+            if(opciones.includes(opcion3) ){
+                flag3= true
+            }else{
+                flag3=false
+            }
+            console.log('asd',resultado[0].NOMBRES_CONTACTO)
+            res.render('partials/infoEmergencia',{NOMBRES_CONTACTO: resultado[0].NOMBRES_CONTACTO, APELLIDOS_CONTACTO: resultado[0].APELLIDOS_CONTACTO, CELULAR_CONTACTO: resultado[0].CELULAR_CONTACTO,
+            PARENTESCO_CONTACTO: resultado[0].PARENTESCO_CONTACTO,NOMBRES_CONTACTO_2: resultado[0].NOMBRES_CONTACTO_2, APELLIDOS_CONTACTO_2: resultado[0].APELLIDOS_CONTACTO_2, CELULAR_CONTACTO_2: resultado[0].CELULAR_CONTACTO_2,
+            PARENTESCO_CONTACTO_2: resultado[0].PARENTESCO_CONTACTO_2, NOMBRES_CONTACTO_3: resultado[0].NOMBRES_CONTACTO_3, APELLIDOS_CONTACTO_3: resultado[0].APELLIDOS_CONTACTO_3, CELULAR_CONTACTO_3: resultado[0].CELULAR_CONTACTO_3,
+            PARENTESCO_CONTACTO_3: resultado[0].PARENTESCO_CONTACTO_3, name: "txtNombre", id: "txtNombre", name2:"txtApellido" ,id2:"txtApellido", name3:"txtCelular", id3:"txtCelular" ,
+            name4:"txtParentesco", id4:"txtParentesco", name5: "txtNombre2", id5: "txtNombre2" ,name6:"txtApellido2" ,id6:"txtApellido2", name7:"txtCelular2" ,id7:"txtCelular2" ,
+            name8:"txtParentesco2", id8:"txtParentesco2", name9: "txtNombre3" ,id9: "txtNombre3", name10:"txtApellido3", id10:"txtApellido3" ,name11:"txtCelular3", id11:"txtCelular3", 
+            name12:"txtParentesco3" ,id12:"txtParentesco3" ,id13:"txtOtro" ,name13:"txtOtro" ,id14:"txtOtro2" ,name14:"txtOtro2", id15:"txtOtro3", name15:"txtOtro3", alerta:flag , alerta2:flag2, alerta3:flag3}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }else{
+            res.render('partials/infoEmergencia',{name: "txtNombre", id: "txtNombre", name2:"txtApellido" ,id2:"txtApellido", name3:"txtCelular", id3:"txtCelular" ,
+            name4:"txtParentesco", id4:"txtParentesco", name5: "txtNombre2", id5: "txtNombre2" ,name6:"txtApellido2" ,id6:"txtApellido2", name7:"txtCelular2" ,id7:"txtCelular2" ,
+            name8:"txtParentesco2", id8:"txtParentesco2", name9: "txtNombre3" ,id9: "txtNombre3", name10:"txtApellido3", id10:"txtApellido3" ,name11:"txtCelular3", id11:"txtCelular3", 
+            name12:"txtParentesco3" ,id12:"txtParentesco3" ,id13:"txtOtro" ,name13:"txtOtro" ,id14:"txtOtro2" ,name14:"txtOtro2", id15:"txtOtro3", name15:"txtOtro3", alerta: true, alerta2:true, alerta3:true}, (error, html) => {
+                res.json({html})
+            })
+        }
+    },
     rt_altaTransitorios: async(req, res) => {
         try{
             let body = req.body
@@ -235,6 +282,18 @@ module.exports = {
             let datos = (await db.altas.altaInfoAdicional(body)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
+        } catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    },
+    rt_altaContactos: async(req, res) => {
+        try{
+            let body = req.body
+            let datos = (await db.altas.altaContactos(body)).datos
+            console.log(datos)
+            res.json({status: 'OK', datos})
+
         } catch(error){
             console.log(error)
             res.json({estatus:'ERROR'})

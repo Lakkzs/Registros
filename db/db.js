@@ -385,6 +385,17 @@ const altas = {
             console.log(error)
         }
     },
+    cargaContactosEmergencia: async(req, res) => {
+        try{
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.txtColaborador)
+            .query('EXEC CARGAR_DATOS_CONTACTOS @FOLIO')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
     altaTransitorios: async (req, res) => {
         try {
             let resultado = await sql_conn.request()
@@ -396,6 +407,140 @@ const altas = {
         } catch (error) {
             console.log(error)
         }
+    },
+    altaContactos: async(req, res) => {
+        try{
+            
+            if(req.txtParentesco == 'Otro' && req.txtParentesco2 != 'Otro' && req.txtParentesco3 != 'Otro'){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtOtro)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtParentesco2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtParentesco3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else if(req.txtParentesco2 == 'Otro'&& req.txtParentesco != 'Otro' && req.txtParentesco3 != 'Otro'){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtParentesco)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtOtro2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtParentesco3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else if(req.txtParentesco3 == 'Otro' && req.txtParentesco2 != 'Otro' && req.txtParentesco != 'Otro'){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtParentesco)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtParentesco2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtOtro3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else if(req.txtParentesco == 'Otro' && req.txtParentesco2 == 'Otro' && req.txtParentesco3 != 'Otro' ){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtOtro)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtOtro2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtParentesco3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else if(req.txtParentesco == 'Otro' && req.txtParentesco3 == 'Otro' && req.txtParentesco2 != 'Otro'){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtOtro)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtParentesco2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtOtro3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else if(req.txtParentesco2 == 'Otro' && req.txtParentesco3 == 'Otro' && req.txtParentesco != 'Otro'){
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtParentesco)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtOtro2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtOtro3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+
+            }else{
+                let resultado = await sql_conn.request()
+                .input('FOLIO', sql.Int, req.txtColaborador)
+                .input('NOMBRE', sql.VarChar, req.txtNombre)
+                .input('APELLIDO', sql.VarChar, req.txtApellido)
+                .input('CELULAR', sql.VarChar, req.txtCelular)
+                .input('PARENTESCO', sql.VarChar, req.txtParentesco)
+                .input('NOMBRE2', sql.VarChar, req.txtNombre2)
+                .input('APELLIDO2', sql.VarChar, req.txtApellido2)
+                .input('CELULAR2', sql.VarChar, req.txtCelular2)
+                .input('PARENTESCO2', sql.VarChar, req.txtParentesco2)
+                .input('NOMBRE3', sql.VarChar, req.txtNombre3)
+                .input('APELLIDO3', sql.VarChar, req.txtApellido3)
+                .input('CELULAR3', sql.VarChar, req.txtCelular3)
+                .input('PARENTESCO3', sql.VarChar, req.txtParentesco3)
+                .query(`EXEC EVENTO_CREAR_CONTACTO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CELULAR, @PARENTESCO, @NOMBRE2, @APELLIDO2, @CELULAR2, @PARENTESCO2, @NOMBRE3, @APELLIDO3, @CELULAR3, @PARENTESCO3`)
+                return objeto_resultado(resultado)
+            }
+           
+        }catch(error){
+            console.log(error)
+        }   
     },
 }
 const infoColaborador = {
