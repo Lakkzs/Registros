@@ -402,6 +402,27 @@ const altas = {
             console.log(error)
         }
     },
+    cargaMunicipios: async(req, res) => {
+        try{
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('ESTADO', sql.Int, req.value)
+            .query('EXEC CARGAR_MUNICIPIOS @ESTADO')
+            console.log(resultado)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
+    cargaEstados: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC CARGAR_ESTADOS')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
     altaTransitorios: async (req, res) => {
         try {
             let resultado = await sql_conn.request()

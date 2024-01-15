@@ -40,6 +40,9 @@ router.post('/rt_altaTipoUsuario', altas.rt_altaTipoUsuario)
 router.post('/rt_altaTransitorios', altas.rt_altaTransitorios)
 router.post('/rt_info_Adicional', altas.rt_infoAdicional)
 
+
+
+
 router.post('/rt_altaAdicional', altas.rt_altaAdicional)
 router.post('/rt_cargaInfoEmpresa', altas.rt_cargaInfoEmpresa)
 router.post('/rt_info_Emergencia', altas.rt_cargaContactos)
@@ -49,6 +52,7 @@ router.post('/rt_altaEmergencia', altas.rt_altaContactos)
 //INFO COLABORADOR
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_altaInfoSalud', info.rt_altaInfoSalud) //ESTO ES LO QUE SUBE EL COLABORADOR
+router.post('/rt_cargaMunicipio', info.rt_cargaMunicipio)
 
 module.exports = router
 

@@ -7,6 +7,12 @@ module.exports = {
         let resultado = await db.altas.cargaColaboradores()
         res.render('infoColaborador/info_Adicional',{colaboradores: resultado.datos})
     },
+    infoPrincipal: async (req, res) => {
+       let resultado = await db.altas.cargaColaboradores()
+       let resultado2= await db.altas.cargaEstados()
+       res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos,estados: resultado2.datos})
+    },
+
     infoEstudios: (req, res) => {
         res.render('infoColaborador/info_Estudios')
     },
@@ -40,5 +46,22 @@ module.exports = {
             console.log(error)
             res.json({estatus: 'ERROR'})
         }
+    },
+    rt_cargaMunicipio: async(req, res) => {
+        let datos = req.body
+        let resultado = await db.altas.cargaMunicipios(datos)
+        console.log('RESULTADO DATOSSSSSSS',resultado.datos)
+        if(datos.consulta){
+            res.render('partials/municipio',{municipios: resultado.datos, name: "txtCiudad", id:"txtCiudad"}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }else{
+            res.render('partials/municipio',{municipios: resultado.datos, name: "txtCiudad", id:"txtCiudad"}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }
+        
     },
 }

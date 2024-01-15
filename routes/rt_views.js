@@ -43,7 +43,7 @@ router.get('/info_Estudios', info.infoEstudios)
 router.get('/info_Emergencia', info.infoEmergencia)
 router.get('/info_Salud', info.infoSalud)
 router.get('/info_Adicional', info.infoAdicional)
-
+router.get('/info_Principal', info.infoPrincipal)
 
 
 module.exports = router

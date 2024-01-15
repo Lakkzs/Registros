@@ -41,6 +41,7 @@ module.exports = {
             })
         }
     },
+    
     rt_Departamentos: async(req,res) => {
         let 
     },
