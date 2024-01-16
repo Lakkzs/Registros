@@ -4,27 +4,33 @@ module.exports = {
         res.render('info/info')
     },
     infoAdicional: async (req, res) => {
-        let resultado = await db.altas.cargaColaboradores()
+        let data = req.session.user
+        let resultado = await db.altas.cargaColaboradores(data)
         res.render('infoColaborador/info_Adicional',{colaboradores: resultado.datos})
     },
     infoPrincipal: async (req, res) => {
-        let resultado = await db.altas.cargaColaboradores()
+        let data = req.session.user
+        let resultado = await db.altas.cargaColaboradores(data)
         res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos})
     },
     rt_infoPrincipal: async (req, res) => {
-       let resultado = await db.altas.cargaColaboradores()
-       let resultado2= await db.altas.cargaEstados()
-       let resultado3= await db.altas.cargaInfo(req)
+        let data = req.session.user
+        let resultado = await db.altas.cargaColaboradores(data)
+        let resultado2 = await db.altas.cargaEstados()
+        let resultado3 = await db.altas.cargaInfo(req)
+        console.log(123, resultado3)
 
-           res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos,estados: resultado2.datos, datos: resultado3.datos, NOMBRES_COLABORADOR: resultado3.datos[0].NOMBRES_COLABORADOR})
-
+        res.render('partials/infoPrincipal',{colaboradores: resultado.datos,estados: resultado2.datos, datos: resultado3.datos[0]}, (error, html) => {
+            res.json({html})
+        })
     },
 
     infoEstudios: (req, res) => {
         res.render('infoColaborador/info_Estudios')
     },
     infoEmergencia: async(req, res) => {
-        let resultado = await db.altas.cargaColaboradores()
+        let data = req.session.user
+        let resultado = await db.altas.cargaColaboradores(data)
         res.render('infoColaborador/info_Emergencia',{colaboradores: resultado.datos})
     },
     infoSalud: (req, res) => {

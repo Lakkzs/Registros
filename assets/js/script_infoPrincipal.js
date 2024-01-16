@@ -25,7 +25,9 @@ function onRegistro(e) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonRegistroInformacion)
         }).then((response) => response.json())
-       
+        .then((response) => {
+            document.getElementById('info').innerHTML = response.html
+        })
         .catch(function (err) {
             console.log(err)
         })

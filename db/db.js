@@ -335,7 +335,8 @@ const altas = {
     cargaColaboradores: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_COLABORADORES')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_COLABORADORES @EMPRESA')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -419,7 +420,6 @@ const altas = {
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, parseInt(req.body.txtColaborador))
             .query('EXEC CONSULTA_INFO_COLABORADORES @FOLIO')
-            console.log(resultado)
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
