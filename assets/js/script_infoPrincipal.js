@@ -27,9 +27,11 @@ function onRegistro(e) {
         }).then((response) => response.json())
         .then(async (response) => {
             document.getElementById('info').innerHTML = response.html
-            let element = document.getElementById('txtEstado').value
-            let element1 = document.getElementById('txtCiudad').value
-            await cargaMunicipios(element, element1)
+            // if(document.getElementById('txtEstado').value != 'Nada'){
+                let element = document.getElementById('txtEstado').value
+                let element1 = document.getElementById('txtCiudad').value
+                await cargaMunicipios(element, element1)
+            // }
         })
         .catch(function (err) {
             console.log(err)

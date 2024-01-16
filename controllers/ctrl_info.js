@@ -76,8 +76,11 @@ module.exports = {
     rt_cargaMunicipio: async(req, res) => {
         let datos = req.body
         console.log('pasar', datos)
+        console.log('pasar2', datos.CIUDAD_COLABORADOR)
         let resultado = await db.altas.cargaMunicipios(datos)
-        if(datos.CIUDAD_COLABORADOR){
+        console.log(resultado.datos)
+        console.log(resultado.datos[0] == undefined)
+        if(resultado.datos[0] != undefined){
             console.log(152)
             res.render('partials/municipio',{municipios: resultado.datos, name: "txtCiudad", id:"txtCiudad", datos: datos.CIUDAD_COLABORADOR}, (error, html) => {
                 console.log(html)
