@@ -1,5 +1,5 @@
-async function cargaMunicipios(value, consulta){
-    let depende = {value, consulta}
+async function cargaMunicipios(value, CIUDAD_COLABORADOR){
+    let depende = {value, CIUDAD_COLABORADOR}
     console.log(65879, depende)
     fetch('/rt_cargaMunicipio', {
         method: 'POST',
@@ -25,8 +25,11 @@ function onRegistro(e) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonRegistroInformacion)
         }).then((response) => response.json())
-        .then((response) => {
+        .then(async (response) => {
             document.getElementById('info').innerHTML = response.html
+            let element = document.getElementById('txtEstado').value
+            let element1 = document.getElementById('txtCiudad').value
+            await cargaMunicipios(element, element1)
         })
         .catch(function (err) {
             console.log(err)

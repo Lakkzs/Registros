@@ -117,12 +117,12 @@
                                 <option value="Nada" selected hidden> Seleccione </option>
                             {{/if}}
                             {{#each estados}}
-                                <option value="{{EstadoId}}"> {{Descripcion}}</option>
+                                <option value="{{Descripcion}}"> {{Descripcion}}</option>
                             {{/each}}
                         </select>
                         
                         <div id="municipioselect" class="ins">
-                            {{> municipio munSel=datos.CIUDAD_COLABORADOR}}
+                            {{> municipio munSel=datos.CIUDAD_COLABORADOR name='txtCiudad' id='txtCiudad'}}
                         </div>
                       
                     </div>

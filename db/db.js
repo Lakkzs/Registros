@@ -405,11 +405,10 @@ const altas = {
     },
     cargaMunicipios: async(req, res) => {
         try{
-            console.log(req)
+            console.log(666, req)
             let resultado = await sql_conn.request()
-            .input('ESTADO', sql.Int, req.value)
+            .input('ESTADO', sql.VarChar, req.value)
             .query('EXEC CARGAR_MUNICIPIOS @ESTADO')
-            console.log(resultado)
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
