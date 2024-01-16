@@ -37,7 +37,13 @@ module.exports = {
             res.json({html})
         })
     },
-
+    rt_altaInfoPrincipal: async (req, res) => {
+        let body = req.body
+        console.log(999, body)
+        let resultado = (await db.infoColaborador.altaInfoPrincipal(body)).datos
+        console.log(resultado)
+        res.json({status: 'OK', resultado})
+    },
     infoEstudios: (req, res) => {
         res.render('infoColaborador/info_Estudios')
     },

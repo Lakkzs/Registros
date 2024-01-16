@@ -11,7 +11,7 @@ async function cargaMunicipios(value, CIUDAD_COLABORADOR){
     })
 }
 
-function onRegistro(e) {
+async function onRegistro(e) {
     e.preventDefault()
     let txtColaborador = document.getElementById('txtColaborador').value
     
@@ -37,4 +37,47 @@ function onRegistro(e) {
             console.log(err)
         })
     }
+}
+
+async function onRegistro2(e){
+    e.preventDefault()
+
+    var formRegistroColaboradorPrincipal = new FormData(document.getElementById('formInfoPrincipal'))
+    var jsonRegistroColaboradorPrincipal = {}
+    var arrFaltantes = []
+
+  
+    for(var key of formRegistroColaboradorPrincipal.keys()){
+        jsonRegistroColaboradorPrincipal[key] = formRegistroColaboradorPrincipal.get(key)
+        if((jsonRegistroColaboradorPrincipal[key] == '' || jsonRegistroColaboradorPrincipal[key] == null || jsonRegistroColaboradorPrincipal[key] == undefined || jsonRegistroColaboradorPrincipal[key] == 'Nada') && (key != 'txtNum_Interior')){
+            arrFaltantes.push(' ' + key.replace("txt", ""))
+        }
+    }
+    console.log(jsonRegistroColaboradorPrincipal)
+        if(arrFaltantes.length > 0){
+            alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
+        }
+        else{
+            fetch('/rt_altaInfoPrincipal', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(jsonRegistroColaboradorPrincipal)
+            }).then((response) => response.json())
+            .then(async (response) => {
+                console.log(response)
+                if(response.resultado[0].RESULT == 'ACTUALIZADO'){
+                    alert('El registro se ha realizado correctamente')
+                    console.log(document.getElementById('formInfoPrincipal'))
+                    document.getElementById('formInfoPrincipal').reset();
+                    // await onRegistro(0)
+                }
+                else{
+                    alert('No se han podido registrar los datos correctamente.')
+                }
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+        }
+
 }

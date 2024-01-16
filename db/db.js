@@ -613,6 +613,33 @@ const infoColaborador = {
             console.log(error)
         }
     },
+    altaInfoPrincipal: async(req, res) => {
+        try {
+            console.log(454545, req)
+            let resultado = await sql_conn.request()
+            .input('FOLIO',sql.Int, parseInt(req.txtColaborador))
+            .input('NOMBRE',sql.VarChar, req.txtNombres)
+            .input('APELLIDO',sql.VarChar, req.txtApellidos)
+            .input('CORREO',sql.VarChar, req.txtCorreo)
+            .input('CORREO_ALT',sql.VarChar, req.txtCorreo_Alt)
+            .input('CELULAR',sql.VarChar, req.txtCelular)
+            .input('TELEFONO',sql.VarChar, req.txtTelefono)
+            .input('FECHA_NAC',sql.Date, req.txtFecha_Nac)
+            .input('GENERO',sql.VarChar, req.txtGenero)
+            .input('CALLE',sql.VarChar, req.txtCalle)
+            .input('COLONIA',sql.VarChar, req.txtColonia)
+            .input('NUME',sql.VarChar, req.txtNum_Exterior)
+            .input('NUMI',sql.VarChar, req.txtNum_Interior)
+            .input('CP',sql.VarChar, req.txtCP)
+            .input('PAIS',sql.VarChar, req.txtPais)
+            .input('ESTADO',sql.VarChar, req.txtEstado)
+            .input('CIUDAD',sql.VarChar, req.txtCiudad)
+            .query('EXEC ALTA_INFO_COLABORADOR @FOLIO, @NOMBRE, @APELLIDO, @CORREO, @CORREO_ALT, @CELULAR, @TELEFONO, @FECHA_NAC, @GENERO, @CALLE, @COLONIA, @NUME, @NUMI, @CP, @PAIS, @ESTADO, @CIUDAD')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 module.exports = {
