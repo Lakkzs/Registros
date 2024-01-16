@@ -9,9 +9,22 @@ module.exports = {
         res.render('infoColaborador/info_Adicional',{colaboradores: resultado.datos})
     },
     infoPrincipal: async (req, res) => {
-        let data = req.session.user
-        let resultado = await db.altas.cargaColaboradores(data)
-        res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos})
+        console.log(req.session)
+        if(req.session.user){
+            let data = req.session.user
+            let resultado = await db.altas.cargaColaboradores(data)
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                let datos = (await db.loadInfo.loadEmpresas()).datos
+                console.log(153, datos)
+                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     rt_infoPrincipal: async (req, res) => {
         let data = req.session.user
