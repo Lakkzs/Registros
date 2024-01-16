@@ -414,6 +414,17 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfo: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.body.txtColaborador))
+            .query('EXEC CONSULTA_INFO_COLABORADORES @FOLIO')
+            console.log(resultado)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
     cargaEstados: async(req, res) => {
         try{
             let resultado = await sql_conn.request()

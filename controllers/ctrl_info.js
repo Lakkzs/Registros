@@ -8,9 +8,16 @@ module.exports = {
         res.render('infoColaborador/info_Adicional',{colaboradores: resultado.datos})
     },
     infoPrincipal: async (req, res) => {
+        let resultado = await db.altas.cargaColaboradores()
+        res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos})
+    },
+    rt_infoPrincipal: async (req, res) => {
        let resultado = await db.altas.cargaColaboradores()
        let resultado2= await db.altas.cargaEstados()
-       res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos,estados: resultado2.datos})
+       let resultado3= await db.altas.cargaInfo(req)
+
+           res.render('infoColaborador/info_Principal',{colaboradores: resultado.datos,estados: resultado2.datos, datos: resultado3.datos, NOMBRES_COLABORADOR: resultado3.datos[0].NOMBRES_COLABORADOR})
+
     },
 
     infoEstudios: (req, res) => {
