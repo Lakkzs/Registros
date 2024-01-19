@@ -46,8 +46,10 @@
                         <label class="form-label">Teléfono</label>
                     </div>
                     <div class="ins">
-                        <input type="number" class="form-control" placeholder="833-278-3063" name="txtCelular" value="{{datos.CELULAR_COLABORADOR}}">
-                        <input type="number" class="form-control" placeholder="833-278-3063" name="txtTelefono" value="{{datos.TELEFONO_COLABORADOR}}">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" placeholder="833-278-3063" name="txtCelular" value="{{datos.CELULAR_COLABORADOR}}">
+                        <input  maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" placeholder="833-278-3063" name="txtTelefono" value="{{datos.TELEFONO_COLABORADOR}}">
                     </div>
                 </div>
 
