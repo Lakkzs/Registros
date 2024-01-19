@@ -1,10 +1,10 @@
 <select type="select" class="form-control" name="{{name}}" id="{{id}}">
     {{#if datos.CIUDAD_COLABORADOR}}
-        <option value="{{datos.CIUDAD_COLABORADOR}}" selected hidden> {{datos.CIUDAD_COLABORADOR}} </option>
+        <option value="{{datos.CIUDAD_COLABORADOR}}" class="traido" selected hidden> {{datos.CIUDAD_COLABORADOR}} </option>
     {{else if datos}}
-        <option value="{{datos}}" selected hidden> {{datos}} </option>
+        <option value="{{datos}}" class="traido" selected hidden> {{datos}} </option>
     {{else}}
-        <option value="Nada" selected hidden> Seleccione </option>
+        <option value="Nada" class="seleccion" selected hidden> Seleccione </option>
     {{/if}}
     {{#each municipios}}
     <option value="{{Descripcion}}"> {{Descripcion}} </option>

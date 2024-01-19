@@ -67,9 +67,20 @@ async function onRegistro2(e){
                 console.log(response)
                 if(response.resultado[0].RESULT == 'ACTUALIZADO'){
                     alert('El registro se ha realizado correctamente')
-                    console.log(document.getElementById('formInfoPrincipal'))
                     document.getElementById('formInfoPrincipal').reset();
-                    // await onRegistro(0)
+                    var jsonRegistroInformacion = {txtColaborador: 0}
+                    console.log(jsonRegistroInformacion)
+                    fetch('/rt_info_Principal', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(jsonRegistroInformacion)
+                    }).then((response) => response.json())
+                    .then(async (response) => {
+                        document.getElementById('info').innerHTML = response.html
+                        let element = document.getElementById('txtEstado').value
+                        let element1 = document.getElementById('txtCiudad').value
+                        await cargaMunicipios(element, element1)
+                    })
                 }
                 else{
                     alert('No se han podido registrar los datos correctamente.')
@@ -81,3 +92,4 @@ async function onRegistro2(e){
         }
 
 }
+
