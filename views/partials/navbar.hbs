@@ -27,13 +27,30 @@
             </div>
         </div>
     </div>
-    <div class="dropdown">
+
+    {{!-- <div class="dropdown">
         <div class="dropdown2">
             <a href="/seccion">
-                <button class="dropbtn"> DASHBOARD </button>
+                <button class="dropbtn"> DASHBOARD 1</button>
             </a>
         </div> 
+    </div> --}}
+
+       <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionDashboard()">DASHBOARD
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown3">
+                <a href="/seccion"> DASHBOARD ADMIN</a>
+                   <a href="/seccion2"> DASHBOARD USUARIO</a>
+                      <a > DASHBOARD ADMIN/USUARIO</a>
+             
+            </div>
+        </div>
     </div>
+
+
     <div class="dropdown">
         <div class="dropdown1">
             <a href="/tabla">
@@ -41,6 +58,7 @@
             </a>
         </div> 
     </div>
+
     <div class="dropdown">
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunctionAltas()">ALTAS ADMINISTRADOR
@@ -57,6 +75,7 @@
             </div>
         </div>
     </div>
+
     <div class="dropdown">
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunctionInfoAdicional()">INFORMACION COLABORADOR

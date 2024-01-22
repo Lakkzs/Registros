@@ -12,7 +12,7 @@ const recuperar = require('../controllers/ctrl_recuperar')
 const cms = require('../controllers/ctrl_cms')
 const altas = require('../controllers/ctrl_altas')
 const info = require('../controllers/ctrl_info')
-
+const seccion = require('../controllers/ctrl_seccion')
 
 router.post('/rt_registro', registro.rtRegistro)
 
@@ -40,13 +40,13 @@ router.post('/rt_altaTipoUsuario', altas.rt_altaTipoUsuario)
 router.post('/rt_altaTransitorios', altas.rt_altaTransitorios)
 router.post('/rt_info_Adicional', altas.rt_infoAdicional)
 
-
-
-
 router.post('/rt_altaAdicional', altas.rt_altaAdicional)
 router.post('/rt_cargaInfoEmpresa', altas.rt_cargaInfoEmpresa)
 router.post('/rt_info_Emergencia', altas.rt_cargaContactos)
 router.post('/rt_altaEmergencia', altas.rt_altaContactos)
+
+//GRAFICOS 
+router.post('/rt_cargaMeses', seccion.rt_cargaMeses)
 
 
 //INFO COLABORADOR

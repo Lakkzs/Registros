@@ -149,6 +149,19 @@ const loadInfo = {
             console.log(error)
         }
     },
+    loadChartInfoMonths: async(req, res) => {
+      
+        
+        try{
+            let m = parseInt(req.value)
+            let resultado = await sql_conn.request()
+            .input('MESESATRAS', sql.Int, m)
+            .query(`EXEC CARGAR_MESES_GRAFICO @MESESATRAS`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
     loadInfoYears: async(req, res) => {
         try{
             let resultado = await sql_conn.request()

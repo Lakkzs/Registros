@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-10">
             <div class="tit">
-                INTRANET PRO
+                DASHBOARD 2 
             </div>
 
 
@@ -40,32 +40,7 @@
             </div>
 
             <div class="linea2">
-
-                <div class="col-sm-5 cuadro">
-                    <canvas id="altasAños"></canvas>
-                    <input type="text" id="actual" value="{{ACTUAL}}" hidden>
-                    <input type="text" id="pasado" value="{{PASADO}}" hidden>
-                    <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
-                    <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
-                </div>
-
-
-            </div>
-            <div>
-                <select name="asd" id="txtMeses" name="txtMeses" class="form-select" style="width:10%"
-                    onchange="cargaGrafico(value)">
-                    <option value="3">3 Meses</option>
-                    <option value="6">6 Meses</option>
-                    <option value="8">8 Meses</option>
-                    <option value="10">10 Meses</option>
-                    <option value="13">1 año</option>
-
-                </select>
-            </div>
-
-            <div class="linea2" >
-            {{#if todo}}
-                <div class="col-sm-7 cuadro"  id="linea2">
+                <div class="col-sm-7 cuadro">
                     <canvas id="altas"></canvas>
                     <input type="text" id="enero" value="{{ENERO}}" hidden>
                     <input type="text" id="febrero" value="{{FEBRERO}}" hidden>
@@ -80,9 +55,14 @@
                     <input type="text" id="noviembre" value="{{NOVIEMBRE}}" hidden>
                     <input type="text" id="diciembre" value="{{DICIEMBRE}}" hidden>
                 </div>
-            {{else}}
-                {{> grafico}}
-            {{/if}}
+                <div class="col-sm-5 cuadro">
+                    <canvas id="altasAños"></canvas>
+                    <input type="text" id="actual" value="{{ACTUAL}}" hidden>
+                    <input type="text" id="pasado" value="{{PASADO}}" hidden>
+                    <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
+                    <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
+                </div>
+
             </div>
 
             <div class="linea3">
@@ -92,12 +72,12 @@
                     🎂{{NOMBRE}}: {{MES}} {{DIA}}<br>
                     {{/each}}
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-4 cuadro" >
                     ANIVERSARIOS DEL MES<br>
                     {{#each aniversario}}
                     🎉{{NOMBRES_REG}}: {{ANIOS}} Año(s) - {{MES}} {{DIA}}
                     {{/each}}
-
+               
                 </div>
                 <div class="col-sm-3 cuadro">
                     <canvas id="colaboradores"></canvas>
@@ -111,16 +91,16 @@
 
             <div class="linea3">
                 <div class="col-sm-3 cuadro">
-
+                 
+                </div>
+                <div class="col-sm-3 cuadro" >
+                 
                 </div>
                 <div class="col-sm-3 cuadro">
-
+          
                 </div>
-                <div class="col-sm-3 cuadro">
-
-                </div>
-                <div class="col-sm-3 cuadro">
-
+                <div class="col-sm-3 cuadro" >
+                    
                 </div>
             </div>
         </div>
@@ -130,4 +110,4 @@
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/js/script_seccion.js"></script>
+<script src="/js/script_seccion2.js"></script>
