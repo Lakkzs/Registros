@@ -61,11 +61,11 @@
                     </div>
                     <div class="ins">
                         <input type="date" class="form-control" name="txtFecha_Nac" value="{{datos.FECHA_NAC_COLABORADOR}}">
-                         <select type="select" class="form-control" name="txtGenero">
+                         <select type="select" class="form-control" name="txtGenero" id="txtGenero">
                             {{#if datos.GENERO_COLABORADOR}}
-                                <option value="{{datos.GENERO_COLABORADOR}}" selected hidden> {{datos.GENERO_COLABORADOR}} </option>
+                                <option value="{{datos.GENERO_COLABORADOR}}" class="traido" selected hidden> {{datos.GENERO_COLABORADOR}} </option>
                             {{else}}
-                                <option value="Nada" selected hidden> Seleccione una opción </option>
+                                <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
                             {{/if}}
                             <option value="Masculino"> Masculino </option>
                             <option value="Femenino"> Femenino</option>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="ins">
                         <input type="text" class="form-control" placeholder="Calle" name="txtCalle" value="{{datos.CALLE_COLABORADOR}}">
-                        <input type="" class="form-control" placeholder="Colonia" name="txtColonia" value="{{datos.COLONIA_COLABORADOR}}">
+                        <input type="text" class="form-control" placeholder="Colonia" name="txtColonia" value="{{datos.COLONIA_COLABORADOR}}">
                     </div>
                 </div>
 
@@ -114,9 +114,9 @@
                         </select>
                         <select type="select" class="form-control" name="txtEstado" id="txtEstado" onchange="cargaMunicipios(value)">
                             {{#if datos.ESTADO_COLABORADOR}}
-                                <option value="{{datos.ESTADO_COLABORADOR}}" hidden> {{datos.ESTADO_COLABORADOR}} </option>
+                                <option value="{{datos.ESTADO_COLABORADOR}}" class="traido" hidden> {{datos.ESTADO_COLABORADOR}} </option>
                             {{else}}
-                                <option value="Nada" selected hidden> Seleccione </option>
+                                <option value="Nada" class="seleccione" selected hidden> Seleccione </option>
                             {{/if}}
                             {{#each estados}}
                                 <option value="{{Descripcion}}"> {{Descripcion}}</option>
