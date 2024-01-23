@@ -5,17 +5,61 @@ const nodemailer = require("nodemailer");
 
 module.exports = {
     empresas: (req, res) => {
-        res.render('altas/alta_Empresas')
+        console.log(req.session)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_Empresas', {empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_Empresas', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     tipoUsuario: (req, res) => {
-        res.render('altas/alta_TipoUsuario')
+        console.log(req.session)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_TipoUsuario', {empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_TipoUsuario', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     departamentos: (req, res) => {
-        res.render('altas/alta_Departamentos')
+        console.log(req.session)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_Departamentos', {empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_Departamentos', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     puestos: async(req, res) => {
-        let resultado = await db.altas.cargaDepartamentos()
-        res.render('altas/alta_Puestos', {departamentos: resultado.datos})
+        console.log(req.session)
+        if(req.session.user){
+            let resultado = await db.altas.cargaDepartamentos()
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_TipoUsuario', {departamentos: resultado.datos, empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_TipoUsuario', {departamentos: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     infoEmpresa: async(req, res) => {
         console.log(req.session)
@@ -58,13 +102,33 @@ module.exports = {
     rt_Departamentos: async(req,res) => {
         let 
     },
-    colaborador: (req, res) => {
-
-        res.render('altas/alta_Colaborador')
-
+    colaborador: async (req, res) => {
+        console.log(req.session)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_Colaborador', {empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_Colaborador', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     transitorios: (req, res) => {
-        res.render('altas/alta_Transitorios')
+        console.log(req.session)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_Transitorios', {empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_Transitorios', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     rt_altaColaborador: async (req, res) => {
         try {

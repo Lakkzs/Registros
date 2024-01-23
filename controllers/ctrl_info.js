@@ -4,9 +4,20 @@ module.exports = {
         res.render('info/info')
     },
     infoAdicional: async (req, res) => {
-        let data = req.session.user
-        let resultado = await db.altas.cargaColaboradores(data)
-        res.render('infoColaborador/info_Adicional',{colaboradores: resultado.datos})
+        console.log(req.session)
+        if(req.session.user){
+            let data = req.session.user
+            let resultado = await db.altas.cargaColaboradores(data)
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     infoPrincipal: async (req, res) => {
         console.log(req.session)
@@ -87,9 +98,20 @@ module.exports = {
         }
     },
     infoEmergencia: async(req, res) => {
-        let data = req.session.user
-        let resultado = await db.altas.cargaColaboradores(data)
-        res.render('infoColaborador/info_Emergencia',{colaboradores: resultado.datos})
+        console.log(req.session)
+        if(req.session.user){
+            let data = req.session.user
+            let resultado = await db.altas.cargaColaboradores(data)
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     infoSalud: async (req, res) => {
         if(req.session.user){
