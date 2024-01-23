@@ -458,6 +458,16 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfoSalud: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.colaborador))
+            .query('EXEC CONSULTA_INFO_SALUD @FOLIO')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     cargaEstados: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -634,7 +644,7 @@ const infoColaborador = {
     altaInfoSalud: async(req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, datos.folio)
+            .input('FOLIO', sql.Int, req.txtColaborador)
             .input('SANGRE', sql.VarChar, req.txtSangre)
             .input('ALERGIAS', sql.VarChar, req.txtAlergias)
             .input('PADECIMIENTOS', sql.VarChar, req.txtPadecimientos)

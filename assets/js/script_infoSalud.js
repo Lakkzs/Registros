@@ -1,3 +1,21 @@
+function datosCol(e){
+    e.preventDefault()
+    let colaborador = document.getElementById('txtColaborador').value
+    var colaboradora = {colaborador}
+    console.log(colaborador)
+    fetch('/rt_cargaInfoSalud', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(colaboradora)
+    }).then((response) => response.json())
+    .then(async (response) => {
+        console.log(10, response)
+        document.getElementById('info').innerHTML = response.html
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
+}
 function onRegistro(e){
     e.preventDefault()
 
@@ -21,8 +39,8 @@ function onRegistro(e){
         }).then((response) => response.json())
         .then((response) => {
             console.log(response)
-            if(response.datos[0].RESULT == 'EXISTE'){
-                alert('El usuario ya ha ingresado información anteriormente.')
+            if(response.datos[0].RESULT == 'ACTUALIZADO'){
+                alert('Los datos han sido actualizados correctamente.')
             }
             if(response.datos[0].RESULT == 'OK'){
                 alert('La información de salud se ha registrado correctamente.')
