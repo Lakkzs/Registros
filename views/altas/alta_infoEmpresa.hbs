@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta Informacion Empresa-Colaborador</title>
-    <link rel="stylesheet" href="/css/styleRecuperar.css">
+    <link rel="stylesheet" href="/css/styleAltaEmpresa.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -27,15 +27,23 @@
                     <label class="tit"> Información Laboral </label><br>
                 </div>
                 <div class="mb-3 rec">
-                    <div class="ins">
+                    <div class="lab">
                         <label class="form-label"> Colaborador </label>
-                        <select type="select" class="form-control" placeholder="hector@prointernet.mx" name="txtColaborador" id="txtColaborador" onchange="datosCol(value)">
-                            <option value="Nada" id="selc" selected hidden> Seleccione una opción </option>
+                    </div>
+                    <div class="ins">
+                        <select type="select" class="form-control" name="txtColaborador" id="txtColaborador">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
-                            <option value="{{FOLIO_COLABORADOR}}" class="colabs"> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}} </option>
+                            <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}}
+                            </option>
                             {{/each}}
                         </select>
+                          <button type="submit" class="btn btn-dark" style=" width: 14%" onclick="datosCol(event)"> Buscar
+                        </button>
                     </div>
+
+                </div>
+                <div class="mb-3 rec">
                     <div id="informacion">
                         {{> infoLaboral}}
                     </div>

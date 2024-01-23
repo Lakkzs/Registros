@@ -16,7 +16,7 @@ const altas = require('../controllers/ctrl_altas.js')
 const info = require('../controllers/ctrl_info.js')
 
 // Inicio
-router.get('/', inicio.inicio)
+router.get('/', login.login)
 router.get('/landing', landing.landing)
 router.get('/verificarCorreo', verificationEmail.landing)
 router.get('/cms', cms.cms)

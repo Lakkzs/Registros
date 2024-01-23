@@ -18,11 +18,23 @@ module.exports = {
         res.render('altas/alta_Puestos', {departamentos: resultado.datos})
     },
     infoEmpresa: async(req, res) => {
-        let data = req.session.user
-        let resultado = await db.altas.cargaColaboradores(data)
-        let resultado2 = await db.altas.cargaDepartamentos()
-        let resultado4= await db.altas.cargaPerfiles()
-        res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos})
+        console.log(req.session)
+        if(req.session.user){
+            let data = req.session.user
+            let resultado = await db.altas.cargaColaboradores(data)
+            let resultado2 = await db.altas.cargaDepartamentos()
+            let resultado4= await db.altas.cargaPerfiles()
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos, empresa: datos, varias:true})
+            }else{
+                console.log(2)
+                res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos,EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
+
     },
     cargaPuestos: async(req,res) => {
         let datos = req.body
@@ -31,12 +43,12 @@ module.exports = {
         // console.log(3, resultado3)
         console.log(150, datos)
         if(datos.consulta){
-            res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto", NOMBRE_PUESTO: datos.consulta}, (error, html) => {
+            res.render('partials/puestos',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto", NOMBRE_PUESTO: datos.consulta}, (error, html) => {
                 console.log(html)
                 res.json({html})
             })
         }else{
-            res.render('partials/select',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto"}, (error, html) => {
+            res.render('partials/puestos',{opciones: resultado3.datos, name: "txtPuesto", id:"txtPuesto"}, (error, html) => {
                 console.log(html)
                 res.json({html})
             })
