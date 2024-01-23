@@ -286,7 +286,7 @@ const altas = {
     },
     altaInfoLaboral: async(req, res) => {
         try{
-            console.log(req)
+            console.log(666,req)
             if(req.txtFecha_Salida == ''){
                 let resultado = await sql_conn.request()
                 .input('FOLIO',sql.Int,req.txtColaborador)
