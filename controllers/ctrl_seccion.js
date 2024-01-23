@@ -48,12 +48,12 @@ module.exports = {
                 res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false})
+                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false})
             }else{
                 res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false})
+                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false, todo3: true, todo4: false})
             }
         }else{
             res.render('login/login')
@@ -86,12 +86,37 @@ module.exports = {
         console.log(845874,resultado3)
         if(datos.consulta){
             res.render('partials/grafico',{meses: resultado2.datos, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
-                MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, todo2: true, todo:false}, (error, html) => {
+                MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, todo2: true, todo:true}, (error, html) => {
                 console.log(html)
                 res.json({html})
             })
         }else{
-            res.render('partials/grafico',{meses: resultado3.datos, todo2:true, todo:false}, (error, html) => {
+            res.render('partials/grafico',{meses: resultado3.datos, todo2:true, todo:true}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }
+    },
+    rt_cargaAnios: async (req, res) => {
+        let datos = req.body
+        console.log(777, datos)
+        let resultado3 = await db.loadInfo.loadInfoYears()
+        let actual = resultado3.datos[0][0].ALTA_AÑO_ACTUAL
+        let pasado = resultado3.datos[1][0].ALTA_AÑO_PASADO
+        let antepasado = resultado3.datos[2][0].ALTA_AÑO_ANTEPASADO
+        let pasadoAntepasado = resultado3.datos[3][0].ALTA_AÑO_PASADO_ANTEPASADO
+        let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
+
+        let resultado4 = await db.loadInfo.loadChartInfoYears(datos)
+        console.log('resultado4',resultado4)
+        if(datos.consulta){
+            res.render('partials/graficoAnio',{anios: resultado4.datos,ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, 
+                MESACTUAL: mesActual, todo3: true, todo4: true}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        }else{
+            res.render('partials/graficoAnio',{anios: resultado4.datos, todo3: true, todo4: true}, (error, html) => {
                 console.log(html)
                 res.json({html})
             })

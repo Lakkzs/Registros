@@ -39,33 +39,39 @@
                 </div>
             </div>
 
-            <div class="linea2">
 
-                <div class="col-sm-5 cuadro">
-                    <canvas id="altasAños"></canvas>
-                    <input type="text" id="actual" value="{{ACTUAL}}" hidden>
-                    <input type="text" id="pasado" value="{{PASADO}}" hidden>
-                    <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
-                    <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
+
+
+
+
+            <div style="display:flex">
+                <div class="col-sm-7 ">
+
+                    <select name="asd" id="txtMeses" name="txtMeses" class="form-select" style="width:20%"
+                        onchange="cargaGrafico(value)">
+                        <option value="3">3 Meses</option>
+                        <option value="6">6 Meses</option>
+                        <option value="8">8 Meses</option>
+                        <option value="10">10 Meses</option>
+                        <option value="13">1 año</option>
+
+                    </select>
                 </div>
 
-
-            </div>
-            <div>
-                <select name="asd" id="txtMeses" name="txtMeses" class="form-select" style="width:10%"
-                    onchange="cargaGrafico(value)">
-                    <option value="3">3 Meses</option>
-                    <option value="6">6 Meses</option>
-                    <option value="8">8 Meses</option>
-                    <option value="10">10 Meses</option>
-                    <option value="13">1 año</option>
-
-                </select>
+              
+                <div class="col-sm-5 ">
+                    <select id="txtAnios" name="txtAnios" class="form-select" style="width:30%"   onchange="cargaGraficoAnio(value)">
+                        <option value="2">2 año</option>
+                        <option value="3">3 años</option>
+                        <option value="4">4 años</option>
+                        <option value="5">5 años</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="linea2" >
-            {{#if todo}}
-                <div class="col-sm-7 cuadro"  id="linea2">
+            <div class="linea2">
+                {{#if todo}}
+                <div class="col-sm-7 cuadro" id="linea2">
                     <canvas id="altas"></canvas>
                     <input type="text" id="enero" value="{{ENERO}}" hidden>
                     <input type="text" id="febrero" value="{{FEBRERO}}" hidden>
@@ -80,9 +86,21 @@
                     <input type="text" id="noviembre" value="{{NOVIEMBRE}}" hidden>
                     <input type="text" id="diciembre" value="{{DICIEMBRE}}" hidden>
                 </div>
-            {{else}}
+                {{else}}
                 {{> grafico}}
-            {{/if}}
+                {{/if}}
+
+                <div class="col-sm-5 cuadro" id="linea3">
+                   {{#if todo3}}
+                    <canvas id="altasAños"></canvas>
+                    <input type="text" id="actual" value="{{ACTUAL}}" hidden>
+                    <input type="text" id="pasado" value="{{PASADO}}" hidden>
+                    <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
+                    <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
+                {{else}}
+                  {{> graficoAnio}}
+                {{/if}}
+                </div>
             </div>
 
             <div class="linea3">

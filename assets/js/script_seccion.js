@@ -17,7 +17,7 @@ new Chart(tablaAltas, {
   data: {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     datasets: [{
-      label: 'ALTAS EN EL AÑO',
+      label: 'ALTAS EN EL ULTIMO AÑO',
       data: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre],
       borderWidth: 3
     }]
@@ -114,6 +114,32 @@ function loadChart(valores, meses){
   });
 }
 
+function loadChart2(valores, anios){
+  const tablaAltas2 = document.getElementById('altasAños2');
+  console.log('asd', valores, anios)
+  new Chart(tablaAltas2, {
+    type: 'bar',
+    data: {
+      labels: anios,
+      datasets: [{
+        label: 'ALTAS EN LOS ULTIMOS AÑOS',
+        data: valores,
+        borderWidth: 3
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
+        }
+      }
+    }
+  });
+}
+
 
 async function cargaGrafico(value, consulta) {
   let meses = { value, consulta }
@@ -139,6 +165,51 @@ async function cargaGrafico(value, consulta) {
       console.log('valor', valores)
       console.log('mes', meses)
       loadChart(valores, meses)
+      // if(value!="1234"){
+      //   document.getElementById('altas').setAttribute('Hidden', 'Hidden')
+      //   document.getElementById('altas2').removeAttribute('Hidden')
+      // }else{
+      //   document.getElementById('altas2').setAttribute('Hidden', 'Hidden')
+      //   document.getElementById('altas').removeAttribute('Hidden')
+      // }
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+
+}
+
+async function cargaGraficoAnio(value, consulta) {
+  let anios = { value, consulta }
+  console.log('años seleccionados', anios)
+  fetch('/rt_cargaAnios', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(anios)
+  }).then((response) => response.json())
+    .then((response) => {
+      console.log(10, response)
+      document.getElementById('linea3').innerHTML = response.html
+      let anios = []
+      let anio = document.getElementsByClassName('anio')
+      for (let i = 0; i < anio.length; i++) {
+        anios.push(anio[i].value)
+      }
+      let valores = []
+      let valor = document.getElementsByClassName('valor2')
+      for (let i = 0; i < valor.length; i++) {
+        valores.push(parseInt(valor[i].value))
+      }
+      console.log('valor2', valores)
+      console.log('anio', anios)
+      loadChart2(valores, anios)
+      // if(value!="1234"){
+      //   document.getElementById('altas').setAttribute('Hidden', 'Hidden')
+      //   document.getElementById('altas2').removeAttribute('Hidden')
+      // }else{
+      //   document.getElementById('altas2').setAttribute('Hidden', 'Hidden')
+      //   document.getElementById('altas').removeAttribute('Hidden')
+      // }
     })
     .catch(function (err) {
       console.log(err)

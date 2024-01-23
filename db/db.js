@@ -162,6 +162,17 @@ const loadInfo = {
             console.log(error)
         } 
     },
+    loadChartInfoYears: async(req, res) => {
+        try{
+            let m = parseInt(req.value)
+            let resultado = await sql_conn.request()
+            .input('ANIOSATRAS', sql.Int, m)
+            .query(`EXEC CARGAR_ANIOS_GRAFICO @ANIOSATRAS`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
     loadInfoYears: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
