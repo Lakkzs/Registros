@@ -448,6 +448,16 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfoEstudios: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.colaborador))
+            .query('EXEC CONSULTA_INFO_ESTUDIOS @FOLIO')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     cargaEstados: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -605,10 +615,10 @@ const altas = {
     },
 }
 const infoColaborador = {
-    altaInfoEstudios: async(req, datos, res) => {
+    altaInfoEstudios: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, datos.folio)
+            .input('FOLIO', sql.Int, req.txtColaborador)
             .input('ESCUELA', sql.VarChar, req.txtEscuela)
             .input('CARRERA', sql.VarChar, req.txtCarrera)
             .input('HORA_ENTRADA', sql.VarChar, req.txtEntrada)

@@ -44,8 +44,33 @@ module.exports = {
         console.log(resultado)
         res.json({status: 'OK', resultado})
     },
-    infoEstudios: (req, res) => {
-        res.render('infoColaborador/info_Estudios')
+    infoEstudios: async (req, res) => {
+        if(req.session.user){
+            let data = req.session.user
+            let resultado = await db.altas.cargaColaboradores(data)
+            if(req.session.user.user == 'SuperAdministrador'){
+                console.log(1)
+                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, empresa: datos, varias:true})
+            }else{
+                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
+    },
+    rt_cargaInfoEstudios: async(req, res) => {
+        try {
+            let datos = (req.body)
+            let resultado3 = await db.altas.cargaInfoEstudios(datos)
+            console.log(123, resultado3)
+
+            res.render('partials/infoEstudios',{datos: resultado3.datos[0]}, (error, html) => {
+                console.log(html)
+                res.json({html})
+            })
+        } catch (error) {
+            console.log(error)
+        }
     },
     infoEmergencia: async(req, res) => {
         let data = req.session.user
@@ -59,8 +84,8 @@ module.exports = {
     rt_altaInfoEstudios: async (req, res) => {
         try {
             let body = req.body
-            let folio = req.session.user
-            let datos = (await db.infoColaborador.altaInfoEstudios(body, folio)).datos
+            let datos = (await db.infoColaborador.altaInfoEstudios(body)).datos
+            console.log(datos)
             res.json({status: 'OK', datos})
         } catch (error) {
             console.log(error)

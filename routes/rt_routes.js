@@ -53,6 +53,7 @@ router.post('/rt_cargaAnios', seccion.rt_cargaAnios)
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_altaInfoSalud', info.rt_altaInfoSalud) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_cargaMunicipio', info.rt_cargaMunicipio)
+router.post('/rt_cargaInfoEstudios', info.rt_cargaInfoEstudios)
 router.post('/rt_info_Principal', info.rt_infoPrincipal)
 router.post('/rt_altaInfoPrincipal', info.rt_altaInfoPrincipal)
 

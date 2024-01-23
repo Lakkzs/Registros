@@ -26,94 +26,25 @@
                 <div class="titulo">
                     <label class="tit"> Información de Estudios </label><br>
                 </div>
-                <div class="mb-3 rec">
+                                <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Nombre de la escuela </label>
+                        <label class="form-label"> Colaborador </label>
                     </div>
                     <div class="ins">
-                        <input type="input" class="form-control" placeholder="Universidad del Noreste" name="txtEscuela">
+                        <select type="select" class="form-control" name="txtColaborador" id="txtColaborador">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                            {{#each colaboradores}}
+                            <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}}
+                            </option>
+                            {{/each}}
+                        </select>
+                          <button type="submit" class="btn btn-dark" style=" width: 14%" onclick="datosCol(event)"> Buscar
+                        </button>
                     </div>
                 </div>
-                <div class="mb-3 rec">
-                    <div class="lab">
-                        <label class="form-label"> Nombre de la carrera </label>
-                    </div>
-                    <div class="ins">
-                        <input type="input" class="form-control" placeholder="Ingeniería en Sistemas Computacionales y Electrónicos" name="txtCarrera">
-                    </div>
+                <div id="info">
+                    {{> infoEstudios}}
                 </div>
-                <div class="mb-3 rec">
-                    <div class="lab">
-                        <label class="form-label"> Periodo </label>
-                        <label class="form-label"> Periodicidad </label>
-                    </div>
-                    <div class="ins">
-                        <select name="txtPeriodo" class="form-control">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            <option value="Primero"> Primero </option>
-                            <option value="Segundo"> Segundo </option>
-                            <option value="Tercero"> Tercero </option>
-                            <option value="Cuarto"> Cuarto </option>
-                            <option value="Quinto"> Quinto </option>
-                            <option value="Sexto"> Sexto </option>
-                            <option value="Séptimo"> Séptimo </option>
-                            <option value="Octavo"> Octavo </option>
-                            <option value="Noveno"> Noveno </option>
-                            <option value="Décimo"> Décimo </option>
-                        </select>
-                        <select name="txtPeriodicidad" class="form-control">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            <option value="Semestre"> Semestre </option>
-                            <option value="Cuatrimestre"> Cuatrimestre </option>
-                        </select>
-                    </div>
-                </div> 
-                <div class="mb-3 rec">
-                    <div class="lab">
-                        <label class="form-label"> Hora de Entrada </label>
-                        <label class="form-label"> Hora de Salida </label>
-                    </div>
-                    <div class="ins">
-                        <select name="txtEntrada" class="form-control">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            <option value="07:00"> 07:00 </option>
-                            <option value="08:00"> 08:00 </option>
-                            <option value="09:00"> 09:00 </option>
-                            <option value="10:00"> 10:00 </option>
-                            <option value="11:00"> 11:00 </option>
-                            <option value="12:00"> 12:00 </option>
-                            <option value="13:00"> 13:00 </option>
-                            <option value="14:00"> 14:00 </option>
-                            <option value="15:00"> 15:00 </option>
-                            <option value="16:00"> 16:00 </option>
-                            <option value="17:00"> 17:00 </option>
-                            <option value="18:00"> 18:00 </option>
-                            <option value="19:00"> 19:00 </option>
-                            <option value="20:00"> 20:00 </option>
-                            <option value="21:00"> 21:00 </option>
-                            <option value="22:00"> 22:00 </option>
-                        </select>
-                        <select name="txtSalida" class="form-control">
-                            <option value="Nada" selected hidden> Seleccione una opción </option>
-                            <option value="07:00"> 07:00 </option>
-                            <option value="08:00"> 08:00 </option>
-                            <option value="09:00"> 09:00 </option>
-                            <option value="10:00"> 10:00 </option>
-                            <option value="11:00"> 11:00 </option>
-                            <option value="12:00"> 12:00 </option>
-                            <option value="13:00"> 13:00 </option>
-                            <option value="14:00"> 14:00 </option>
-                            <option value="15:00"> 15:00 </option>
-                            <option value="16:00"> 16:00 </option>
-                            <option value="17:00"> 17:00 </option>
-                            <option value="18:00"> 18:00 </option>
-                            <option value="19:00"> 19:00 </option>
-                            <option value="20:00"> 20:00 </option>
-                            <option value="21:00"> 21:00 </option>
-                            <option value="22:00"> 22:00 </option>
-                        </select>
-                    </div>
-                </div> 
                 <div class="mb-3 rec">
                     <div class="but">
                         <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Registrar Información </button> 

@@ -235,6 +235,7 @@ module.exports = {
             res.json({estatus:'ERROR'})
         }
     },
+    
     rt_cargaContactos: async(req,res) => {
         let datos = req.body
         let resultado = (await db.altas.cargaContactosEmergencia(datos)).datos
