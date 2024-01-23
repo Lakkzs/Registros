@@ -1,10 +1,12 @@
-function datosCol(value){
-    let colaborador = {value}
+function datosCol(e){
+    e.preventDefault()
+    let colaborador = document.getElementById('txtColaborador').value
+    var colaboradora = {colaborador}
     console.log(colaborador)
     fetch('/rt_cargaInfoEmpresa', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(colaborador)
+        body: JSON.stringify(colaboradora)
     }).then((response) => response.json())
     .then(async (response) => {
         console.log(10, response)
