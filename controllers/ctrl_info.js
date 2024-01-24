@@ -4,7 +4,6 @@ module.exports = {
         res.render('info/info')
     },
     infoAdicional: async (req, res) => {
-        console.log(req.session)
         if(req.session.user){
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
@@ -20,7 +19,6 @@ module.exports = {
         }
     },
     infoPrincipal: async (req, res) => {
-        console.log(req.session)
         if(req.session.user){
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
@@ -98,7 +96,6 @@ module.exports = {
         }
     },
     infoEmergencia: async(req, res) => {
-        console.log(req.session)
         if(req.session.user){
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)

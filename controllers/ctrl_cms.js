@@ -2,7 +2,6 @@ const db = require('../db/db')
 
 module.exports = {
     cms: async (req, res) => {
-        console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)

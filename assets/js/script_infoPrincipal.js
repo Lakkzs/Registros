@@ -1,6 +1,6 @@
 async function cargaMunicipios(value, CIUDAD_COLABORADOR){
     let depende = {value, CIUDAD_COLABORADOR}
-    console.log(65879, depende)
+    (65879, depende)
     fetch('/rt_cargaMunicipio', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
