@@ -48,12 +48,12 @@ module.exports = {
                 res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false})
+                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false, user: req.session.user})
             }else{
                 res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false, todo3: true, todo4: false})
+                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false, todo3: true, todo4: false, user: req.session.user})
             }
         }else{
             res.render('login/login')

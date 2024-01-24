@@ -82,7 +82,9 @@
             </button>
             <div class="dropdown-content" id="myDropdown2">
                 <a href="/alta_Colaborador"> COLABORADOR </a>
-                <a href="/alta_infoEmpresa"> INFORMACIÓN DE EMPRESA-COLABORADOR </a>
+                {{#ifCond user.user '==' 'SuperAdministrador'}}
+                    <a href="/alta_infoEmpresa"> INFORMACIÓN DE EMPRESA-COLABORADOR </a>
+                {{/ifCond}}
                 <a href="/info_Principal"> INFORMACIÓN PRINCIPAL </a>
                 <a href="/info_Adicional"> INFORMACION ADICIONAL </a>
                 <a href="/info_Emergencia"> DATOS DE EMERGENCIA </a>

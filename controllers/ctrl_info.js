@@ -10,10 +10,10 @@ module.exports = {
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
-                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, empresa: datos, varias:true})
+                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
                 console.log(2)
-                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+                res.render('infoColaborador/info_Adicional', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
@@ -28,10 +28,10 @@ module.exports = {
                 console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(153, datos)
-                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, empresa: datos, varias:true})
+                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
                 console.log(2)
-                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+                res.render('infoColaborador/info_Principal', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
@@ -61,9 +61,9 @@ module.exports = {
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
-                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, empresa: datos, varias:true})
+                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
-                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+                res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
@@ -104,10 +104,10 @@ module.exports = {
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
-                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, empresa: datos, varias:true})
+                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
                 console.log(2)
-                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+                res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
@@ -119,9 +119,9 @@ module.exports = {
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
-                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, empresa: datos, varias:true})
+                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
-                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false})
+                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')

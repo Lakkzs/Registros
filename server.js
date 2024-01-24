@@ -18,6 +18,14 @@ app.use(session({
     saveUninitialized: false,
     resave: true,
 }))
+app.use('/cms', function (req, res, next) {
+    console.log(777777777777, req.session)
+    if(req.session.user.user == 'SuperAdministrador' || req.session.user.user == 'Administrador'){
+        res.redirect('/seccion')
+    }else{
+        res.redirect('/seccion2')
+    }
+});
 
 hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
 
