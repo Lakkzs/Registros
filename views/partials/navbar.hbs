@@ -61,12 +61,28 @@
     {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
         <div class="dropdown">
-            <button class="dropbtn" onclick="myFunctionAltas()">CATÁLOGOS
+            <button class="dropbtn" onclick="myFunctionCatalogos()">CATÁLOGOS
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="myDropdown1">
                 <a href="/alta_Empresas"> EMPRESA </a>
                 <a href="/alta_TipoUsuario"> TIPOS DE USUARIO </a>
+                <a href="/alta_Departamentos"> DEPARTAMENTOS </a>
+                <a href="/alta_Puestos"> PUESTOS </a>
+                <a href="/alta_Transitorios"> TRANSITORIOS </a>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
+    <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionExtras()">EXTRAS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown4">
+                <a href="/extras_calendario"> CALENDARIO </a>
+                <a href="/extras_vacaciones"> VACACIONES </a>
                 <a href="/alta_Departamentos"> DEPARTAMENTOS </a>
                 <a href="/alta_Puestos"> PUESTOS </a>
                 <a href="/alta_Transitorios"> TRANSITORIOS </a>
