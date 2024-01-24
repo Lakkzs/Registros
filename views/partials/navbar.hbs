@@ -58,7 +58,7 @@
             </a>
         </div> 
     </div>
-
+    {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunctionAltas()">CATÁLOGOS
@@ -73,7 +73,8 @@
             </div>
         </div>
     </div>
-
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunctionInfoAdicional()">INFORMACION COLABORADOR(Admin)
@@ -90,6 +91,7 @@
             </div>
         </div>
     </div>
+    {{/ifCond}}
     <div class="dropdown">
         <div class="dropdown3">
             <div class="boton">
