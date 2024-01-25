@@ -31,4 +31,12 @@ module.exports = {
             res.render('login/login')
         }
     },
+    rt_cargarCalendario: async(req, res) => {
+        let resultado3 = (await db.extras.cargarFestivos()).datos
+        console.log(123, resultado3)
+
+        res.render('partials/extrasCalendario',{datos: resultado3}, (error, html) => {
+            res.json({html})
+        })
+    },
 }

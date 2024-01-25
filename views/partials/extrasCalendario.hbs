@@ -1,20 +1,22 @@
-function addDate(e){
-    e.preventDefault()
-
-    var container = document.getElementById("fecha");
-
-    // Crea un nuevo div para la fila con el contenido deseado
-    var nuevaFilaHTML = `
+{{#each datos}}
 <div id="inputs" style="display: flex;">
-    <input class="form-control" type="text" name="txtDescripcion">
+    <input class="form-control" type="text" name="txtDescripcion" value="{{DESCRIPCION_DIAS_FESTIVOS}}">
     <select class="form-control" name="" id="">
+        {{#if CATEGORIA_DIAS_FESTIVOS}}
+        <option value="{{CATEGORIA_DIAS_FESTIVOS}}" class="traido" selected hidden> {{CATEGORIA_DIAS_FESTIVOS}} </option>
+        {{else}}
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+        {{/if}}
         <option value="Día festivo oficial">Día festivo oficial</option>
         <option value="Día festivo no oficial">Día festivo no oficial</option>
         <option value="Cumpleaños">Cumpleaños</option>
     </select>
     <select class="form-control" name="txtMes">
+        {{#if MES_ANIO_DIAS_FESTIVOS}}
+        <option value="{{MES_ANIO_DIAS_FESTIVOS}}" class="traido" selected hidden> {{MES_ANIO_DIAS_FESTIVOS}} </option>
+        {{else}}
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+        {{/if}}
         <option value="ENERO"> ENERO </option>
         <option value="FEBRERO"> FEBRERO </option>
         <option value="MARZO"> MARZO </option>
@@ -29,7 +31,11 @@ function addDate(e){
         <option value="DICIEMBRE"> DICIEMBRE </option>
     </select>
     <select class="form-control" name="txtDia">
+        {{#if DIA_ANIO_DIAS_FESTIVOS}}
+        <option value="{{DIA_ANIO_DIAS_FESTIVOS}}" class="traido" selected hidden> {{DIA_ANIO_DIAS_FESTIVOS}} </option>
+        {{else}}
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+        {{/if}}
         <option value="1"> 1 </option>
         <option value="2"> 2 </option>
         <option value="3"> 3 </option>
@@ -63,30 +69,4 @@ function addDate(e){
         <option value="31"> 31 </option>
     </select>
 </div>
-    `;
-
-    // Inserta la nueva fila al final del contenido del contenedor
-    container.insertAdjacentHTML('beforeend', nuevaFilaHTML);
-
-}
-
-function loadList(e){
-    e.preventDefault()
-
-    fetch('/rt_cargarCalendario', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify()
-    }).then((response) => response.json())
-    .then(async (response) => {
-        document.getElementById('fecha').innerHTML = response.html
-        
-    })
-    .catch(function (err) {
-        console.log(err)
-    })
-
-
-
-
-}
+{{/each}}

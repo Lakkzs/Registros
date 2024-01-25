@@ -26,11 +26,11 @@
             <br><br>
             <form class="mt-10" id="formExtraCalendario">
                 <div class="titulo">
-                    <label class="tit"> Calendario </label><br>
+                    <label class="tit"> Calendario de Días Festivos </label><br>
                 </div>
                 <div class="mb-4 rec">
                     <div class="ins">
-                        <button type="submit" class="btn btn-dark" style=" width: 100%" onclick="loadList()">
+                        <button type="submit" class="btn btn-dark" style=" width: 100%" onclick="loadList(event)">
                             Cargar Lista
                         </button>
                         <button type="submit" class="btn btn-dark" style=" width: 100%" onclick="addDate(event)">
@@ -41,18 +41,7 @@
 
                 <div class="mb-3 rec" style="max-height:510px; overflow-x:hidden; overflow-y: scroll hidden;">
                     <div id="fecha">
-                        <div id="inputs" style="display: flex;">
-                            <input class="form-control" type="text">
-                            <select class="form-control" name="" id="">
-                                <option value="Nada" selected hidden>Seleccione una opcion</option>
-                                <option value="Día inhabil">Día inhabil</option>
-                                <option value="Día festivo">Día festivo</option>
-                                <option value="Puente">Puente</option>
-                                <option value="Cumpleaños">Cumpleaños</option>
-                            </select>
-                            <input class="form-control" type="date">
-                            <input class="form-control" type="date">
-                        </div>
+                        {{> extrasCalendario}}
                     </div>
                 </div>
            

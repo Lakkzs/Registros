@@ -685,9 +685,20 @@ const infoColaborador = {
         }
     }
 }
+const extras = {
+    cargarFestivos: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_CARGAR_FESTIVOS')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador, extras
 }
 
 

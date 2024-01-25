@@ -13,6 +13,7 @@ const cms = require('../controllers/ctrl_cms')
 const altas = require('../controllers/ctrl_altas')
 const info = require('../controllers/ctrl_info')
 const seccion = require('../controllers/ctrl_seccion')
+const extras = require('../controllers/ctrl_extras')
 
 router.post('/rt_registro', registro.rtRegistro)
 
@@ -58,6 +59,8 @@ router.post('/rt_cargaInfoSalud', info.rt_cargaInfoSalud)
 router.post('/rt_info_Principal', info.rt_infoPrincipal)
 router.post('/rt_altaInfoPrincipal', info.rt_altaInfoPrincipal)
 
+//EXTRAS
+router.post('/rt_cargarCalendario', extras.rt_cargarCalendario)
 
 module.exports = router
 
