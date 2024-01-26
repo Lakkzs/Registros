@@ -1,7 +1,7 @@
 {{#each datos}}
 <div id="inputs" style="display: flex;">
-    <input class="form-control" type="text" name="txtDescripcion" value="{{DESCRIPCION_DIAS_FESTIVOS}}">
-    <select class="form-control" name="" id="">
+    <input class="form-control filas" type="text" name="txtDescripcion{{@index}}" value="{{DESCRIPCION_DIAS_FESTIVOS}}">
+    <select class="form-control" name="txtCategoria{{@index}}">
         {{#if CATEGORIA_DIAS_FESTIVOS}}
         <option value="{{CATEGORIA_DIAS_FESTIVOS}}" class="traido" selected hidden> {{CATEGORIA_DIAS_FESTIVOS}} </option>
         {{else}}
@@ -11,7 +11,7 @@
         <option value="Día festivo no oficial">Día festivo no oficial</option>
         <option value="Cumpleaños">Cumpleaños</option>
     </select>
-    <select class="form-control" name="txtMes">
+    <select class="form-control" name="txtMes{{@index}}">
         {{#if MES_ANIO_DIAS_FESTIVOS}}
         <option value="{{MES_ANIO_DIAS_FESTIVOS}}" class="traido" selected hidden> {{MES_ANIO_DIAS_FESTIVOS}} </option>
         {{else}}
@@ -30,7 +30,7 @@
         <option value="NOVIEMBRE"> NOVIEMBRE </option>
         <option value="DICIEMBRE"> DICIEMBRE </option>
     </select>
-    <select class="form-control" name="txtDia">
+    <select class="form-control" name="txtDia{{@index}}">
         {{#if DIA_ANIO_DIAS_FESTIVOS}}
         <option value="{{DIA_ANIO_DIAS_FESTIVOS}}" class="traido" selected hidden> {{DIA_ANIO_DIAS_FESTIVOS}} </option>
         {{else}}

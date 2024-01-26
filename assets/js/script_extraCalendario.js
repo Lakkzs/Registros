@@ -2,18 +2,19 @@ function addDate(e){
     e.preventDefault()
 
     var container = document.getElementById("fecha");
+    let filas = document.getElementsByClassName('filas').length
 
     // Crea un nuevo div para la fila con el contenido deseado
     var nuevaFilaHTML = `
 <div id="inputs" style="display: flex;">
-    <input class="form-control" type="text" name="txtDescripcion">
-    <select class="form-control" name="" id="">
+    <input class="form-control filas" type="text" name="txtDescripcion${filas}">
+    <select class="form-control" name="txtCategoria${filas}">
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
         <option value="Día festivo oficial">Día festivo oficial</option>
         <option value="Día festivo no oficial">Día festivo no oficial</option>
         <option value="Cumpleaños">Cumpleaños</option>
     </select>
-    <select class="form-control" name="txtMes">
+    <select class="form-control" name="txtMes${filas}">
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
         <option value="ENERO"> ENERO </option>
         <option value="FEBRERO"> FEBRERO </option>
@@ -28,7 +29,7 @@ function addDate(e){
         <option value="NOVIEMBRE"> NOVIEMBRE </option>
         <option value="DICIEMBRE"> DICIEMBRE </option>
     </select>
-    <select class="form-control" name="txtDia">
+    <select class="form-control" name="txtDia${filas}">
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
         <option value="1"> 1 </option>
         <option value="2"> 2 </option>
@@ -85,8 +86,40 @@ function loadList(e){
     .catch(function (err) {
         console.log(err)
     })
+}
 
-
-
-
+function onRegistro(e){
+    e.preventDefault()
+    var formExtraCalendario = new FormData(document.getElementById('formExtraCalendario'))
+    var jsonExtraCalendario = {}
+    var arrFaltantes = []
+    for(var key of formExtraCalendario.keys()){
+        jsonExtraCalendario[key] = formExtraCalendario.get(key)
+        if((jsonExtraCalendario[key] == '' || jsonExtraCalendario[key] == null || jsonExtraCalendario[key] == undefined || jsonExtraCalendario[key] == 'Nada')){
+            arrFaltantes.push(' ' + key.replace("txt", ""))
+        }
+    }
+    if(arrFaltantes.length > 0){
+        alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
+    }
+    else{
+        fetch('/rt_actualizarFechas', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(jsonExtraCalendario)
+        }).then((response) => response.json())
+        .then((response) => {
+            console.log(response)
+            // if(response.datos[0].RESULT == 'EXISTE'){
+            //     alert('El Nombre, Razón Social o RFC ingresado no está disponible, intente de nuevo.')
+            // }
+            // if(response.datos[0].RESULT == 'OK'){
+            //     alert('La empresa ha sido registrada correctamente.')
+            //     document.getElementById('formExtraCalendario').reset();
+            // }
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+    }
 }

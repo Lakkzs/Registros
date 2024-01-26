@@ -688,9 +688,32 @@ const infoColaborador = {
 const extras = {
     cargarFestivos: async(req, res) => {
         try {
+            console.log(req)
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_CARGAR_FESTIVOS')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_CARGAR_FESTIVOS @EMPRESA')
             return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    actualizarFestivos: async(req, res) => {
+        try {
+            console.log(155, req)
+            // const datosType = new sql.Table();
+            // datosType.columns.add('Descripcion', sql.VarChar(100));
+            // datosType.columns.add('Categoria', sql.VarChar(50));
+            // datosType.columns.add('Mes', sql.VarChar(20));
+            // datosType.columns.add('Dia', sql.VarChar(10));
+            // const datos = req.body;
+            // // Agrega cada conjunto de datos al conjunto de datos
+            // datos.forEach((dato) => {
+            //     datosType.rows.add(dato.Descripcion, dato.Categoria, dato.Mes, dato.Dia);
+            // });
+            // let resultado = await sql_conn.request()
+            // .input('Datos', datosType)
+            // .query('EXEC EVENTO_ACTUALIZAR_DIAS_FESTIVOS')
+            // return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
         }

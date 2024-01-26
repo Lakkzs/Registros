@@ -32,11 +32,23 @@ module.exports = {
         }
     },
     rt_cargarCalendario: async(req, res) => {
-        let resultado3 = (await db.extras.cargarFestivos()).datos
+        let data = req.session.user
+        let resultado3 = (await db.extras.cargarFestivos(data)).datos
         console.log(123, resultado3)
-
         res.render('partials/extrasCalendario',{datos: resultado3}, (error, html) => {
             res.json({html})
         })
     },
+    rt_actualizarFechas: async(req,res) => {
+        try{
+            let body = req.body
+            console.log(144, body)
+            let datos = (await db.extras.actualizarFestivos(body)).datos
+            console.log(datos)
+            res.json({status: 'OK', datos})
+        } catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    }
 }
