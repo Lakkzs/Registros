@@ -41,9 +41,11 @@ module.exports = {
     },
     rt_actualizarFechas: async(req,res) => {
         try{
-            let body = req.body
+            let body = req.body.jsonExtraCalendario
+            let filas = req.body.filas
             console.log(144, body)
-            let datos = (await db.extras.actualizarFestivos(body)).datos
+            console.log(144, filas)
+            let datos = (await db.extras.actualizarFestivos(body, filas)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch(error){

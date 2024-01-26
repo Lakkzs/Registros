@@ -93,12 +93,15 @@ function onRegistro(e){
     var formExtraCalendario = new FormData(document.getElementById('formExtraCalendario'))
     var jsonExtraCalendario = {}
     var arrFaltantes = []
+    let filas = document.getElementsByClassName('filas').length
+
     for(var key of formExtraCalendario.keys()){
         jsonExtraCalendario[key] = formExtraCalendario.get(key)
         if((jsonExtraCalendario[key] == '' || jsonExtraCalendario[key] == null || jsonExtraCalendario[key] == undefined || jsonExtraCalendario[key] == 'Nada')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
     }
+    console.log(4444, jsonExtraCalendario)
     if(arrFaltantes.length > 0){
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
     }
@@ -106,7 +109,7 @@ function onRegistro(e){
         fetch('/rt_actualizarFechas', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(jsonExtraCalendario)
+            body: JSON.stringify({jsonExtraCalendario, filas})
         }).then((response) => response.json())
         .then((response) => {
             console.log(response)

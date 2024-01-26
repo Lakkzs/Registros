@@ -697,9 +697,16 @@ const extras = {
             console.log(error)
         }
     },
-    actualizarFestivos: async(req, res) => {
+    actualizarFestivos: async(req, filas, res) => {
         try {
             console.log(155, req)
+            console.log(155, filas)
+
+
+
+
+
+
             // const datosType = new sql.Table();
             // datosType.columns.add('Descripcion', sql.VarChar(100));
             // datosType.columns.add('Categoria', sql.VarChar(50));
