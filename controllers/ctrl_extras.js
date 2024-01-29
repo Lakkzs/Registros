@@ -43,11 +43,9 @@ module.exports = {
         try{
             let body = req.body.jsonExtraCalendario
             let filas = req.body.filas
-            console.log(144, body)
-            console.log(144, filas)
-            let datos = (await db.extras.actualizarFestivos(body, filas)).datos
-            console.log(datos)
-            res.json({status: 'OK', datos})
+            let data = req.session.user
+            let datos = (await db.extras.actualizarFestivos(body, filas, data))
+            res.json({status: 'OK', datos: 'ACTUALIZADO'})
         } catch(error){
             console.log(error)
             res.json({estatus:'ERROR'})

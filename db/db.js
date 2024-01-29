@@ -697,30 +697,30 @@ const extras = {
             console.log(error)
         }
     },
-    actualizarFestivos: async(req, filas, res) => {
+    actualizarFestivos: async(req, filas, data, res) => {
         try {
-            console.log(155, req)
-            console.log(155, filas)
-
-
-
-
-
-
-            // const datosType = new sql.Table();
-            // datosType.columns.add('Descripcion', sql.VarChar(100));
-            // datosType.columns.add('Categoria', sql.VarChar(50));
-            // datosType.columns.add('Mes', sql.VarChar(20));
-            // datosType.columns.add('Dia', sql.VarChar(10));
-            // const datos = req.body;
-            // // Agrega cada conjunto de datos al conjunto de datos
-            // datos.forEach((dato) => {
-            //     datosType.rows.add(dato.Descripcion, dato.Categoria, dato.Mes, dato.Dia);
-            // });
-            // let resultado = await sql_conn.request()
-            // .input('Datos', datosType)
-            // .query('EXEC EVENTO_ACTUALIZAR_DIAS_FESTIVOS')
-            // return objeto_resultado(resultado)
+            let arrayPrueba = []
+            let arrayFinal = []
+            let contador = 4
+            console.log(Object.values(req))
+            for(let i = 0; i < Object.values(req).length; i++){
+                arrayPrueba.push(Object.values(req)[i])
+                if(i == contador){
+                    arrayFinal.push(arrayPrueba)
+                    arrayPrueba = []
+                    contador += 5
+                }
+            }
+            for(let i = 0; i < arrayFinal.length; i++){
+                sql_conn.request()
+                .input('ID', sql.Int, arrayFinal[i][0])
+                .input('DESCRIPCION', sql.VarChar, arrayFinal[i][1])
+                .input('CATEGORIA', sql.VarChar, arrayFinal[i][2])
+                .input('MES', sql.VarChar, arrayFinal[i][3])
+                .input('DIA', sql.VarChar, arrayFinal[i][4])
+                .input('EMPRESA', sql.Int, data.id_empresa)
+                .query('EXEC EVENTO_ACTUALIZAR_DIAS_FESTIVOS @ID, @DESCRIPCION, @CATEGORIA, @MES, @DIA, @EMPRESA')
+            }
         } catch (error) {
             console.log(error)
         }

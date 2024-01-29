@@ -7,6 +7,7 @@ function addDate(e){
     // Crea un nuevo div para la fila con el contenido deseado
     var nuevaFilaHTML = `
 <div id="inputs" style="display: flex;">
+    <input class="form-control" type="text" name="txtId${filas}" value="0" hidden>
     <input class="form-control filas" type="text" name="txtDescripcion${filas}">
     <select class="form-control" name="txtCategoria${filas}">
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
@@ -97,11 +98,11 @@ function onRegistro(e){
 
     for(var key of formExtraCalendario.keys()){
         jsonExtraCalendario[key] = formExtraCalendario.get(key)
+        console.log(456, jsonExtraCalendario[key])
         if((jsonExtraCalendario[key] == '' || jsonExtraCalendario[key] == null || jsonExtraCalendario[key] == undefined || jsonExtraCalendario[key] == 'Nada')){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
     }
-    console.log(4444, jsonExtraCalendario)
     if(arrFaltantes.length > 0){
         alert(`Por favor llene los siguientes campos faltantes:${arrFaltantes}`)
     }
@@ -113,13 +114,11 @@ function onRegistro(e){
         }).then((response) => response.json())
         .then((response) => {
             console.log(response)
-            // if(response.datos[0].RESULT == 'EXISTE'){
-            //     alert('El Nombre, Razón Social o RFC ingresado no está disponible, intente de nuevo.')
-            // }
-            // if(response.datos[0].RESULT == 'OK'){
-            //     alert('La empresa ha sido registrada correctamente.')
-            //     document.getElementById('formExtraCalendario').reset();
-            // }
+            if(response.datos == 'ACTUALIZADO'){
+                alert('Los días festivos han sido agregados/actualizado correctamente.')
+            }else{
+                alert('Ha ocurrido un error.')
+            }
         })
         .catch(function (err) {
             console.log(err)
