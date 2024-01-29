@@ -711,6 +711,7 @@ const extras = {
                     contador += 5
                 }
             }
+            console.log(arrayFinal)
             for(let i = 0; i < arrayFinal.length; i++){
                 sql_conn.request()
                 .input('ID', sql.Int, arrayFinal[i][0])
@@ -721,6 +722,18 @@ const extras = {
                 .input('EMPRESA', sql.Int, data.id_empresa)
                 .query('EXEC EVENTO_ACTUALIZAR_DIAS_FESTIVOS @ID, @DESCRIPCION, @CATEGORIA, @MES, @DIA, @EMPRESA')
             }
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    eliminarFecha: async(req, data, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('ID', sql.Int, req.id)
+            .input('EMPRESA', sql.Int, data.id_empresa)
+            .query('EXEC EVENTO_ELIMINAR_FECHA @ID, @EMPRESA')
+            return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
         }

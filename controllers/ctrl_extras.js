@@ -50,5 +50,11 @@ module.exports = {
             console.log(error)
             res.json({estatus:'ERROR'})
         }
+    },
+    rt_eliminarFecha: async(req,res) => {
+        let body = req.body
+        let data = req.session.user
+        let datos = (await db.extras.eliminarFecha(body, data)).datos
+        res.json({status: 'OK', datos})
     }
 }
