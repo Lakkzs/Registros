@@ -1,13 +1,12 @@
-function addDate(e){
-    e.preventDefault()
+function addDate(){
 
     var container = document.getElementById("fecha");
     let filas = document.getElementsByClassName('filas').length
 
     // Crea un nuevo div para la fila con el contenido deseado
     var nuevaFilaHTML = `
-<div id="inputs" style="display: flex;">
-    <input class="form-control" type="text" id="fila${filas}" name="txtId${filas}" value="0" hidden>
+<div id="fila${filas}" style="display: flex;">
+    <input class="form-control" type="text" name="txtId${filas}" value="0" hidden>
     <input class="form-control filas" type="text" name="txtDescripcion${filas}">
     <select class="form-control" name="txtCategoria${filas}">
         <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
@@ -64,12 +63,15 @@ function addDate(e){
         <option value="30"> 30 </option>
         <option value="31"> 31 </option>
     </select>
-    <button class="btn btn-dark bi bi-trash3" type="button" style="width: 15%;" onclick="deleteRow('fila${filas}')"></button>
+    <button class="btn btn-outline-dark bi bi-trash3" type="button" style="width: 15%;" onclick="deleteRow('fila${filas}')"></button>
     </div>
     `;
 
     // Inserta la nueva fila al final del contenido del contenedor
     container.insertAdjacentHTML('beforeend', nuevaFilaHTML);
+
+    let element = document.getElementById('cargar')
+    element.setAttribute('disabled', 'disabled')
 
 }
 
@@ -89,11 +91,15 @@ function loadList(){
 }
 
 function deleteRow(id){
+    let element = document.getElementById(id)
     if(isNaN(id)){
-        console.log(id)
+        if(confirm("Esta apunto de eliminar este día festivo.")){
+            if(confirm("¿Esta seguro de esta acción?")){
+                element.remove()
+            }
+        }
     }else{
-        console.log(id,id)
-        if(confirm("Esta apunto de eliminar este día festivo de la base de datos")){
+        if(confirm("Esta apunto de eliminar este día festivo.")){
             if(confirm("¿Esta seguro de esta acción?")){
                 fetch('/rt_eliminarFecha', {
                     method: 'POST',
@@ -104,7 +110,7 @@ function deleteRow(id){
                     console.log(response)
                     if(response.datos[0].RESULT == 'ELIMINADO'){
                         alert('El día festivo se ha eliminado correctamente.')
-                        loadList()
+                        element.remove()
                     }else{
                         alert('Ha ocurrido un error.')
                     }
@@ -114,7 +120,6 @@ function deleteRow(id){
                 })
             }
         }
-
     }
 }
 
@@ -145,6 +150,9 @@ function onRegistro(e){
             console.log(response)
             if(response.datos == 'ACTUALIZADO'){
                 alert('Los días festivos han sido agregados/actualizado correctamente.')
+                let element = document.getElementById('cargar')
+                element.removeAttribute('disabled')
+                loadList()
             }else{
                 alert('Ha ocurrido un error.')
             }
