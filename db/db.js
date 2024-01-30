@@ -294,7 +294,7 @@ const altas = {
     },
     altaInfoLaboral: async(req, res) => {
         try{
-            console.log(req)
+            console.log(666,req)
             if(req.txtFecha_Salida == ''){
                 let resultado = await sql_conn.request()
                 .input('FOLIO',sql.Int,req.txtColaborador)
@@ -456,6 +456,26 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfoEstudios: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.colaborador))
+            .query('EXEC CONSULTA_INFO_ESTUDIOS @FOLIO')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    cargaInfoSalud: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.colaborador))
+            .query('EXEC CONSULTA_INFO_SALUD @FOLIO')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     cargaEstados: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -613,10 +633,10 @@ const altas = {
     },
 }
 const infoColaborador = {
-    altaInfoEstudios: async(req, datos, res) => {
+    altaInfoEstudios: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, datos.folio)
+            .input('FOLIO', sql.Int, req.txtColaborador)
             .input('ESCUELA', sql.VarChar, req.txtEscuela)
             .input('CARRERA', sql.VarChar, req.txtCarrera)
             .input('HORA_ENTRADA', sql.VarChar, req.txtEntrada)
@@ -632,7 +652,7 @@ const infoColaborador = {
     altaInfoSalud: async(req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
-            .input('FOLIO', sql.Int, datos.folio)
+            .input('FOLIO', sql.Int, req.txtColaborador)
             .input('SANGRE', sql.VarChar, req.txtSangre)
             .input('ALERGIAS', sql.VarChar, req.txtAlergias)
             .input('PADECIMIENTOS', sql.VarChar, req.txtPadecimientos)
@@ -673,9 +693,63 @@ const infoColaborador = {
         }
     }
 }
+const extras = {
+    cargarFestivos: async(req, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_CARGAR_FESTIVOS @EMPRESA')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    actualizarFestivos: async(req, filas, data, res) => {
+        try {
+            let arrayPrueba = []
+            let arrayFinal = []
+            let contador = 4
+            console.log(Object.values(req))
+            for(let i = 0; i < Object.values(req).length; i++){
+                arrayPrueba.push(Object.values(req)[i])
+                if(i == contador){
+                    arrayFinal.push(arrayPrueba)
+                    arrayPrueba = []
+                    contador += 5
+                }
+            }
+            console.log(arrayFinal)
+            for(let i = 0; i < arrayFinal.length; i++){
+                sql_conn.request()
+                .input('ID', sql.Int, arrayFinal[i][0])
+                .input('DESCRIPCION', sql.VarChar, arrayFinal[i][1])
+                .input('CATEGORIA', sql.VarChar, arrayFinal[i][2])
+                .input('MES', sql.VarChar, arrayFinal[i][3])
+                .input('DIA', sql.VarChar, arrayFinal[i][4])
+                .input('EMPRESA', sql.Int, data.id_empresa)
+                .query('EXEC EVENTO_ACTUALIZAR_DIAS_FESTIVOS @ID, @DESCRIPCION, @CATEGORIA, @MES, @DIA, @EMPRESA')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    eliminarFecha: async(req, data, res) => {
+        try {
+            console.log(req)
+            let resultado = await sql_conn.request()
+            .input('ID', sql.Int, req.id)
+            .input('EMPRESA', sql.Int, data.id_empresa)
+            .query('EXEC EVENTO_ELIMINAR_FECHA @ID, @EMPRESA')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador, extras
 }
 
 

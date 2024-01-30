@@ -13,6 +13,7 @@ const cms = require('../controllers/ctrl_cms')
 const altas = require('../controllers/ctrl_altas')
 const info = require('../controllers/ctrl_info')
 const seccion = require('../controllers/ctrl_seccion')
+const extras = require('../controllers/ctrl_extras')
 
 router.post('/rt_registro', registro.rtRegistro)
 
@@ -53,9 +54,15 @@ router.post('/rt_cargaAnios', seccion.rt_cargaAnios)
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_altaInfoSalud', info.rt_altaInfoSalud) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_cargaMunicipio', info.rt_cargaMunicipio)
+router.post('/rt_cargaInfoEstudios', info.rt_cargaInfoEstudios)
+router.post('/rt_cargaInfoSalud', info.rt_cargaInfoSalud)
 router.post('/rt_info_Principal', info.rt_infoPrincipal)
 router.post('/rt_altaInfoPrincipal', info.rt_altaInfoPrincipal)
 
+//EXTRAS
+router.post('/rt_cargarCalendario', extras.rt_cargarCalendario)
+router.post('/rt_actualizarFechas', extras.rt_actualizarFechas)
+router.post('/rt_eliminarFecha', extras.rt_eliminarFecha)
 
 module.exports = router
 

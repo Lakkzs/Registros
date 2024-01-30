@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información de Salud</title>
+    <title>Vacaciones</title>
     <link rel="stylesheet" href="/css/styleAltaEmpresa.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 
@@ -22,40 +24,49 @@
         </div>
         <div class="col-sm-10">
             <br><br>
-            <form class="mt-5" id="formInfoSalud">
+            <form class="mt-5" id="formInfoPrincipal">
                 <div class="titulo">
-                    <label class="tit"> Información de Salud </label><br>
+                    <label class="tit"> Vacaciones </label><br>
                 </div>
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Colaborador </label>
+                        <label class="form-label"> Colaborador* </label>
                     </div>
                     <div class="ins">
                         <select type="select" class="form-control" name="txtColaborador" id="txtColaborador">
                             <option value="Nada" selected hidden> Seleccione una opción </option>
                             {{#each colaboradores}}
-                            <option value={{FOLIO_COLABORADOR}}> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}}
-                            </option>
+                            <option value="{{FOLIO_COLABORADOR}}"> {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}} </option>
                             {{/each}}
+                            
                         </select>
-                          <button type="submit" class="btn btn-dark" style=" width: 14%" onclick="datosCol(event)"> Buscar
+                        <button type="submit" class="btn btn-dark" style=" width: 14%" onclick="onRegistro(event)">
+                            Buscar
                         </button>
                     </div>
                 </div>
+
+
                 <div id="info">
-                    {{> infoSalud}}
+                    {{> infoPrincipal}}
                 </div>
-                
+           
+
                 <div class="mb-3 rec">
+                    <div class="ins">
+                    </div>
+                    <div class="ins">
+                    </div>
                     <div class="but">
-                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%" onclick="onRegistro(event)"> Registrar Información </button> 
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%"
+                            onclick="onRegistro2(event)"> Guardar </button>
                         <br>
                     </div>
                 </div><br>
             </form>
         </div>
     </div>
-    <script src="/js/script_infoSalud.js"></script>
+    <script src="/js/script_infoPrincipal.js"></script>
 </body>
 
 </html>

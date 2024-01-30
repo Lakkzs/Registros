@@ -11,8 +11,7 @@ module.exports = {
         }
     },
     rtLogin: async (req, res) => {
-        try {
-            console.log(req.sessionID)
+            try {
             let body = req.body
             const {email, password} = req.body
             let datos = (await db.login.ingresar(body)).datos

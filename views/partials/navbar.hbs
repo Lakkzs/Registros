@@ -58,10 +58,10 @@
             </a>
         </div> 
     </div>
-
+    {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
         <div class="dropdown">
-            <button class="dropbtn" onclick="myFunctionAltas()">CATÁLOGOS
+            <button class="dropbtn" onclick="myFunctionCatalogos()">CATÁLOGOS
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="myDropdown1">
@@ -73,7 +73,24 @@
             </div>
         </div>
     </div>
-
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
+    <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionExtras()">EXTRAS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown4">
+                <a href="/extras_calendario"> CALENDARIO </a>
+                <a href="/extras_vacaciones"> VACACIONES </a>
+                <a href="/alta_Departamentos"> DEPARTAMENTOS </a>
+                <a href="/alta_Puestos"> PUESTOS </a>
+                <a href="/alta_Transitorios"> TRANSITORIOS </a>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
         <div class="dropdown">
             <button class="dropbtn" onclick="myFunctionInfoAdicional()">INFORMACION COLABORADOR(Admin)
@@ -81,7 +98,9 @@
             </button>
             <div class="dropdown-content" id="myDropdown2">
                 <a href="/alta_Colaborador"> COLABORADOR </a>
-                <a href="/alta_infoEmpresa"> INFORMACIÓN DE EMPRESA-COLABORADOR </a>
+                {{#ifCond user.user '==' 'SuperAdministrador'}}
+                    <a href="/alta_infoEmpresa"> INFORMACIÓN DE EMPRESA-COLABORADOR </a>
+                {{/ifCond}}
                 <a href="/info_Principal"> INFORMACIÓN PRINCIPAL </a>
                 <a href="/info_Adicional"> INFORMACION ADICIONAL </a>
                 <a href="/info_Emergencia"> DATOS DE EMERGENCIA </a>
@@ -90,6 +109,7 @@
             </div>
         </div>
     </div>
+    {{/ifCond}}
     <div class="dropdown">
         <div class="dropdown3">
             <div class="boton">

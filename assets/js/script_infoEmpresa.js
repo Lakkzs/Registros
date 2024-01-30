@@ -83,11 +83,11 @@ function onRegistro(e){
             }).then((response) => response.json())
             .then((response) => {
                 console.log(response)
-                if(response.resultado5[0].RESULT == 'EXISTE'){
-                    alert('El Colaborador ya cuenta con datos')
+                if(response.resultado5[0].RESULT == 'ACTUALIZADO'){
+                    alert('Los datos se han actualizado correctamente.')
                 }
                 if(response.resultado5[0].RESULT == 'OK'){
-                    alert('El registro se ha realizado correctamente')
+                    alert('El registro se ha realizado correctamente.')
                     document.getElementById('formInfoLaboral').reset();
                 }
             })

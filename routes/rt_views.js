@@ -14,6 +14,7 @@ const table = require('../controllers/ctrl_table.js')
 const seccion = require('../controllers/ctrl_seccion.js')
 const altas = require('../controllers/ctrl_altas.js')
 const info = require('../controllers/ctrl_info.js')
+const extras = require('../controllers/ctrl_extras.js')
 
 // Inicio
 router.get('/', login.login)
@@ -41,5 +42,8 @@ router.get('/info_Emergencia', info.infoEmergencia)
 router.get('/info_Salud', info.infoSalud)
 router.get('/info_Adicional', info.infoAdicional)
 router.get('/info_Principal', info.infoPrincipal)
+//EXTRAS
+router.get('/extras_vacaciones', extras.vacaciones)
+router.get('/extras_calendario', extras.calendario)
 
 module.exports = router
