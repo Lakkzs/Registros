@@ -28,13 +28,16 @@
 
 
             <div class="linea">
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_MUJER}} MUJERES
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_HOMBRE}} HOMBRES
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
+                    {{PENDIENTES}} PENDIENTES
+                </div>
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_TOTAL}} COLABORADORES
                 </div>
             </div>
@@ -47,8 +50,8 @@
             <div style="display:flex">
                 <div class="col-sm-7 ">
 
-                    <select name="asd" id="txtMeses" name="txtMeses" class="form-select" style="width:20%"
-                        onchange="cargaGrafico(value)">
+                    <select name="asd" id="txtMeses" name="txtMeses" class="form-select"
+                        style="width:20%; margin-left:10px" onchange="cargaGrafico(value)">
                         <option value="3">3 Meses</option>
                         <option value="6">6 Meses</option>
                         <option value="8">8 Meses</option>
@@ -58,9 +61,10 @@
                     </select>
                 </div>
 
-              
+
                 <div class="col-sm-5 ">
-                    <select id="txtAnios" name="txtAnios" class="form-select" style="width:30%"   onchange="cargaGraficoAnio(value)">
+                    <select id="txtAnios" name="txtAnios" class="form-select" style="width:30%"
+                        onchange="cargaGraficoAnio(value)">
                         <option value="2">2 año</option>
                         <option value="3">3 años</option>
                         <option value="4">4 años</option>
@@ -91,29 +95,36 @@
                 {{/if}}
 
                 <div class="col-sm-5 cuadro" id="linea3">
-                   {{#if todo3}}
+                    {{#if todo3}}
                     <canvas id="altasAños"></canvas>
                     <input type="text" id="actual" value="{{ACTUAL}}" hidden>
                     <input type="text" id="pasado" value="{{PASADO}}" hidden>
                     <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
                     <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
-                {{else}}
-                  {{> graficoAnio}}
-                {{/if}}
+                    {{else}}
+                    {{> graficoAnio}}
+                    {{/if}}
                 </div>
             </div>
 
             <div class="linea3">
                 <div class="col-sm-3 cuadro">
-                    CUMPLEAÑOS DEL MES<br>
+                    FELIZ CUMPLEAÑOS 🎂<br>
                     {{#each cumpleanos}}
-                    🎂{{NOMBRE}}: {{MES}} {{DIA}}<br>
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/6326/6326055.png"
+                            style="width:30%; height:auto">
+                    </div>
+                    {{NOMBRES_COLABORADOR}}<br>
+                    {{NOMBRE_DEPARTAMENTO}}
+
+
                     {{/each}}
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
                     ANIVERSARIOS DEL MES<br>
                     {{#each aniversario}}
-                    🎉{{NOMBRES_REG}}: {{ANIOS}} Año(s) - {{MES}} {{DIA}}
+                    🎉{{NOMBRES_COLABORADOR}}: {{ANIOS}} Año(s) - {{MES}} {{DIA}}<br>
                     {{/each}}
 
                 </div>
@@ -121,26 +132,30 @@
                     <canvas id="colaboradores"></canvas>
                     <input type="text" id="mujeres" value="{{NUMERO_MUJER}}" hidden>
                     <input type="text" id="hombres" value="{{NUMERO_HOMBRE}}" hidden>
+                    <input type="text" id="pendientes" value="{{PENDIENTES}}" hidden>
                 </div>
-                <div class="col-sm-2 cuadro" style="font-size:60px">
-                    <b>{{DIA}}/{{MES}}</b>
+
+                <div class="col-sm-3 cuadro">
+                    PROXIMOS CUMPLEAÑOS<br><br>
+
+                    {{#each proximosCumpleanos}}
+                    🎉{{NOMBRES_COLABORADOR}}<br>
+                    {{DIA}} de {{MES}}<br><br>
+                    {{/each}}
+
                 </div>
+
             </div>
-
-            <div class="linea3">
-                <div class="col-sm-3 cuadro">
-
-                </div>
-                <div class="col-sm-3 cuadro">
-
-                </div>
-                <div class="col-sm-3 cuadro">
-
-                </div>
-                <div class="col-sm-3 cuadro">
-
-                </div>
+            <div class="col-sm-12">
+                <div class="tit">
+                 DEPARTAMENTOS
             </div>
+            </div>
+            {{#each departamentos}}
+            <div class="linea4">
+                <div class="col-sm-12 cuadro" >{{NOMBRE_DEPARTAMENTO}} <input hidden value="{{ID_DEPARTAMENTO}}"></div>
+            </div>
+            {{/each}}
         </div>
     </div>
 </body>

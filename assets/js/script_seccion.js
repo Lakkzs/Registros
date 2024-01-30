@@ -70,13 +70,15 @@ new Chart(tablaAños, {
 const tablaColaboradores = document.getElementById('colaboradores');
 let mujer = document.getElementById('mujeres').value;
 let hombre = document.getElementById('hombres').value;
+let pendiente = document.getElementById('pendientes').value;
+
 new Chart(tablaColaboradores, {
   type: 'pie',
   data: {
-    labels: ['Hombres', 'Mujeres'],
+    labels: ['Hombres', 'Mujeres', 'Pendientes'],
     datasets: [{
       label: 'COLABORADORES',
-      data: [hombre, mujer],
+      data: [hombre, mujer, pendiente],
       borderWidth: 3
     }]
   },

@@ -2,12 +2,14 @@ const db = require('../db/db')
 
 module.exports = {
      seccion: async(req,res) => {
-        console.log(req.session)
+ 
         if(req.session.user){
             let resultado = await db.loadInfo.loadInfoData()
-            let n_mujer = resultado.datos[0][0].NUMERO_MUJERES
-            let n_hombre = resultado.datos[1][0].NUMERO_HOMBRES
-            let n_total = resultado.datos[2][0].NUMERO_COLABORADORES
+            let pendientes = resultado.datos[0][0].PENDIENTES
+            let n_mujer = resultado.datos[1][0].NUMERO_MUJERES
+            let n_hombre = resultado.datos[2][0].NUMERO_HOMBRES
+            let n_total = resultado.datos[3][0].NUMERO_COLABORADORES
+           
     
             let resultado2 = await db.loadInfo.loadInfoMonths()
             let enero = resultado2.datos[0][0].ALTA_ENERO
@@ -31,29 +33,32 @@ module.exports = {
             let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
     
             let resultado4 = await db.loadInfo.loadInfoBirthday()
-            console.log(resultado4.datos)
-            
+
+
             let resultado5 = await db.loadInfo.loadInfoDate()
             let dia = resultado5.datos[0][0].DIA_FECHA 
             let mes = resultado5.datos[1][0].MES_FECHA
     
             let resultado6 = await db.loadInfo.loadInfoAniversary() 
-            console.log(resultado6.datos)
+
+            let resultado7= await db.loadInfo.loadNextBirthday()
+            
+            let resultado8= await db.altas.cargaDepartamentos()
+
+
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                console.log(153, datos)
-                console.log(req.session)
                 
-                res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
+                res.render('seccion/seccion', {PENDIENTES: pendientes, NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false})
+                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false, proximosCumpleanos: resultado7.datos, departamentos: resultado8.datos})
             }else{
-                res.render('seccion/seccion', {NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
+                res.render('seccion/seccion', {PENDIENTES: pendientes, NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false, todo3: true, todo4: false})
+                    aniversario: resultado6.datos, EMPRESA: req.session.user.empresa, varias:false, todo: true, todo2: false, todo3: true, todo4: false, proximosCumpleanos: resultado7.datos, departamentos: resultado8.datos})
             }
         }else{
             res.render('login/login')
@@ -66,7 +71,7 @@ module.exports = {
     },
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
-        console.log(777, datos)
+       
         let resultado2 = await db.loadInfo.loadInfoMonths()
             
         let enero = resultado2.datos[0][0].ALTA_ENERO
@@ -83,7 +88,9 @@ module.exports = {
             let diciembre = resultado2.datos[11][0].ALTA_DICIEMBRE
 
         let resultado3 = await db.loadInfo.loadChartInfoMonths(datos)
-        console.log(845874,resultado3)
+
+  
+  
         if(datos.consulta){
             res.render('partials/grafico',{meses: resultado2.datos, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                 MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, todo2: true, todo:true}, (error, html) => {
@@ -99,7 +106,6 @@ module.exports = {
     },
     rt_cargaAnios: async (req, res) => {
         let datos = req.body
-        console.log(777, datos)
         let resultado3 = await db.loadInfo.loadInfoYears()
         let actual = resultado3.datos[0][0].ALTA_AÑO_ACTUAL
         let pasado = resultado3.datos[1][0].ALTA_AÑO_PASADO
@@ -108,7 +114,6 @@ module.exports = {
         let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
 
         let resultado4 = await db.loadInfo.loadChartInfoYears(datos)
-        console.log('resultado4',resultado4)
         if(datos.consulta){
             res.render('partials/graficoAnio',{anios: resultado4.datos,ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, 
                 MESACTUAL: mesActual, todo3: true, todo4: true}, (error, html) => {

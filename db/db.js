@@ -140,6 +140,15 @@ const loadInfo = {
             console.log(error)
         }
     },
+    loadNextBirthday: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .query('EXEC CONSULTA_FECHA_PROXIMOS_CUMPLEANOS')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     loadInfoMonths: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
@@ -150,8 +159,6 @@ const loadInfo = {
         }
     },
     loadChartInfoMonths: async(req, res) => {
-      
-        
         try{
             let m = parseInt(req.value)
             let resultado = await sql_conn.request()
@@ -162,6 +169,7 @@ const loadInfo = {
             console.log(error)
         } 
     },
+
     loadChartInfoYears: async(req, res) => {
         try{
             let m = parseInt(req.value)
