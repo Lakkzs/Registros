@@ -69,6 +69,11 @@ module.exports = {
         res.render('seccion/seccion2')
 
     },
+    seccion3: async (req, res) => {
+
+        res.render('seccion/seccion3')
+
+    },
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
        
