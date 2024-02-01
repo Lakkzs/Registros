@@ -22,6 +22,9 @@ window.onload = async function carga(){
             ,
             dateChanged: (currentDate, events) => {
                 console.log("date change", currentDate, events);
+                if(events[0]){
+                    alert(events[0].name + ' (' + events[0].CATEGORIA_DIAS_FESTIVOS + ')')
+                }
             },
             monthChanged: (currentDate, events) => {
                 console.log("month change", currentDate, events);
