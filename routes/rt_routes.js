@@ -49,6 +49,7 @@ router.post('/rt_altaEmergencia', altas.rt_altaContactos)
 //GRAFICOS 
 router.post('/rt_cargaMeses', seccion.rt_cargaMeses)
 router.post('/rt_cargaAnios', seccion.rt_cargaAnios)
+router.post('/rt_consultaEventos', seccion.rt_consultaEventos)
 
 //INFO COLABORADOR
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR

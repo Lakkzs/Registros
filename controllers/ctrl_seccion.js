@@ -70,9 +70,15 @@ module.exports = {
 
     },
     seccion3: async (req, res) => {
-
-        res.render('seccion/seccion3')
-
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                res.render('seccion/seccion3', {empresa: datos, varias:true})
+            }else{
+                res.render('seccion/seccion3', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
@@ -131,5 +137,11 @@ module.exports = {
                 res.json({html})
             })
         }
+    },
+    rt_consultaEventos: async (req, res) => {
+        let datos = req.session.user
+        let resultado = (await db.loadInfo.cargarEventos(datos)).datos
+        console.log(123123123123, resultado)
+        res.json(resultado)
     },
 }
