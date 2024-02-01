@@ -254,6 +254,16 @@ const loadInfo = {
         } catch (error) {
             console.log(error)
         }
+    },
+    cargarEventos: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_CARGAR_CALENDARIO_DIAS_FESTIVOS @EMPRESA')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 const altas = {
