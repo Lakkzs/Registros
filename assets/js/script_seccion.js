@@ -205,9 +205,7 @@ window.onload = async function carga(){
       body: JSON.stringify(datosDias)
   }).then((response) => response.json())
   .then((response) => {
-      console.log(789456, response)
       datosDias.push(response)
-      console.log(654654, datosDias)
       console.log(4545454554545, datosDias)
       let calA = new Calendar({
           id: "#color-calendar",
