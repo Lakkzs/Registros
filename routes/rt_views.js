@@ -28,7 +28,7 @@ router.get('/login', login.login)
 router.get('/recuperar', recuperar.recuperar)
 router.get('/tabla', tabla.tabla)
 router.get('/seccion', seccion.seccion)
-router.get('/seccion2', seccion2.seccion2)
+router.get('/seccion2', seccion.seccion2)
 router.get('/seccion3', seccion.seccion3)
 router.get('/table_data', table.data)
 //Altas

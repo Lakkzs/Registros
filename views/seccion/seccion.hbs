@@ -13,6 +13,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css"/>
 </head>
 
 <body>
@@ -119,8 +120,6 @@
                     </div>
                     {{NOMBRES_COLABORADOR}}<br>
                     {{NOMBRE_DEPARTAMENTO}}
-
-
                     {{/each}}
                 </div>
                 <div class="col-sm-3 cuadro">
@@ -128,24 +127,18 @@
                     {{#each aniversario}}
                     🎉{{NOMBRES_COLABORADOR}}: {{ANIOS}} Año(s) - {{MES}} {{DIA}}<br>
                     {{/each}}
-
                 </div>
-                <div class="col-sm-3 cuadro">
-                    <canvas id="colaboradores"></canvas>
-                    <input type="text" id="mujeres" value="{{NUMERO_MUJER}}" hidden>
-                    <input type="text" id="hombres" value="{{NUMERO_HOMBRE}}" hidden>
-                    <input type="text" id="pendientes" value="{{PENDIENTES}}" hidden>
-                </div>
-
                 <div class="col-sm-3 cuadro">
                     PROXIMOS CUMPLEAÑOS<br><br>
-
                     {{#each proximosCumpleanos}}
                     🎉{{NOMBRES_COLABORADOR}}<br>
                     {{DIA}} de {{MES}}<br>
                     {{/each}}
-
                 </div>
+                <div class="col-sm-3 cuadro">
+                    {{> calendario}}    
+                </div>
+
 
             </div>
             <div class="col-sm-12">
@@ -166,3 +159,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/script_seccion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.js"></script>
