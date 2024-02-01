@@ -169,7 +169,36 @@ const loadInfo = {
             console.log(error)
         } 
     },
-
+    loadDayOfEntry: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.folio)
+            .query(`EXEC CONSULTA_INGRESO @FOLIO`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
+    loadVacations: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.folio)
+            .query(`EXEC CONSULTA_DIAS_VACACIONES @FOLIO`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
+    loadEconomicDays: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.folio)
+            .query(`EXEC CONSULTA_DIAS_ECONOMICOS @FOLIO`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
     loadChartInfoYears: async(req, res) => {
         try{
             let m = parseInt(req.value)
