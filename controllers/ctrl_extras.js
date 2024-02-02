@@ -4,12 +4,12 @@ module.exports = {
     vacaciones: async (req, res) => {
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
-                console.log(1)
+                //console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                console.log(153, datos)
+                //console.log(153, datos)
                 res.render('extras/extras_vacaciones', {empresa: datos, varias:true, user: req.session.user})
             }else{
-                console.log(2)
+                //console.log(2)
                 res.render('extras/extras_vacaciones', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
@@ -19,22 +19,27 @@ module.exports = {
     calendario: async (req, res) => {
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
-                console.log(1)
+                //console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                console.log(153, datos)
+                //console.log(153, datos)
                 res.render('extras/extras_calendario', {empresa: datos, varias:true, user: req.session.user})
             }else{
-                console.log(2)
+                //console.log(2)
                 res.render('extras/extras_calendario', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
         }
     },
+    editar_vacaciones: async (req, res) => {
+     
+            res.render('extras/extras_editar_vacaciones')
+        
+    },
     rt_cargarCalendario: async(req, res) => {
         let data = req.session.user
         let resultado3 = (await db.extras.cargarFestivos(data)).datos
-        console.log(123, resultado3)
+        //console.log(123, resultado3)
         res.render('partials/extrasCalendario',{datos: resultado3}, (error, html) => {
             res.json({html})
         })
@@ -56,5 +61,31 @@ module.exports = {
         let data = req.session.user
         let datos = (await db.extras.eliminarFecha(body, data)).datos
         res.json({status: 'OK', datos})
-    }
+    },
+    rt_buscarVacaciones: async(req,res) => {
+        let datos = req.body
+        let resultado = await db.altas.cargaVacaciones(datos)
+        console.log('----------------VACACIONES DIAS:', resultado.datos[0])
+        if(resultado.datos[0] != undefined){
+            res.render('partials/editarVacaciones',{DIAS_VACACIONES: resultado.datos[0].DIAS_VACACIONES,name:"txtDias", id:"txtDias"}, (error, html) => {
+                res.json({html})
+            })
+        }else{
+            res.render('partials/editarVacaciones',{name:"txtDias", id:"txtDias"}, (error, html) => {
+                res.json({html})
+            })
+        }
+    },
+    rt_altaVacaciones: async(req,res) => {
+        try{
+            let body = req.body
+            let datos = (await db.altas.altaVacaciones(body)).datos
+            console.log(datos)
+            res.json({status: 'OK', datos})
+        } catch(error){
+            console.log(error)
+            res.json({estatus:'ERROR'})
+        }
+    },
+        
 }

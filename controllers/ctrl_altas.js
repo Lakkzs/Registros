@@ -52,10 +52,10 @@ module.exports = {
             let resultado = await db.altas.cargaDepartamentos()
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
-                res.render('altas/alta_TipoUsuario', {departamentos: resultado.datos, empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Puestos', {departamentos: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
                 console.log(2)
-                res.render('altas/alta_TipoUsuario', {departamentos: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
+                res.render('altas/alta_Puestos', {departamentos: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }
         }else{
             res.render('login/login')
@@ -271,8 +271,7 @@ module.exports = {
             res.render('partials/infoAdicional',{name: "txtEstado", id:"txtEstado", name2:"txtDependencia", id2:"txtDependencia", name3: "txtNumero", id3: "txtNumero"}, (error, html) => {
                 res.json({html})
             })
-        }
-        
+        } 
     },
     rt_cargaInfoEmpresa: async(req, res) => {
         try{
@@ -380,6 +379,7 @@ module.exports = {
             console.log(error)
             res.json({estatus:'ERROR'})
         }
-    }
+    },
+   
 
 }

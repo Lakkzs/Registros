@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de Departamentos</title>
+    <link rel="stylesheet" href="/css/styleRecuperar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <div class="ah">
+        <div class="col-sm-2">
+            {{> navbar}}
+        </div>
+        <div class="col-sm-10">
+            <br><br>
+            <form class="mt-5" id="formAltaVacaciones">
+                <div class="titulo">
+                    <label class="tit"> Dias Vacacionales </label><br>
+                </div>
+                <div class="mb-3 rec">
+                    <div class="ins">
+                        <label class="form-label"> Años </label>
+                        <div style="display:flex">
+                            <input type="number" class="form-control" placeholder="1" name="txtAnios" id="txtAnios"
+                                style="width:80%">
+                            <button type="submit" class="btn btn-dark" style=" width: 15%; margin-left:10%"
+                                onclick="onRegistro(event)"> <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg> </button>
+
+                        </div>
+
+                    </div>
+                    <div class="ins" >
+                        <label class="form-label"> Dias </label>
+                        <div id="asd">
+                            {{> editarVacaciones name="txtDias" id="txtDias"}}
+                        </div>
+
+                    </div>
+
+                    <div class="but">
+                        <button type="submit" class="btn btn-dark" style="margin-top: 30px; width: 70%"
+                            onclick="onRegistro2(event)"> Guardar Días </button>
+                        <br>
+                    </div>
+                </div><br>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script_altaVacaciones.js"></script>
+</body>
+
+</html>

@@ -382,6 +382,17 @@ const altas = {
             console.log(error) 
         }
     },
+    altaVacaciones: async (req, datos, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('ANIOS', sql.Int, req.txtAnios)
+            .input('DIAS_VACACIONES', sql.Int, req.txtDias)
+            .query(`EXEC ACTUALIZA_VACACIONES @ANIOS, @DIAS_VACACIONES`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     altaTipoUsuario: async (req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
@@ -447,6 +458,17 @@ const altas = {
             let resultado = await sql_conn.request()
             .input('FOLIO', sql.Int, req.txtColaborador)
             .query('EXEC CONSULTA_DATOS_COLABORADORES @FOLIO')
+            return objeto_resultado(resultado)
+        }
+        catch(error){
+            console.log(error)
+        }
+    },
+    cargaVacaciones: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('ANIOS', sql.Int, req.txtAnios)
+            .query('EXEC CONSULTA_VACACIONES @ANIOS')
             return objeto_resultado(resultado)
         }
         catch(error){

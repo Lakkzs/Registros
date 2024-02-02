@@ -64,6 +64,8 @@ router.post('/rt_altaInfoPrincipal', info.rt_altaInfoPrincipal)
 router.post('/rt_cargarCalendario', extras.rt_cargarCalendario)
 router.post('/rt_actualizarFechas', extras.rt_actualizarFechas)
 router.post('/rt_eliminarFecha', extras.rt_eliminarFecha)
+router.post('/rt_buscarVacaciones', extras.rt_buscarVacaciones)
+router.post('/rt_altaVacaciones', extras.rt_altaVacaciones)
 
 module.exports = router
 
