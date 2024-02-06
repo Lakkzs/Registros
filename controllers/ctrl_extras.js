@@ -32,9 +32,19 @@ module.exports = {
         }
     },
     editar_vacaciones: async (req, res) => {
-
-        res.render('extras/extras_editar_vacaciones')
-
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                //console.log(1)
+                let datos = (await db.loadInfo.loadEmpresas()).datos
+                //console.log(153, datos)
+                res.render('extras/extras_editar_vacaciones', {empresa: datos, varias:true, user: req.session.user})
+            }else{
+                //console.log(2)
+                res.render('extras/extras_editar_vacaciones', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     editar_diasEconomicoss: async (req, res) => {
 
