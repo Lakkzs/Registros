@@ -49,3 +49,9 @@ window.onload = async function carga(){
     })
   }
     
+
+
+  let alerta = document.getElementById('valor').value;
+  if(alerta == 'SI'){
+    alert('YA PUEDES ACERCARTE A RECURSOS HUMANOS A PEDIR TU DIA LIBRE DEBIDO A TU CUMPLEAÑOS')
+  }

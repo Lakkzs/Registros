@@ -199,6 +199,16 @@ const loadInfo = {
             console.log(error)
         } 
     },
+    loadBirthdayAlert: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, req.folio)
+            .query(`EXEC ALERTA_PROXIMOS_CUMPLEANIOS @FOLIO`)
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        } 
+    },
     loadChartInfoYears: async(req, res) => {
         try{
             let m = parseInt(req.value)

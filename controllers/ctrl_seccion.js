@@ -77,14 +77,19 @@ module.exports = {
             let vacaciones = resultado1.datos[0].DIAS_VACACIONES
             let resultado2 = await db.loadInfo.loadEconomicDays(folio)
             let economicos = resultado2.datos[0].DIAS_ECONOMICOS
+            let resultado3 = await db.loadInfo.loadBirthdayAlert(folio)
+            let alerta = resultado3.datos[0].RESULT
+            let  modal = false
+            if(alerta == 'SI'){
+                  modal = true 
+            }
+            console.log('-------------------------------------------------------------------ALERTA:', resultado3.datos[0].RESULT)
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                res.render('seccion/seccion2', {empresa: datos, varias:true, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos})
+                res.render('seccion/seccion2', {empresa: datos, varias:true, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos, ALERTA: alerta, MODAL: modal})
             }else{
-                res.render('seccion/seccion2', {EMPRESA: req.session.user.empresa, varias:false, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos})
-
+                res.render('seccion/seccion2', {EMPRESA: req.session.user.empresa, varias:false, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos, MODAL: modal, ALERTA: alerta})
             }
-
         }
         else {
             res.render('login/login')
@@ -163,7 +168,6 @@ module.exports = {
     rt_consultaEventos: async (req, res) => {
         let datos = req.session.user
         let resultado = (await db.loadInfo.cargarEventos(datos)).datos
-        console.log(123123123123, resultado)
         res.json(resultado)
     },
 }
