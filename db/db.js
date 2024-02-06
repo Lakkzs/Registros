@@ -264,7 +264,23 @@ const loadInfo = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    rt_buscarDias: async (req, res) => {
+        let datos = req.body
+        let resultado = await db.altas.cargaVacaciones(datos)
+        console.log('----------------VACACIONES DIAS:', resultado.datos[0])
+        if (resultado.datos[0] != undefined) {
+            res.render('partials/editarVacaciones', { DIAS_VACACIONES: resultado.datos[0].DIAS_VACACIONES, name: "txtDias", id: "txtDias" }, (error, html) => {
+                res.json({ html })
+            })
+        } else {
+            res.render('partials/editarVacaciones', { name: "txtDias", id: "txtDias" }, (error, html) => {
+                res.json({ html })
+            })
+        }
+    },
+    
+    
 }
 const altas = {
     altaColaborador: async(req, datos, res) => {
@@ -393,6 +409,17 @@ const altas = {
             console.log(error)
         }
     },
+    altaDias: async (req, datos, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('DIAS', sql.VarChar, req.txtTiempo)
+            .input('DIAS_ECONOMICOS', sql.Int, req.txtDiasEconomicos)
+            .query(`EXEC ACTUALIZA_DIAS @DIAS, @DIAS_ECONOMICOS`)
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     altaTipoUsuario: async (req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
@@ -444,6 +471,15 @@ const altas = {
             console.log(error)
         }
     },
+    cargaTiempos: async(req, res) => {
+        try{
+            let resultado = await sql_conn.request()
+            .query('EXEC CARGA_TIEMPO')
+            return objeto_resultado(resultado)
+        }catch(error){
+            console.log(error)
+        }
+    },
     cargaPerfiles: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -475,6 +511,18 @@ const altas = {
             console.log(error)
         }
     },
+    cargaDias: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('TIEMPO', sql.VarChar, req.txtTiempo)
+            .query('EXEC CONSULTA_DIAS @TIEMPO')
+            return objeto_resultado(resultado)
+        }
+        catch(error){
+            console.log(error)
+        }
+    },
+    
     cargaInfoLaboral: async(req, res) => {
         try{
             let resultado = await sql_conn.request()

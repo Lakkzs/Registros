@@ -48,5 +48,6 @@ router.get('/info_Principal', info.infoPrincipal)
 router.get('/extras_vacaciones', extras.vacaciones)
 router.get('/extras_calendario', extras.calendario)
 router.get('/editar_vacaciones', extras.editar_vacaciones)
+router.get('/editar_dias_economicos', extras.editar_diasEconomicoss)
 
 module.exports = router
