@@ -22,7 +22,8 @@
             {{/unless}}
             <div class="dropdown-content" id="myDropdown">
                 {{#each empresa}}
-                    <a href="#{{EMPRESA}}"> {{EMPRESA}} </a>
+                    <button  onclick="selEmpresa({{ID_EMPRESA}}, `{{EMPRESA}}`)"> {{EMPRESA}} </button>
+                    {{!-- <a href="#{{EMPRESA}}"> {{EMPRESA}} </a> --}}
                 {{/each}}
             </div>
         </div>

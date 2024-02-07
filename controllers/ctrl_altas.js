@@ -4,10 +4,11 @@ const codes = require('../controllers/ctrl_codes.js')
 const nodemailer = require("nodemailer");
 
 module.exports = {
-    empresas: (req, res) => {
+    empresas: async (req, res) => {
         console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_Empresas', {empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -18,10 +19,11 @@ module.exports = {
             res.render('login/login')
         }
     },
-    tipoUsuario: (req, res) => {
+    tipoUsuario: async (req, res) => {
         console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_TipoUsuario', {empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -32,10 +34,11 @@ module.exports = {
             res.render('login/login')
         }
     },
-    departamentos: (req, res) => {
+    departamentos: async (req, res) => {
         console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_Departamentos', {empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -51,6 +54,7 @@ module.exports = {
         if(req.session.user){
             let resultado = await db.altas.cargaDepartamentos()
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_Puestos', {departamentos: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -69,6 +73,7 @@ module.exports = {
             let resultado2 = await db.altas.cargaDepartamentos()
             let resultado4= await db.altas.cargaPerfiles()
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -106,6 +111,7 @@ module.exports = {
         console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_Colaborador', {empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -116,10 +122,11 @@ module.exports = {
             res.render('login/login')
         }
     },
-    transitorios: (req, res) => {
+    transitorios: async (req, res) => {
         console.log(req.session)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('altas/alta_Transitorios', {empresa: datos, varias:true, user: req.session.user})
             }else{

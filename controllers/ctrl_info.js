@@ -58,6 +58,7 @@ module.exports = {
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('infoColaborador/info_Estudios', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -100,6 +101,7 @@ module.exports = {
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('infoColaborador/info_Emergencia', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{
@@ -115,6 +117,7 @@ module.exports = {
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
                 res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
             }else{

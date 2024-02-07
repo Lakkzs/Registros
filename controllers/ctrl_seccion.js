@@ -99,6 +99,7 @@ module.exports = {
     seccion3: async (req, res) => {
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
                 res.render('seccion/seccion3', {empresa: datos, varias:true})
             }else{
                 res.render('seccion/seccion3', {EMPRESA: req.session.user.empresa, varias:false})

@@ -36,6 +36,13 @@ window.onclick = function(e) {
         if (myDropdown4.classList.contains('show')) {
         myDropdown4.classList.remove('show');
         }
-    }
-    
+    }   
+}
+
+// NECESITO HACER QUE HAGA UN FETCH PARA QUE SE LLAMEN A LOS DATOS DEL INICIO DE Session, DESPUES ESTA SELECCION VA A HACER QUE SE CANBIEN LOS DATOS EN EL SESSION.USER
+// DESPUES ESTO VA A HACER QUE SE ASD
+
+async function selEmpresa(id, empresa){
+    console.log(id)
+    console.log(empresa)
 }

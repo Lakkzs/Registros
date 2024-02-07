@@ -3,6 +3,7 @@ const db = require('../db/db')
 module.exports = {
     cms: async (req, res) => {
         if(req.session.user){
+            console.log(req.session.user)
             if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
