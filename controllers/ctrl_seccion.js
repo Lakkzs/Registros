@@ -111,7 +111,7 @@ module.exports = {
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
        
-        let resultado2 = await db.loadInfo.loadInfoMonths()
+        let resultado2 = await db.loadInfo.loadInfoMonths(req.session.user)
             
         let enero = resultado2.datos[0][0].ALTA_ENERO
             let febrero = resultado2.datos[1][0].ALTA_FEBRERO
@@ -145,14 +145,14 @@ module.exports = {
     },
     rt_cargaAnios: async (req, res) => {
         let datos = req.body
-        let resultado3 = await db.loadInfo.loadInfoYears()
+        let resultado3 = await db.loadInfo.loadInfoYears(req.session.user)
         let actual = resultado3.datos[0][0].ALTA_AÑO_ACTUAL
         let pasado = resultado3.datos[1][0].ALTA_AÑO_PASADO
         let antepasado = resultado3.datos[2][0].ALTA_AÑO_ANTEPASADO
         let pasadoAntepasado = resultado3.datos[3][0].ALTA_AÑO_PASADO_ANTEPASADO
         let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long'}).format(new Date());
 
-        let resultado4 = await db.loadInfo.loadChartInfoYears(datos)
+        let resultado4 = await db.loadInfo.loadChartInfoYears(datos)// PENDIENTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EMPRESAAAAA
         if(datos.consulta){
             res.render('partials/graficoAnio',{anios: resultado4.datos,ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, 
                 MESACTUAL: mesActual, todo3: true, todo4: true}, (error, html) => {

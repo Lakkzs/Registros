@@ -327,7 +327,7 @@ const altas = {
             console.log(error)
         }
     },
-    altaPuestos: async(req, res) => {
+    altaPuestos: async(req, datos, res) => {
         try {
             console.log(req)
             let resultado = await sql_conn.request()
@@ -336,7 +336,8 @@ const altas = {
             .input('MISION', sql.VarChar, req.txtMision)
             .input('OBJETIVO', sql.VarChar, req.txtObjetivo)
             .input('DEPARTAMENTO', sql.VarChar, req.txtDepartamento)
-            .query(`EXEC EVENTO_CREAR_PUESTO @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO`)
+            .input('EMPRESA', sql.Int, datos.id_empresa)
+            .query(`EXEC EVENTO_CREAR_PUESTO @NOMBRE, @DESCRIPCION, @MISION, @OBJETIVO, @DEPARTAMENTO, @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
@@ -500,7 +501,8 @@ const altas = {
     cargaPerfiles: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_TRANSITORIO')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_TRANSITORIO @EMPRESA')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -611,13 +613,13 @@ const altas = {
             console.log(error)
         }
     },
-    altaTransitorios: async (req, res) => {
+    altaTransitorios: async (req, datos, res) => {
         try {
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombre)
             .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
-            .input('USUARIO', sql.Int, 3)
-            .query(`EXEC EVENTO_CREAR_TRANSITORIO @NOMBRE, @DESCRIPCION, @USUARIO`)
+            .input('EMPRESA', sql.Int, datos.id_empresa)
+            .query(`EXEC EVENTO_CREAR_TRANSITORIO @NOMBRE, @DESCRIPCION, @USUARIO @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
