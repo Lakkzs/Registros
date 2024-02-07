@@ -133,7 +133,8 @@ const loadInfo = {
     loadInfoData: async (req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_NUMERO_TOTAL')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_NUMERO_TOTAL @EMPRESA')
             return objeto_resultado2(resultado)
         }
         catch (error){
@@ -143,7 +144,8 @@ const loadInfo = {
     loadNextBirthday: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_FECHA_PROXIMOS_CUMPLEANOS')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_FECHA_PROXIMOS_CUMPLEANOS @EMPRESA')
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
@@ -152,7 +154,8 @@ const loadInfo = {
     loadInfoMonths: async(req, res) => {
         try {
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_ALTAS_ANIO')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_ALTAS_ANIO @EMPRESA')
             return objeto_resultado2(resultado)
         } catch (error) {
             console.log(error)
@@ -223,7 +226,8 @@ const loadInfo = {
     loadInfoYears: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_ALTAS_AÑOS_ANTERIORES')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_ALTAS_AÑOS_ANTERIORES @EMPRESA')
             return objeto_resultado2(resultado)
         }catch(error){
             console.log(error)
@@ -232,7 +236,8 @@ const loadInfo = {
     loadInfoBirthday: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_FECHA_CUMPLEANOS')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_FECHA_CUMPLEANOS @EMPRESA')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -250,7 +255,8 @@ const loadInfo = {
     loadInfoAniversary: async(req,res) =>{
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_ANIVERSARIOS')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_ANIVERSARIOS @EMPRESA')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
@@ -445,7 +451,8 @@ const altas = {
     cargaDepartamentos: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
-            .query('EXEC CONSULTA_DEPARTAMENTOS')
+            .input('EMPRESA', sql.Int, req.id_empresa)
+            .query('EXEC CONSULTA_DEPARTAMENTOS @EMPRESA')
             return objeto_resultado(resultado)
         }catch(error){
             console.log(error)
