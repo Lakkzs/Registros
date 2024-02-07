@@ -53,7 +53,7 @@ module.exports = {
                 res.render('seccion/seccion', {PENDIENTES: pendientes, NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
                     ACTUAL: actual, PASADO: pasado, ANTEPASADO: antepasado, PASADOANTEPASADO: pasadoAntepasado, MESACTUAL: mesActual, cumpleanos: resultado4.datos, DIA: dia, MES: mes,
-                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false, user: req.session.user,proximosCumpleanos: resultado7.datos, departamentos: resultado8.datos})
+                    aniversario: resultado6.datos, empresa: datos, varias:true, todo: true, todo2:false, todo3: true, todo4: false, user: req.session.user,proximosCumpleanos: resultado7.datos, departamentos: resultado8.datos, seleccionada: req.session.user.empresa})
             }else{
                 res.render('seccion/seccion', {PENDIENTES: pendientes, NUMERO_MUJER: n_mujer, NUMERO_HOMBRE: n_hombre, NUMERO_TOTAL: n_total, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
                     MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, 
@@ -86,7 +86,7 @@ module.exports = {
             console.log('-------------------------------------------------------------------ALERTA:', resultado3.datos[0].RESULT)
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                res.render('seccion/seccion2', {empresa: datos, varias:true, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos, ALERTA: alerta, MODAL: modal})
+                res.render('seccion/seccion2', {empresa: datos, varias:true, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos, ALERTA: alerta, MODAL: modal, seleccionada: req.session.user.empresa})
             }else{
                 res.render('seccion/seccion2', {EMPRESA: req.session.user.empresa, varias:false, cumpleanos: resultado4.datos, aniversario: resultado6.datos, proximosCumpleanos: resultado7.datos, ENTRADA: entrada , VACACIONES: vacaciones, ECONOMICOS: economicos, MODAL: modal, ALERTA: alerta})
             }
@@ -100,7 +100,7 @@ module.exports = {
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                res.render('seccion/seccion3', {empresa: datos, varias:true})
+                res.render('seccion/seccion3', {empresa: datos, varias:true, seleccionada: req.session.user.empresa})
             }else{
                 res.render('seccion/seccion3', {EMPRESA: req.session.user.empresa, varias:false})
             }

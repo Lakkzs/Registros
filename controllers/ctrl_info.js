@@ -119,7 +119,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user})
+                res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 res.render('infoColaborador/info_Salud', {colaboradores: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
             }

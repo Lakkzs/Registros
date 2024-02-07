@@ -10,7 +10,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_Empresas', {empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Empresas', {empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_Empresas', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -25,7 +25,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_TipoUsuario', {empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_TipoUsuario', {empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_TipoUsuario', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -40,7 +40,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_Departamentos', {empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Departamentos', {empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_Departamentos', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -56,7 +56,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_Puestos', {departamentos: resultado.datos, empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Puestos', {departamentos: resultado.datos, empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_Puestos', {departamentos: resultado.datos, EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -75,7 +75,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos, empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos, empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_infoEmpresa', {colaboradores: resultado.datos, departamentos: resultado2.datos, perfiles: resultado4.datos,EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -113,7 +113,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_Colaborador', {empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Colaborador', {empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_Colaborador', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})
@@ -128,7 +128,7 @@ module.exports = {
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
-                res.render('altas/alta_Transitorios', {empresa: datos, varias:true, user: req.session.user})
+                res.render('altas/alta_Transitorios', {empresa: datos, varias:true, user: req.session.user, seleccionada: req.session.user.empresa})
             }else{
                 console.log(2)
                 res.render('altas/alta_Transitorios', {EMPRESA: req.session.user.empresa, varias:false, user: req.session.user})

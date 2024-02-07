@@ -16,13 +16,13 @@
             {{#unless varias}}
                 <button class="dropbtn" onclick="myFunction()">{{EMPRESA}}</button>
             {{else}}
-                <button class="dropbtn" onclick="myFunction()">EMPRESAS
+                <button class="dropbtn" onclick="myFunction()">EMPRESAS ({{seleccionada}})
                     <i class="fa fa-caret-down"></i>
                 </button>
             {{/unless}}
             <div class="dropdown-content" id="myDropdown">
                 {{#each empresa}}
-                    <button  onclick="selEmpresa({{ID_EMPRESA}}, `{{EMPRESA}}`)"> {{EMPRESA}} </button>
+                    <button onclick="selEmpresa({{ID_EMPRESA}}, `{{EMPRESA}}`)"> {{EMPRESA}} </button>
                     {{!-- <a href="#{{EMPRESA}}"> {{EMPRESA}} </a> --}}
                 {{/each}}
             </div>
