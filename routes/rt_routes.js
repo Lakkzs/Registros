@@ -21,6 +21,7 @@ router.post('/rt_login', login.rtLogin)
 router.post('/login', login.login)
 router.post('/logout', logout.logout)
 router.post('/cms', cms.cms)
+router.post('/rt_empresa', cms.rt_empresa)
 
 router.post('/rt_verification', email.rtEmail)
 

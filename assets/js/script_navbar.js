@@ -46,4 +46,19 @@ window.onclick = function(e) {
 async function selEmpresa(id, empresa){
     console.log(id)
     console.log(empresa)
+    let seleccionada
+    fetch('/rt_empresa', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id, empresa})
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        console.log(10, response)
+        seleccionada = response.seleccionada
+        document.getElementById('seleccionada').innerHTML = `EMPRESAS (${seleccionada})`
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
 }
