@@ -56,7 +56,7 @@ async function selEmpresa(id, empresa){
     .then((response) => {
         console.log(10, response)
         seleccionada = response.seleccionada
-        document.getElementById('seleccionada').innerHTML = `EMPRESAS (${seleccionada})`
+        document.getElementById('seleccionada').innerHTML = `EMPRESAS (${seleccionada}) <i class="fa fa-caret-down"></i>`
     })
     .catch(function (err) {
         console.log(err)
