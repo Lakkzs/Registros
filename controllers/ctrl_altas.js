@@ -52,7 +52,7 @@ module.exports = {
     puestos: async(req, res) => {
         console.log(req.session)
         if(req.session.user){
-            let resultado = await db.altas.cargaDepartamentos()
+            let resultado = await db.altas.cargaDepartamentos(req.session.user)
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
@@ -70,8 +70,8 @@ module.exports = {
         if(req.session.user){
             let data = req.session.user
             let resultado = await db.altas.cargaColaboradores(data)
-            let resultado2 = await db.altas.cargaDepartamentos()
-            let resultado4= await db.altas.cargaPerfiles()
+            let resultado2 = await db.altas.cargaDepartamentos(req.session.user)
+            let resultado4= await db.altas.cargaPerfiles(req.session.user)
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
                 console.log(1)
@@ -234,7 +234,7 @@ module.exports = {
         try{
             console.log(777,req)
             let body = req.body
-            let datos = (await db.altas.altaPuestos(body)).datos
+            let datos = (await db.altas.altaPuestos(body, req.session.user)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch(error){
@@ -285,8 +285,8 @@ module.exports = {
             let datos = req.body
             console.log(10, datos)
             let resultado = (await db.altas.cargaInfoLaboral(datos)).datos
-            let resultado2 = await db.altas.cargaDepartamentos()
-            let resultado4= await db.altas.cargaPerfiles()
+            let resultado2 = await db.altas.cargaDepartamentos(req.session.user)
+            let resultado4= await db.altas.cargaPerfiles(req.session.user)
             console.log(11, resultado)
             if(resultado[0] != undefined){
                 res.render('partials/infoLaboral',{datos: resultado[0], departamentos: resultado2.datos, perfiles: resultado4.datos, txtFecha_Entrada: resultado[0].FECHA_INGRESO_INF_COL_EMPRESA, txtFecha_Salida: resultado[0].FECHA_SALIDA_INF_COL_EMPRESA, NOMBRE_TRANSITORIO: resultado[0].NOMBRE_TRANSITORIO, NOMBRE_DEPARTAMENTO: resultado[0].NOMBRE_DEPARTAMENTO, NOMBRE_PUESTO: resultado[0].NOMBRE_PUESTO}, (error, html) => {
@@ -356,7 +356,7 @@ module.exports = {
     rt_altaTransitorios: async(req, res) => {
         try{
             let body = req.body
-            let datos = (await db.altas.altaTransitorios(body)).datos
+            let datos = (await db.altas.altaTransitorios(body, req.session.user)).datos
             console.log(datos)
             res.json({status: 'OK', datos})
         } catch(error){

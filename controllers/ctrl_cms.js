@@ -1,4 +1,5 @@
 const db = require('../db/db')
+const cms = require('../controllers/ctrl_cms.js')
 
 module.exports = {
     cms: async (req, res) => {
@@ -16,5 +17,10 @@ module.exports = {
         }else{
             res.render('login/login')
         }
+    },
+    rt_empresa: async(req, res) => {
+        req.session.user.id_empresa = req.body.id
+        req.session.user.empresa = req.body.empresa
+        res.json({seleccionada: req.session.user.empresa})
     }
 }

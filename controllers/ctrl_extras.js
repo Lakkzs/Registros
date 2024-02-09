@@ -47,10 +47,22 @@ module.exports = {
         }
     },
     editar_diasEconomicoss: async (req, res) => {
-
-        let resultado = await db.altas.cargaTiempos()
-        res.render('extras/extras_dias_economicos', {tiempos: resultado.datos})
-        console.log('-----------------------------',resultado.datos)
+        if (req.session.user) {
+            let resultado = await db.altas.cargaTiempos()
+            if (req.session.user.user == 'SuperAdministrador') {
+                //console.log(1)
+                let datos = (await db.loadInfo.loadEmpresas()).datos
+                //console.log(153, datos)
+                res.render('extras/extras_dias_economicos', { empresa: datos, varias: true, user: req.session.user, seleccionada: req.session.user.empresa, tiempos: resultado.datos})
+                console.log('-----------------------------',resultado.datos)
+            } else {
+                //console.log(2)
+                res.render('extras/extras_dias_economicos', { EMPRESA: req.session.user.empresa, varias: false, user: req.session.user, tiempos: resultado.datos })
+                console.log('-----------------------------',resultado.datos)
+            }
+        } else {
+            res.render('login/login')
+        }
 
     },
     rt_cargarCalendario: async (req, res) => {
