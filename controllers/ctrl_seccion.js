@@ -108,6 +108,18 @@ module.exports = {
             res.render('login/login')
         }
     },
+    seccionDepartamentos: async (req, res) => {
+        res.render('seccion/seccionDepartamentos',)      
+        
+    },
+    seccionDepartamentos1: async (req, res) => {
+       
+        let id = req.params.id
+        console.log('---------------', id)
+        res.render('seccion/seccionDepartamentos')   
+
+        
+    },
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
        

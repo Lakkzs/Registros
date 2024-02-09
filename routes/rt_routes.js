@@ -51,14 +51,17 @@ router.post('/rt_cargaMeses', seccion.rt_cargaMeses)
 router.post('/rt_cargaAnios', seccion.rt_cargaAnios)
 router.post('/rt_consultaEventos', seccion.rt_consultaEventos)
 
+
 //INFO COLABORADOR
 router.post('/rt_altaInfoEstudios', info.rt_altaInfoEstudios) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_altaInfoSalud', info.rt_altaInfoSalud) //ESTO ES LO QUE SUBE EL COLABORADOR
 router.post('/rt_cargaMunicipio', info.rt_cargaMunicipio)
 router.post('/rt_cargaInfoEstudios', info.rt_cargaInfoEstudios)
 router.post('/rt_cargaInfoSalud', info.rt_cargaInfoSalud)
+router.post('/rt_cargaInfoHobbies', info.rt_cargaInfoHobbies)
 router.post('/rt_info_Principal', info.rt_infoPrincipal)
 router.post('/rt_altaInfoPrincipal', info.rt_altaInfoPrincipal)
+router.post('/rt_altaHobbies', info.rt_altaInfoHobbies)
 
 //EXTRAS
 router.post('/rt_cargarCalendario', extras.rt_cargarCalendario)
@@ -68,6 +71,9 @@ router.post('/rt_buscarVacaciones', extras.rt_buscarVacaciones)
 router.post('/rt_altaVacaciones', extras.rt_altaVacaciones)
 router.post('/rt_buscarDias', extras.rt_buscarDias)
 router.post('/rt_altaDias', extras.rt_altaDias)
+
+
+
 
 
 module.exports = router

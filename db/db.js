@@ -595,6 +595,16 @@ const altas = {
             console.log(error)
         }
     },
+    cargaInfoHobbies: async (req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO', sql.Int, parseInt(req.txtColaborador))
+            .query('EXEC CONSULTA_INFO_HOBBIES @FOLIO')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
     cargaEstados: async(req, res) => {
         try{
             let resultado = await sql_conn.request()
@@ -810,7 +820,20 @@ const infoColaborador = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    altaInfoHobbies: async(req, res) => {
+        try {
+            let resultado = await sql_conn.request()
+            .input('FOLIO',sql.Int, parseInt(req.txtColaborador))
+            .input('HOBBIES',sql.VarChar, req.txtHobbies)
+            .input('PASTEL',sql.VarChar, req.txtPastel)
+            .input('MUSICA',sql.VarChar, req.txtMusica)
+            .query('EXEC EVENTO_CREAR_INFO_HOBBIES @FOLIO, @HOBBIES, @PASTEL, @MUSICA')
+            return objeto_resultado(resultado)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }
 const extras = {
     cargarFestivos: async(req, res) => {

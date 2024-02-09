@@ -231,13 +231,13 @@ window.onload = async function carga() {
             let evento = document.getElementsByClassName('calendar__day-event')
             console.log(evento)
             for (let i = 0; i < events.length; i++) {
-                if(events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo oficial") {
-                    evento[i].children[1].setAttribute('style', 'background-color: #d1272b')
-                }else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
-                    evento[i].children[1].setAttribute('style', 'background-color: #f4b31b')
-                }else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
-                    evento[i].children[1].setAttribute('style', 'background-color: #60a709')
-                }
+              if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo oficial") {
+                evento[i].children[1].setAttribute('style', 'background-color: #d1272b')
+              } else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
+                evento[i].children[1].setAttribute('style', 'background-color: #f4b31b')
+              } else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
+                evento[i].children[1].setAttribute('style', 'background-color: #60a709')
+              }
             }
           }
         }
@@ -247,6 +247,25 @@ window.onload = async function carga() {
       console.log(err)
     })
 }
+
+function onRegistro2(e) {
+  console.log(e)
+  // let value= 1 
+
+  fetch('/seccionDepartamentos', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((response) => response.text())
+  .then((response) => {
+    document.getElementById("container").remove()
+      document.getElementById("todo").innerHTML = response;
+  })
+    .catch(function (err) {
+      console.log(err)
+    })
+}
+
+
 
 
 

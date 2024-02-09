@@ -13,7 +13,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
 </head>
 
 <body>
@@ -136,22 +136,26 @@
                     {{/each}}
                 </div>
                 <div class="col-sm-3 cuadro">
-                    {{> calendario}}    
+                    {{> calendario}}
                 </div>
 
 
             </div>
             <div class="col-sm-12">
                 <div class="tit">
-                 DEPARTAMENTOS
-            </div>
+                    DEPARTAMENTOS
+                </div>
             </div>
             {{#each departamentos}}
             <div class="linea4">
-                <div class="col-sm-12 cuadro" >{{NOMBRE_DEPARTAMENTO}} <input hidden value="{{ID_DEPARTAMENTO}}"></div>
-            </div>
-            {{/each}}
+                <div class="col-sm-12 cuadro">
+                    <a style="width:100%; height: 100%" href="/seccionDepartamentos/{{ID_DEPARTAMENTO}}" value="{{ID_DEPARTAMENTO}}"  onclick="onRegistro2('{{NOMBRE_DEPARTAMENTO}}')" >
+                        {{NOMBRE_DEPARTAMENTO}}
+                    </a>
+                </div>
         </div>
+        {{/each}}
+    </div>
     </div>
 </body>
 

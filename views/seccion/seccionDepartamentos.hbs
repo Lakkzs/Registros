@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styleSeccion.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
+</head>
+
+<body>
+
+    <div class="ah">
+        <div class="col-sm-2">
+            {{> navbar}}
+        </div>
+        <div class="col-sm-10">
+            <div class="tit">
+                DEPARTAMENTO: {{departamento}}
+            </div>
+
+
+            <div class="linea5">
+                <div class="col-sm-4 cuadro" style="width:auto">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6326/6326055.png" style="width:30%; height:auto">
+                    Nombre: <br><br>
+                    Puesto: <br><br>
+                    Corrreo: <br><br>
+                    Mis hobbies son:<br><br>
+                    Mi sabor de pastel favorito es:<br><br>
+                    Me gusta la música: <br><br>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/script_seccionDepartamentos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.js"></script>
