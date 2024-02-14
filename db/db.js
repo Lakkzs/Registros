@@ -296,7 +296,6 @@ const loadInfo = {
         }
     },
     
-    
 }
 const altas = {
     altaColaborador: async(req, datos, res) => {
@@ -319,9 +318,9 @@ const altas = {
             let resultado = await sql_conn.request()
             .input('NOMBRE', sql.VarChar, req.txtNombre)
             .input('DESCRIPCION', sql.VarChar, req.txtDescripcion)
-            // .input('IMAGEN', sql.VarBinary, 0x0123)
+            .input('IMAGEN', sql.VarChar, req.txtImagen)
             .input('EMPRESA', sql.Int, datos.id_empresa)
-            .query(`EXEC EVENTO_CREAR_DEPARTAMENTO @NOMBRE, @DESCRIPCION, 0x0123, @EMPRESA`)
+            .query(`EXEC EVENTO_CREAR_DEPARTAMENTO @NOMBRE, @DESCRIPCION, @IMAGEN, @EMPRESA`)
             return objeto_resultado(resultado)
         } catch (error) {
             console.log(error)
@@ -902,6 +901,3 @@ const extras = {
 module.exports = {
     registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altas, infoColaborador, extras
 }
-
-
-
