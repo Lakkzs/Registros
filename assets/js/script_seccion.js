@@ -44,7 +44,6 @@ let añoPasado = new Date().getFullYear() - 1;
 let añoAntepasado = new Date().getFullYear() - 2;
 let añoPasadoAntepasado = new Date().getFullYear() - 3;
 
-
 new Chart(tablaAños, {
     type: 'bar',
     data: {
@@ -66,7 +65,6 @@ new Chart(tablaAños, {
         }
     }
 });
-
 
 function loadChart(valores, meses) {
     const tablaAltas2 = document.getElementById('altas2');
@@ -119,7 +117,6 @@ function loadChart2(valores, anios) {
         }
     });
 }
-
 
 async function cargaGrafico(value, consulta) {
     let meses = { value, consulta }
@@ -195,29 +192,6 @@ async function cargaGraficoAnio(value, consulta) {
             console.log(err)
         })
 
-}
-
-async function cambiarColor(currentDate, events) {
-    console.log('llega')
-    if (events.length > 0) {
-        console.log('entra')
-        console.log("month change", currentDate, events);
-        let evento = document.getElementsByClassName('calendar__day-event')
-        console.log(evento)
-        for (let i = 0; i < events.length; i++) {
-            console.log(events[i])
-            if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo oficial") {
-                console.log('festivo')
-                evento[i].children[1].setAttribute('style', 'background-color: #d1272b')
-            } else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
-                console.log('no festivo')
-                evento[i].children[1].setAttribute('style', 'background-color: #f4b31b')
-            } else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
-                console.log('empresa')
-                evento[i].children[1].setAttribute('style', 'background-color: #60a709')
-            }
-        }
-    }
 }
 
 let eventosM = []
@@ -298,8 +272,6 @@ function onRegistro2(e) {
     })
 }
 
-
-
 function onRegistro2(e) {
   console.log(e)
   // let value= 1 
@@ -317,8 +289,6 @@ function onRegistro2(e) {
     })
 }
 
-
-
 async function colorChange(eventosM) {
     if (eventosM.length > 0) {
         console.log(eventosM[0])
@@ -327,9 +297,9 @@ async function colorChange(eventosM) {
         for (let i = 0; i < eventosM[0].length; i++) {
             if (eventosM[0][i].CATEGORIA_DIAS_FESTIVOS == "Día festivo oficial") {
                 evento[i].children[1].setAttribute('style', 'background-color: #d1272b')
-            } else if (eventosM[0].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
+            } else if (eventosM[0][i].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
                 evento[i].children[1].setAttribute('style', 'background-color: #f4b31b')
-            } else if (eventosM[0].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
+            } else if (eventosM[0][i].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
                 evento[i].children[1].setAttribute('style', 'background-color: #60a709')
             }
         }
