@@ -23,6 +23,7 @@ window.onload = async function carga() {
                     datosDias[0]
                 ,
                 monthChanged: async (currentDate, events) => {
+                    document.getElementById('listaCal').innerHTML = ''
                     eventosM = []
                     console.log(777, events)
                     if (events.length > 0) {
@@ -30,6 +31,9 @@ window.onload = async function carga() {
                         let evento = document.getElementsByClassName('calendar__day-event')
                         console.log(evento)
                         for (let i = 0; i < events.length; i++) {
+                            let startDate = new Date(events[i].start);
+                            let fecha = startDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' })
+                            document.getElementById('listaCal').insertAdjacentHTML('beforeend', `${fecha + ' - ' + events[i].name + ' - ' + events[i].CATEGORIA_DIAS_FESTIVOS} <br>`)
                             if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo oficial") {
                                 evento[i].children[1].setAttribute('style', 'background-color: #d1272b')
                             } else if (events[i].CATEGORIA_DIAS_FESTIVOS == "Día festivo no oficial") {
