@@ -29,15 +29,18 @@
 
 
             <div class="linea5">
+                {{#each colaboradores}}
                 <div class="col-sm-4 cuadro" style="width:auto">
                     <img src="https://cdn-icons-png.flaticon.com/512/6326/6326055.png" style="width:30%; height:auto">
-                    Nombre: <br><br>
-                    Puesto: <br><br>
-                    Corrreo: <br><br>
-                    Mis hobbies son:<br><br>
-                    Mi sabor de pastel favorito es:<br><br>
-                    Me gusta la música: <br><br>
+                    Nombre: {{NOMBRES_COLABORADOR}} {{APELLIDOS_COLABORADOR}} <br><br>
+                    Puesto: {{NOMBRE_PUESTO}}<br><br>
+                    Corrreo: {{CORREO_COLABORADOR}}<br><br>
+                    Mis hobbies son: {{HOBBIES}}<br><br>
+                    Mi sabor de pastel favorito es: {{PASTEL}}<br><br>
+                    Me gusta la música:{{MUSICA}} <br><br>
                 </div>
+                {{/each}}
+
             </div>
 
         </div>

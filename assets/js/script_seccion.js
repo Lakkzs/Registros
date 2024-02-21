@@ -194,7 +194,6 @@ async function cargaGraficoAnio(value, consulta) {
         .catch(function (err) {
             console.log(err)
         })
-
 }
 
 async function cambiarColor(currentDate, events) {
@@ -331,7 +330,7 @@ async function colorChange(eventosM) {
                 evento[i].children[1].setAttribute('style', 'background-color: #f4b31b')
             } else if (eventosM[0].CATEGORIA_DIAS_FESTIVOS == "Evento de empresa") {
                 evento[i].children[1].setAttribute('style', 'background-color: #60a709')
-            }
+            } 
         }
     }
 }

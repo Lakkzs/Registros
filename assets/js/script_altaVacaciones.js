@@ -50,7 +50,6 @@ function onRegistro2(e) {
             if(response.datos[0].RESULT == 'ACTUALIZADO'){
                 alert('La información adicional ha sido actualizada correctamente.')
                 document.getElementById('formAltaVacaciones').reset();
-
             }
             if(response.datos[0].RESULT == 'INSERTADO'){
                 alert('La información adicional ha sido registrada correctamente.')
