@@ -34,7 +34,6 @@ module.exports = {
 
             let resultado4 = await db.loadInfo.loadInfoBirthday(req.session.user)
 
-
             let resultado5 = await db.loadInfo.loadInfoDate()
             let dia = resultado5.datos[0][0].DIA_FECHA
             let mes = resultado5.datos[1][0].MES_FECHA
@@ -45,8 +44,7 @@ module.exports = {
 
             let resultado8 = await db.altas.cargaDepartamentos(req.session.user)
 
-
-            if (req.session.user.user == 'SuperAdministrador') {
+            if(req.session.user.user == 'SuperAdministrador'){
                 console.log(1)
                 let datos = (await db.loadInfo.loadEmpresas()).datos
 
@@ -117,14 +115,30 @@ module.exports = {
         }
     },
     seccionDepartamentos: async (req, res) => {
-        res.render('seccion/seccionDepartamentos',)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
+                res.render('seccion/seccionDepartamentos', {empresa: datos, varias:true, seleccionada: req.session.user.empresa})
+            }else{
+                res.render('seccion/seccionDepartamentos', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     seccionDepartamentos1: async (req, res) => {
-        let id = parseInt(req.params.id)
-        let resultado = await db.loadInfo.CargarColaboradoresDepartamento(id)
-        res.render('seccion/seccionDepartamentos', { colaboradores: resultado.datos })
-
-
+        let id = req.params.id
+        console.log('---------------', id)
+        if(req.session.user){
+            if(req.session.user.user == 'SuperAdministrador'){
+                let datos = (await db.loadInfo.loadEmpresas()).datos
+                res.render('seccion/seccionDepartamentos', {empresa: datos, varias:true, seleccionada: req.session.user.empresa})
+            }else{
+                res.render('seccion/seccionDepartamentos', {EMPRESA: req.session.user.empresa, varias:false})
+            }
+        }else{
+            res.render('login/login')
+        }
     },
     rt_cargaMeses: async (req, res) => {
         let datos = req.body
@@ -146,13 +160,9 @@ module.exports = {
 
         let resultado3 = await db.loadInfo.loadChartInfoMonths(datos)
 
-
-
-        if (datos.consulta) {
-            res.render('partials/grafico', {
-                meses: resultado2.datos, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril,
-                MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, todo2: true, todo: true
-            }, (error, html) => {
+        if(datos.consulta){
+            res.render('partials/grafico',{meses: resultado2.datos, ENERO: enero, FEBRERO: febrero, MARZO: marzo, ABRIL: abril, 
+                MAYO: mayo, JUNIO: junio, JULIO: julio, AGOSTO: agosto, SEPTIEMBRE: septiembre, OCTUBRE: octubre, NOVIMEBRE: noviembre, DICIEMBRE: diciembre, todo2: true, todo:true}, (error, html) => {
                 console.log(html)
                 res.json({ html })
             })

@@ -11,7 +11,7 @@ function onRegistro(e){
             arrFaltantes.push(' ' + key.replace("txt", ""))
         }
         if(key == "txtImagen"){
-            jsonRegistroDepartamentos[key] = formRegistroDepartamentos.get(key).name
+            jsonRegistroDepartamentos[key] = '../img/Departamento' + formRegistroDepartamentos.get(key).name.replaceAll(" ", "_")
         }
     }
     if(arrFaltantes.length > 0){
