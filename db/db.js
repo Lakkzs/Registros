@@ -552,8 +552,8 @@ const altas = {
     cargaDashboard: async (req, res) => {
         try {
             let resultado = await sql_conn.request()
-                .input('FOLIO', sql.Int, req.txtColaborador)
-                .query('EXEC CONSULTA_DASHBOARD @ANIOS')
+                .input('FOLIO', sql.Int, parseInt(req.txtColaborador))
+                .query('EXEC CONSULTA_DASHBOARD @FOLIO')
             return objeto_resultado2(resultado)
         }
         catch (error) {

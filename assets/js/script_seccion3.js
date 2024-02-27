@@ -28,7 +28,7 @@ window.onload = async function carga() {
                     console.log(777, events)
                     if (events.length > 0) {
                         console.log("month change", currentDate, events);
-                        let evento = document.getElementsByClassName('calendar__day-event')
+                        let evento = document.getElementsByClazssName('calendar__day-event')
                         console.log(evento)
                         for (let i = 0; i < events.length; i++) {
                             let startDate = new Date(events[i].start);
@@ -62,6 +62,7 @@ window.onload = async function carga() {
             console.log(err)
         })
 }
+
 async function colorChange(eventosM) {
     if (eventosM.length > 0) {
         console.log(eventosM[0])
@@ -76,5 +77,28 @@ async function colorChange(eventosM) {
                 evento[i].children[1].setAttribute('style', 'background-color: #60a709')
             }
         }
+    }
+}
+
+function onRegistro(e) {
+    e.preventDefault()
+    let txtColaborador = document.getElementById('txtColaborador').value
+    var jsonRegistroInformacion= {txtColaborador}
+
+    if(txtColaborador == NaN || txtColaborador == undefined || txtColaborador == ' ' || txtColaborador == 'Nada') {
+        alert(`Por favor llene los siguientes campos faltantes: Colaborador`)
+    }else{
+        fetch('/rt_cargaseccion', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(jsonRegistroInformacion)
+        }).then((response) => response.json())
+        .then(async (response) => {
+            document.getElementById('asd').innerHTML = response.html
+
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
     }
 }

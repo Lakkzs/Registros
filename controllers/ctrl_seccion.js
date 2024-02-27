@@ -127,14 +127,14 @@ module.exports = {
         }
     },
     seccionDepartamentos1: async (req, res) => {
-        let id = req.params.id
-        console.log('---------------', id)
+        let id = parseInt(req.params.id)
+        let resultado = await db.loadInfo.CargarColaboradoresDepartamento(id)
         if(req.session.user){
             if(req.session.user.user == 'SuperAdministrador'){
                 let datos = (await db.loadInfo.loadEmpresas()).datos
-                res.render('seccion/seccionDepartamentos', {empresa: datos, varias:true, seleccionada: req.session.user.empresa})
+                res.render('seccion/seccionDepartamentos', {empresa: datos, varias:true, seleccionada: req.session.user.empresa, colaboradores: resultado.datos})
             }else{
-                res.render('seccion/seccionDepartamentos', {EMPRESA: req.session.user.empresa, varias:false})
+                res.render('seccion/seccionDepartamentos', {EMPRESA: req.session.user.empresa, varias:false, colaboradores: resultado.datos})
             }
         }else{
             res.render('login/login')
@@ -205,17 +205,24 @@ module.exports = {
     },
     rt_consultaDashboard: async (req, res) => {
         let datos = req.body
-        let resultado = await db.altas.cargaDashboard()
-        console.log(resultado)
-        // if (resultado.datos[0] != undefined) {
-        //     res.render('partials/secciondatos', { }, (error, html) => {
-        //         res.json({ html })
-        //     })
-        // } else {
-        //     res.render('partials/secciondatos',  (error, html) => {
-        //         res.json({ html })
-        //     })
-        // }
+        console.log(datos)
+
+        let resultado = await db.altas.cargaDashboard(datos)
+        console.log('---------------------------------ID',parseInt(datos.txtColaborador))
+        let fecha = resultado.datos[0][0].FECHA
+        let vacaciones = resultado.datos[1][0].DIAS_VACACIONES
+        let economicos = resultado.datos[2][0].DIAS_ECONOMICOS
+
+        console.log(resultado.datos)
+        if (resultado.datos[0] != undefined) {
+            res.render('partials/secciondatos', { FECHA: fecha, VACACIONES: vacaciones, ECONOMICOS: economicos }, (error, html) => {
+                res.json({ html })
+            })
+        } else {
+            res.render('partials/secciondatos',  (error, html) => {
+                res.json({ html })
+            })
+        }
     },
 
     // rt_buscarVacaciones: async (req, res) => {

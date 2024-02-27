@@ -1,7 +1,7 @@
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Nombre(s)</label>
-                        <label class="form-label">Apellido(s)</label>
+                        <label class="form-label"> Nombre(s)*</label>
+                        <label class="form-label">Apellido(s)*</label>
                     </div>
                     <div class="ins">
                         <input type="text" class="form-control" placeholder="Nombre(s)" name="txtNombres" value="{{datos.NOMBRES_COLABORADOR}}"> 
@@ -13,9 +13,9 @@
                 <div class="mb-3 rec">
                     <div class="lab">
                         {{#if datos.CORREO_ALT_COLABORADOR}}
-                            <label class="form-label"> Correo Alternativo </label>
+                            <label class="form-label"> Correo Alternativo* </label>
                         {{else}}
-                            <label class="form-label"> Correo Provisional </label>
+                            <label class="form-label"> Correo Provisional* </label>
                         {{/if}}
                     </div>
                     <div class="ins">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Correo de la empresa</label>
+                        <label class="form-label"> Correo de la empresa* </label>
                     </div>
                     <div class="ins">
                         {{#if datos.CORREO_ALT_COLABORADOR}}
@@ -42,8 +42,8 @@
 
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Celular</label>
-                        <label class="form-label">Teléfono</label>
+                        <label class="form-label"> Celular*</label>
+                        <label class="form-label">Teléfono*</label>
                     </div>
                     <div class="ins">
                         <input type="number" maxlength="10"
@@ -55,8 +55,8 @@
 
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Fecha de Nacimiento</label>
-                        <label class="form-label">Género</label>
+                        <label class="form-label"> Fecha de Nacimiento*</label>
+                        <label class="form-label">Género*</label>
 
                     </div>
                     <div class="ins">
@@ -76,8 +76,8 @@
 
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label"> Calle</label>
-                        <label class="form-label">Colonia</label>
+                        <label class="form-label"> Calle*</label>
+                        <label class="form-label">Colonia*</label>
 
                     </div>
                     <div class="ins">
@@ -89,7 +89,7 @@
                 <div class="mb-3 rec">
                     <div class="lab">
                  
-                        <label class="form-label">N. Exterior</label>
+                        <label class="form-label">N. Exterior*</label>
                         <label class="form-label">N. Interior</label>
                         <label class="form-label">C.P</label>
 
@@ -103,9 +103,9 @@
 
                 <div class="mb-3 rec">
                     <div class="lab">
-                        <label class="form-label">Pais</label>
-                        <label class="form-label">Estado</label>
-                        <label class="form-label">Ciudad</label>
+                        <label class="form-label">Pais*</label>
+                        <label class="form-label">Estado*</label>
+                        <label class="form-label">Ciudad*</label>
 
                     </div>
                     <div class="ins">
