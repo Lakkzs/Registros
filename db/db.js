@@ -1,4 +1,5 @@
 const  { sql, sql_conn, objeto_resultado, objeto_resultado2 } = require('../config/conexion')
+const { data } = require('../controllers/ctrl_table')
 
 const registro = {
     registrar: async (data) => {
@@ -204,8 +205,49 @@ const loadInfo = {
     }
 }
 
+//const altaDocumentos = {
+//    subirdocumentos: async(req, res) => {
+//        try {
+//            const resultado = req.body.get("nombreArchivo");
+//            await db.CONSULTA_ALTA_DOCUMENTOS(resultado);
+//            res.send("Documento(s) subidos(s) correctamente");
+            //.input('ARCHIVO_ALTA_DOCUMENTOS', sql.VarChar, data.documents)
+            //.query('EXEC CONSULTA_ALTAS_DOCUMENTOS')
+            //return objeto_resultado(resultado)
+//        } catch (error) {
+//            console.log(error);
+//            res.status(500).send("Error al procesar la solicitud ");
+//        }
+//    }
+//}
+
+const altaDocumentos = {
+    subirDocumentos: async (req, res) => {
+        try {
+            const files = req.files;
+            const results = [];
+
+            for (const file of files) {
+                const buffer = file.buffer;
+
+                await sql_conn.connect();
+
+                const request = sql_conn.request();
+                request.input('ARCHIVO_ALTA_DOCUMENTOS', sql.VarBinary, buffer);
+                const resultado = await request.execute('PRUEBA_ALTA_DOCUMENTOS');
+
+                results.push(objeto_resultado(resultado));
+            }
+
+            return res.status(200).json(results);
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
 module.exports = {
-    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo
+    registro, login, codes, verify, changeStatusCode, tempPass, loadTable, loadInfo, altaDocumentos
 }
 
 

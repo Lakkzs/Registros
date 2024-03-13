@@ -12,6 +12,8 @@ const cms = require('../controllers/ctrl_cms')
 const tabla = require('../controllers/ctrl_tabla')
 const table = require('../controllers/ctrl_table.js')
 const seccion = require('../controllers/ctrl_seccion.js')
+const altaDocumentos = require('../controllers/ctrl_altadocumentos.js')
+const descargaDocumentos = require('../controllers/ctrl_descargadocumentos.js')
 
 // Inicio
 router.get('/', inicio.inicio)
@@ -25,8 +27,8 @@ router.get('/login', login.login)
 router.get('/recuperar', recuperar.recuperar)
 router.get('/tabla', tabla.tabla)
 router.get('/seccion', seccion.seccion)
-
+router.get('/altaDocumentos', altaDocumentos.altaDocumentos)
+router.get('/descargaDocumentos', descargaDocumentos.descargaDocumentos)
 router.get('/table_data', table.data)
-
 
 module.exports = router
