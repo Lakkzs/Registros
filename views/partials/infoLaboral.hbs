@@ -1,0 +1,49 @@
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> Fecha Ingreso </label>
+    </div>
+    <div class="ins">
+        <input type="date" class="form-control" name="txtFecha_Entrada" value="{{txtFecha_Entrada}}">
+    </div>
+</div>
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> Fecha Salida </label>
+    </div>
+    <div class="ins">
+        <input type="date" class="form-control" name="txtFecha_Salida" value="{{txtFecha_Salida}}">
+    </div>
+</div>
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> Transitorio </label>
+    </div>
+    <div class="ins">
+        <select type="select" class="form-control" name="txtTransitorio">
+            <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+            <option value="{{NOMBRE_TRANSITORIO}}" class="depSeleccion" hidden> {{NOMBRE_TRANSITORIO}} </option>
+            {{#each perfiles}}
+            <option value="{{TRANSITORIO}}"> {{TRANSITORIO}} </option>
+            {{/each}}
+        </select>
+    </div>
+</div>
+<div class="mb-3 rec">
+    <div class="lab">
+        <label class="form-label"> Departamento </label>
+    </div>
+    <div class="ins">
+        <select type="select" class="form-control" name="txtDepartamento" id="txtDepartamento" onchange="cargaPuesto(value)">
+            <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+            <option value="{{NOMBRE_DEPARTAMENTO}}" class="depSeleccion" hidden> {{NOMBRE_DEPARTAMENTO}} </option>
+            {{#each departamentos}}
+            <option value="{{NOMBRE_DEPARTAMENTO}}"> {{NOMBRE_DEPARTAMENTO}} </option>
+            {{/each}}
+        </select>
+    </div>
+</div>
+<div class="mb-3 rec">
+    <div id="puestos">
+        {{> puestos name="txtPuesto" id="puesto"}}
+    </div>
+</div>

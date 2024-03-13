@@ -1,0 +1,55 @@
+.nav {
+    width: 15%;
+    float: left;
+}
+.tit{
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 15px;
+}
+.ah{
+    display: flex;
+}
+.linea{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    margin-top: 20px;
+}
+
+.cuadro{
+    background-color: rgb(225, 231, 231);
+    height: 100%;
+    border: 5px solid rgb(255, 255, 255);
+    place-items: center;
+    display: grid;
+    font-size: 25px;
+    color: rgb(3, 3, 37);
+    font-weight: bold;
+    text-align: center;
+}
+
+.linea2{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    margin-top: 15px;
+}
+
+.linea3{
+    display: flex;
+    width: 100%;
+    height: 30%;
+    margin-top: 15px;
+}
+.linea4{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    margin-top: 10px;
+}
+.grafico{
+    width:300px;
+    height: auto;
+}

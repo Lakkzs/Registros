@@ -11,12 +11,14 @@ module.exports = {
         }
     },
     rtLogin: async (req, res) => {
-        try {
-            console.log(req.sessionID)
+            try {
             let body = req.body
             const {email, password} = req.body
             let datos = (await db.login.ingresar(body)).datos
             const user = datos[0].USUARIO
+            const folio = datos[0].FOLIO
+            const empresa = datos[0].EMPRESA
+            const id_empresa = datos[0].ID_EMPRESA
             if(body.txtCorreo && body.txtContrasena){
                 if(req.session.authenticated){
                     res.json(req.session)
@@ -24,11 +26,12 @@ module.exports = {
                     if(datos[0].RESULT == "USUARIO ENCONTRADO"){
                         req.session.authenticated = true;
                         req.session.user = {
-                            email, password, user
+                            email, password, user, folio, empresa, id_empresa
                         }
+                        // console.log(req)
                         res.json({status: 'OK', datos})
                     }else{
-                        res.status(403).json({msg: 'Bad Credentials'})
+                        res.json({msg: 'Bad Credentials'})
                     }
                 }
             }else{

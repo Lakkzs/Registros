@@ -34,12 +34,16 @@ function onRegistro(e){
             }).then((response) => response.json())
             .then((response) => {
                 console.log(response)
-                if(response.datos[0].RESULT == 'USUARIO NO ENCONTRADO'){
-                    alert('Los datos ingresados son incorrectos, intente de nuevo.')
-                }
-                if(response.datos[0].RESULT == 'USUARIO ENCONTRADO'){
-                    alert('Sesión iniciada correctamente.')
-                    document.getElementById('formLogin').submit();
+                if(response.msg == 'Bad Credentials'){
+                    alert('No es posible ingresar a su cuenta en este momento, espere a que el administrador termine de registrar sus datos con relación a la empresa (Departamento, Puesto, etc.) en el sistema.')
+                }else{
+                    if(response.datos[0].RESULT == 'USUARIO NO ENCONTRADO'){
+                        alert('Los datos ingresados son incorrectos, intente de nuevo.')
+                    }
+                    if(response.datos[0].RESULT == 'USUARIO ENCONTRADO'){
+                        alert('Sesión iniciada correctamente.')
+                        document.getElementById('formLogin').submit();
+                    }
                 }
             })
             .catch(function (err) {

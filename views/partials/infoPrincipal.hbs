@@ -1,0 +1,133 @@
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s)*</label>
+                        <label class="form-label">Apellido(s)*</label>
+                    </div>
+                    <div class="ins">
+                        <input type="text" class="form-control" placeholder="Nombre(s)" name="txtNombres" value="{{datos.NOMBRES_COLABORADOR}}"> 
+                        <input type="text" class="form-control" placeholder="Apellido(s)" name="txtApellidos" value="{{datos.APELLIDOS_COLABORADOR}}">
+                    </div>
+                </div>
+
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        {{#if datos.CORREO_ALT_COLABORADOR}}
+                            <label class="form-label"> Correo Alternativo* </label>
+                        {{else}}
+                            <label class="form-label"> Correo Provisional* </label>
+                        {{/if}}
+                    </div>
+                    <div class="ins">
+                        {{#if datos.CORREO_ALT_COLABORADOR}}
+                            <input type="email" class="form-control" placeholder="Nombre@prointernet.mx" name="txtCorreo_Alt" value="{{datos.CORREO_ALT_COLABORADOR}}">
+                        {{else}}
+                            <input type="email" class="form-control" placeholder="Nombre@prointernet.mx" name="txtCorreo_Alt" value="{{datos.CORREO_COLABORADOR}}">
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Correo de la empresa* </label>
+                    </div>
+                    <div class="ins">
+                        {{#if datos.CORREO_ALT_COLABORADOR}}
+                            <input type="email" class="form-control" placeholder="Nombre@prointernet.mx" name="txtCorreo" value="{{datos.CORREO_COLABORADOR}}">
+                        {{else}}
+                            <input type="email" class="form-control" placeholder="Nombre@prointernet.mx" name="txtCorreo" value="{{datos.CORREO_ALT_COLABORADOR}}">
+                        {{/if}}
+                    </div>
+                </div>
+
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular*</label>
+                        <label class="form-label">Teléfono*</label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" placeholder="833-278-3063" name="txtCelular" value="{{datos.CELULAR_COLABORADOR}}">
+                        <input  maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" placeholder="833-278-3063" name="txtTelefono" value="{{datos.TELEFONO_COLABORADOR}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Fecha de Nacimiento*</label>
+                        <label class="form-label">Género*</label>
+
+                    </div>
+                    <div class="ins">
+                        <input type="date" class="form-control" name="txtFecha_Nac" value="{{datos.FECHA_NAC_COLABORADOR}}">
+                         <select type="select" class="form-control" name="txtGenero" id="txtGenero">
+                            {{#if datos.GENERO_COLABORADOR}}
+                                <option value="{{datos.GENERO_COLABORADOR}}" class="traido" selected hidden> {{datos.GENERO_COLABORADOR}} </option>
+                            {{else}}
+                                <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+                            {{/if}}
+                            <option value="Masculino"> Masculino </option>
+                            <option value="Femenino"> Femenino</option>
+                            <option value="Prefiero no decirlo"> Prefiero no decirlo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Calle*</label>
+                        <label class="form-label">Colonia*</label>
+
+                    </div>
+                    <div class="ins">
+                        <input type="text" class="form-control" placeholder="Calle" name="txtCalle" value="{{datos.CALLE_COLABORADOR}}">
+                        <input type="text" class="form-control" placeholder="Colonia" name="txtColonia" value="{{datos.COLONIA_COLABORADOR}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                 
+                        <label class="form-label">N. Exterior*</label>
+                        <label class="form-label">N. Interior</label>
+                        <label class="form-label">C.P</label>
+
+                    </div>
+                    <div class="ins">
+                        <input type="number" class="form-control" placeholder="0" name="txtNum_Exterior" value="{{datos.NUM_EXTERIOR_COLABORADOR}}">
+                        <input type="number" class="form-control" placeholder="0" name="txtNum_Interior" value="{{datos.NUM_INTERIOR_COLABORADOR}}">
+                        <input type="number" class="form-control" placeholder="89000" name="txtCP" value="{{datos.COD_POSTAL_COLABORADOR}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label">Pais*</label>
+                        <label class="form-label">Estado*</label>
+                        <label class="form-label">Ciudad*</label>
+
+                    </div>
+                    <div class="ins">
+                        <select type="select" class="form-control" name="txtPais">
+                            <option value="México"> México </option>
+                        </select>
+                        <select type="select" class="form-control" name="txtEstado" id="txtEstado" onchange="cargaMunicipios(value)">
+                            {{#if datos.ESTADO_COLABORADOR}}
+                                <option value="{{datos.ESTADO_COLABORADOR}}" class="traido" hidden> {{datos.ESTADO_COLABORADOR}} </option>
+                            {{else}}
+                                <option value="Nada" class="seleccione" selected hidden> Seleccione </option>
+                            {{/if}}
+                            {{#each estados}}
+                                <option value="{{Descripcion}}"> {{Descripcion}}</option>
+                            {{/each}}
+                        </select>
+                        
+                        <div id="municipioselect" class="ins">
+                            {{> municipio munSel=datos.CIUDAD_COLABORADOR name='txtCiudad' id='txtCiudad'}}
+                        </div>
+                      
+                    </div>
+                </div>
+
+                

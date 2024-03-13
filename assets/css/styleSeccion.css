@@ -27,6 +27,7 @@
     font-size: 25px;
     color: rgb(3, 3, 37);
     font-weight: bold;
+    text-align: center;
 }
 
 .linea2{
@@ -42,6 +43,26 @@
     height: 30%;
     margin-top: 15px;
 }
+.linea4{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    margin-top: 10px;
+}
+.linea5{
+    /* display: block; */
+    width: 100%;
+    height: auto;
+    /* margin-top: 10px; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.grafico{
+    width:300px;
+    height: auto;
+}
+
 
 
 

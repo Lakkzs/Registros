@@ -1,0 +1,165 @@
+<div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Primer Contacto </label>
+                    </div>
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name}}" id="{{id}}" value="{{NOMBRES_CONTACTO}}">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="{{name2}}" id="{{id2}}" value="{{APELLIDOS_CONTACTO}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="{{name3}}" id="{{id3}}" value="{{CELULAR_CONTACTO}}">
+
+                        <select type="number" class="form-control"  name="{{name4}}" id="{{id4}}" 
+                            onchange="otro(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                             {{#unless alerta}}
+                            <option value="{{PARENTESCO_CONTACTO}}" selected>{{PARENTESCO_CONTACTO}}</option>
+                             {{/unless }}
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano/a">Hermano/a</option>
+                            <option value="Esposo/a">Esposo/a</option>
+                            <option value="Hijo/a">Hijo/a</option>
+                            <option value="Abuelo/a">Abuelo/a</option>
+                            <option value="Tío/a">Tío/a</option>
+                            <option value="Amigo/a">Amigo/a</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name13}}" id="{{id13}}">
+                    </div>
+                </div>
+
+                {{!----------------------------------- SEGUNDO CONTACTO --------------------------------------}}
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Segundo Contacto </label>
+                    </div>
+
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name5}}" id="{{id5}}" value="{{NOMBRES_CONTACTO_2}}">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="{{name6}}" id="{{id6}}" value="{{APELLIDOS_CONTACTO_2}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="{{name7}}" id="{{id7}}" value="{{CELULAR_CONTACTO_2}}">
+
+                        <select type="number" class="form-control" name="{{name8}}" id="{{id8}}"
+                            onchange="otro2(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                              {{#unless alerta2}}
+                            <option value="{{PARENTESCO_CONTACTO_2}}" selected>{{PARENTESCO_CONTACTO_2}}</option>
+                             {{/unless }}
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano">Hermano/a</option>
+                            <option value="Esposo">Esposo/a</option>
+                            <option value="Hijo">Hijo/a</option>
+                            <option value="Abuelo">Abuelo/a</option>
+                            <option value="Tío">Tío/a</option>
+                            <option value="Amigo">Amigo/a</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto2" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name14}}" id="{{id14}}">
+                    </div>
+                </div>
+
+                {{!----------------------------------- TERCER CONTACTO --------------------------------------}}
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label" style="font-size: 18px"> Tercer Contacto </label>
+                    </div>
+
+                    <div class="lab">
+                        <label class="form-label"> Nombre(s): </label>
+                        <label class="form-label"> Apellidos: </label>
+                    </div>
+
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name9}}" id="{{id9}}" value="{{NOMBRES_CONTACTO_3}}">
+                        <input type="input" class="form-control" placeholder="Apellidos" name="{{name10}}" id="{{id10}}" value="{{APELLIDOS_CONTACTO_3}}">
+                    </div>
+                </div>
+
+                <div class="mb-3 rec">
+                    <div class="lab">
+                        <label class="form-label"> Celular: </label>
+                        <label class="form-label"> Parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="number" maxlength="10"
+                            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" placeholder="833-278-3063" name="{{name11}}" id="{{id11}}" value="{{CELULAR_CONTACTO_3}}">
+
+                        <select type="number" class="form-control" name="{{name12}}" id="{{id12}}" 
+                            onchange="otro3(value)">
+                            <option value="Nada" selected hidden> Seleccione una opción </option>
+                              {{#unless alerta3}}
+                            <option value="{{PARENTESCO_CONTACTO_3}}" selected>{{PARENTESCO_CONTACTO_3}}</option>
+                             {{/unless }}
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Hermano">Hermano/a</option>
+                            <option value="Esposo">Esposo/a</option>
+                            <option value="Hijo">Hijo/a</option>
+                            <option value="Abuelo">Abuelo/a</option>
+                            <option value="Tío">Tío/a</option>
+                            <option value="Amigo">Amigo/a</option>
+                            <option value="Otro">Otro
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 rec" id="oculto3" hidden>
+                    <div class="lab">
+                        <label class="form-label"> En caso de elegir otro, especifique el parentesco: </label>
+                    </div>
+                    <div class="ins">
+                        <input type="input" class="form-control" placeholder="Nombre(s)" name="{{name15}}" id="{{id15}}">
+                    </div>
+                </div>
+

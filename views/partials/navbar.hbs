@@ -13,15 +13,46 @@
     </div><br>
     <div class="dropdown">
         <div class="dropdown">
-            <button class="dropbtn" onclick="myFunction()">EMPRESA
-                <i class="fa fa-caret-down"></i>
-            </button>
+            {{#unless varias}}
+                <button class="dropbtn" onclick="myFunction()">{{EMPRESA}}</button>
+            {{else}}
+                <button class="dropbtn" id="seleccionada" onclick="myFunction()">EMPRESAS ({{seleccionada}})
+                    <i class="fa fa-caret-down"></i>
+                </button>
+            {{/unless}}
             <div class="dropdown-content" id="myDropdown">
-                <a href="#prointernet">PROINTERNET</a>
-                <a href="#addex">ADDEX</a>
+                {{#each empresa}}
+                    <button onclick="selEmpresa({{ID_EMPRESA}}, `{{EMPRESA}}`)"> {{EMPRESA}} </button>
+                    {{!-- <a href="#{{EMPRESA}}"> {{EMPRESA}} </a> --}}
+                {{/each}}
             </div>
         </div>
     </div>
+
+    {{!-- <div class="dropdown">
+        <div class="dropdown2">
+            <a href="/seccion">
+                <button class="dropbtn"> DASHBOARD 1</button>
+            </a>
+        </div> 
+    </div> --}}
+
+       <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionDashboard()">DASHBOARD
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown3">
+                <a href="/seccion"> DASHBOARD ADMIN</a>
+                   <a href="/seccion2"> DASHBOARD USUARIO</a>
+                      <a href="/seccion3"> DASHBOARD ADMIN/USUARIO</a>
+                      <a href="/seccionDepartamentos"> DEPARTAMENTOS</a>
+             
+            </div>
+        </div>
+    </div>
+
+
     <div class="dropdown">
         <div class="dropdown1">
             <a href="/tabla">
@@ -29,23 +60,65 @@
             </a>
         </div> 
     </div>
+    {{#ifCond user.user '!=' 'Colaborador'}}
     <div class="dropdown">
-        <div class="dropdown2">
-            <a href="/seccion">
-                <button class="dropbtn">DASHBOARD</button>
-            </a>
-        </div> 
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionCatalogos()">CATÁLOGOS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown1">
+                <a href="/alta_Empresas"> EMPRESA </a>
+                <a href="/alta_TipoUsuario"> TIPOS DE USUARIO </a>
+                <a href="/alta_Departamentos"> DEPARTAMENTOS </a>
+                <a href="/alta_Puestos"> PUESTOS </a>
+                <a href="/alta_Transitorios"> TRANSITORIOS </a>
+            </div>
+        </div>
     </div>
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
+    <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionExtras()">EXTRAS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown4">
+                <a href="/extras_calendario"> CALENDARIO </a> 
+                <a  href="/editar_vacaciones"> EDITAR VACACIONES </a>   
+                <a  href="/editar_dias_economicos"> EDITAR DIAS ECONOMICOS </a>   
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}
+    {{#ifCond user.user '!=' 'Colaborador'}}
+    <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunctionInfoAdicional()">INFORMACION COLABORADOR(Admin)
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown2">
+                <a href="/alta_Colaborador"> COLABORADOR </a>
+                {{#ifCond user.user '==' 'SuperAdministrador'}}
+                    <a href="/alta_infoEmpresa"> INFORMACIÓN DE EMPRESA-COLABORADOR </a>
+                {{/ifCond}}
+                <a href="/info_Principal"> INFORMACIÓN PRINCIPAL </a>
+                <a href="/info_Adicional"> INFORMACION ADICIONAL </a>
+                <a href="/info_Emergencia"> DATOS DE EMERGENCIA </a>
+                <a href="/info_Estudios"> DATOS DE ESTUDIOS </a>
+                <a href="/info_Salud"> INFORMACIÓN DE SALUD </a>
+                 <a href="/info_Hobbies"> INFORMACIÓN HOBBIES </a>
+            </div>
+        </div>
+    </div>
+    {{/ifCond}}
     <div class="dropdown">
         <div class="dropdown3">
-            <form action="/login" method="post" id="formLogout">
-                <div class="boton">
-                    <a onclick="cerrarSesion()">
-                        <button class="dropbtn">LOGOUT</button>
-                    </a>
-                    <script src="/js/script_logout.js"></script>
-                </div>
-            </form>
+            <div class="boton">
+                <a href="/login" onclick="cerrarSesion()">
+                    <button class="dropbtn" >LOGOUT</button>
+                </a>
+                <script src="/js/script_logout.js"></script>
+            </div>
         </div> 
     </div>
 </nav>

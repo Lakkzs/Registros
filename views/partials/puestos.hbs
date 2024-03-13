@@ -1,0 +1,12 @@
+<div class="lab">
+    <label class="form-label"> Puesto </label>
+</div>
+<div class="ins">
+    <select type="select" class="form-control" name="{{name}}" id="{{id}}">
+        <option value="Nada" class="seleccione" selected hidden> Seleccione una opción </option>
+        <option value="{{NOMBRE_PUESTO}}" class="depSeleccion" hidden> {{NOMBRE_PUESTO}} </option>
+        {{#each opciones}}
+            <option value="{{value}}"> {{valor}} </option>
+        {{/each}}
+    </select>
+</div>

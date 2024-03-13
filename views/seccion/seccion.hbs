@@ -13,6 +13,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar/dist/css/theme-basic.css" />
 </head>
 
 <body>
@@ -28,19 +29,56 @@
 
 
             <div class="linea">
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_MUJER}} MUJERES
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_HOMBRE}} HOMBRES
                 </div>
-                <div class="col-sm-4 cuadro">
+                <div class="col-sm-3 cuadro">
+                    {{PENDIENTES}} PENDIENTES
+                </div>
+                <div class="col-sm-3 cuadro">
                     {{NUMERO_TOTAL}} COLABORADORES
                 </div>
             </div>
 
+
+
+
+
+
+            <div style="display:flex">
+                <div class="col-sm-7 ">
+
+                    <select name="asd" id="txtMeses" name="txtMeses" class="form-select"
+                        style="width:20%; margin-left:10px" onchange="cargaGrafico(value)">
+                        <option selected hidden>Elija una opcion</option>
+                        <option value="3">3 Meses</option>
+                        <option value="6">6 Meses</option>
+                        <option value="8">8 Meses</option>
+                        <option value="10">10 Meses</option>
+                        <option value="13">1 año</option>
+
+                    </select>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <select id="txtAnios" name="txtAnios" class="form-select" style="width:30%"
+                        onchange="cargaGraficoAnio(value)">
+                        <option selected hidden>Elija una opcion</option>
+                        <option value="2">2 años</option>
+                        <option value="3">3 años</option>
+                        <option value="4">4 años</option>
+                        <option value="5">5 años</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="linea2">
-                <div class="col-sm-7 cuadro">
+                {{#if todo}}
+                <div class="col-sm-7 cuadro" id="linea2">
                     <canvas id="altas"></canvas>
                     <input type="text" id="enero" value="{{ENERO}}" hidden>
                     <input type="text" id="febrero" value="{{FEBRERO}}" hidden>
@@ -55,63 +93,69 @@
                     <input type="text" id="noviembre" value="{{NOVIEMBRE}}" hidden>
                     <input type="text" id="diciembre" value="{{DICIEMBRE}}" hidden>
                 </div>
-                <div class="col-sm-5 cuadro">
+                {{else}}
+                {{> grafico}}
+                {{/if}}
+
+                <div class="col-sm-5 cuadro" id="linea3">
+                    {{#if todo3}}
                     <canvas id="altasAños"></canvas>
                     <input type="text" id="actual" value="{{ACTUAL}}" hidden>
                     <input type="text" id="pasado" value="{{PASADO}}" hidden>
                     <input type="text" id="antepasado" value="{{ANTEPASADO}}" hidden>
                     <input type="text" id="pasadoAntepasado" value="{{PASADOANTEPASADO}}" hidden>
+                    {{else}}
+                    {{> graficoAnio}}
+                    {{/if}}
                 </div>
-
             </div>
 
             <div class="linea3">
                 <div class="col-sm-3 cuadro">
-                    CUMPLEAÑOS DEL MES<br>
+                    FELIZ CUMPLEAÑOS 🎂<br>
                     {{#each cumpleanos}}
-                    🎂{{NOMBRE}}: {{MES}} {{DIA}}<br>
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/6326/6326055.png"
+                            style="width:30%; height:auto">
+                    </div>
+                    {{NOMBRES_COLABORADOR}}<br>
+                    {{NOMBRE_DEPARTAMENTO}}
                     {{/each}}
                 </div>
                 <div class="col-sm-3 cuadro">
-                    ANIVERSARIOS DEL MES
-                    
+                    ANIVERSARIOS DEL MES<br>
+                    {{#each aniversario}}
+                    🎉{{NOMBRES_COLABORADOR}}: {{ANIOS}} Año(s) - {{MES}} {{DIA}}<br>
+                    {{/each}}
                 </div>
                 <div class="col-sm-3 cuadro">
-                    <canvas id="colaboradores"></canvas>
-                    <input type="text" id="mujeres" value="{{NUMERO_MUJER}}" hidden>
-                    <input type="text" id="hombres" value="{{NUMERO_HOMBRE}}" hidden>
+                    PROXIMOS CUMPLEAÑOS<br><br>
+                    {{#each proximosCumpleanos}}
+                    🎉{{NOMBRES_COLABORADOR}}<br>
+                    {{DIA}} de {{MES}}<br>
+                    {{/each}}
                 </div>
-                <div class="col-sm-3 cuadro" style="font-size:100px">
-                    <b>{{DIA}}/{{MES}}</b>
+                <div class="col-sm-3 cuadro">
+                    {{> calendario}}
                 </div>
-            </div>
 
-            <div class="linea3">
-                <div class="col-sm-12 cuadro">
-                    <div id="carouselExample" class="carousel slide">
-                        <div class="carousel-inner">
-                             <div class="carousel-item active">
-                                <img src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/soluciones-para-internet-e43c924d" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://media.licdn.com/dms/image/D4E0BAQHJ6Ni1VDAwsA/company-logo_200_200/0/1692633298022/prointernetmx_logo?e=2147483647&v=beta&t=FtHLeWhePeVvMNsBFsBDgDiKS0UtmIYocDIjF40nbD0" class="d-block w-100" >
-                            </div>
-                           
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+
+            </div>
+            <div class="col-sm-12">
+                <div class="tit">
+                    DEPARTAMENTOS
                 </div>
             </div>
+            {{#each departamentos}}
+            <div class="linea4">
+                <div class="col-sm-12 cuadro">
+                    <a style="width:100%; height: 100%" href="/seccionDepartamentos/{{ID_DEPARTAMENTO}}" value="{{ID_DEPARTAMENTO}}"  onclick="onRegistro2('{{NOMBRE_DEPARTAMENTO}}')" >
+                        {{NOMBRE_DEPARTAMENTO}}
+                    </a>
+                </div>
         </div>
+        {{/each}}
+    </div>
     </div>
 </body>
 
@@ -119,3 +163,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/script_seccion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/color-calendar/dist/bundle.js"></script>
