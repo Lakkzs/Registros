@@ -5,6 +5,7 @@ const input = dropArea.querySelector('#input-file');
 let files;
 let ids;
 
+
 button.addEventListener("click", (e) => {
     input.click();
 });
