@@ -65,6 +65,16 @@ module.exports = {
         }
 
     },
+    rt_cargarDirectorio: async (req, res) => {
+        // let data = req.session.user
+        // let resultado3 = (await db.extras.cargarFestivos(data)).datos
+        // console.log(123, resultado3)
+        // res.render('partials/extrasCalendario', { datos: resultado3 }, (error, html) => {
+        //     res.json({ html })
+        // })
+        res.render('extras/directorio')
+    },
+    
     rt_cargarCalendario: async (req, res) => {
         let data = req.session.user
         let resultado3 = (await db.extras.cargarFestivos(data)).datos
@@ -141,5 +151,6 @@ module.exports = {
         }
     },
  
+
 
 }

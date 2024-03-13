@@ -52,5 +52,6 @@ router.get('/extras_vacaciones', extras.vacaciones)
 router.get('/extras_calendario', extras.calendario)
 router.get('/editar_vacaciones', extras.editar_vacaciones)
 router.get('/editar_dias_economicos', extras.editar_diasEconomicoss)
+router.get('/directorio', extras.rt_cargarDirectorio)
 
 module.exports = router
